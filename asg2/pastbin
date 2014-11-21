@@ -1,0 +1,23 @@
+
+	
+	|freqtable|
+	freqtable := ZeroArray new: 256.
+	[self atEnd not] whileTrue: [
+	    |ordChar|
+	    ordChar := stdin next asInteger.
+	    freqtable incr: ordChar.
+	]
+	^freqtable.
+	
+	
+	
+	
+
+freqtable keysAndValuesDo: [:key :value |
+   (value notNil and: [value > 0]) ifTrue: [
+      stdout << 'freq[' << key asCharacter visible << ']=' << value
+             << nl.
+   ]
+].
+
+) & (Smalltalk arguments size < 2)

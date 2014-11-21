@@ -1,0 +1,114 @@
+#!/usr/bin/perl
+
+# Joshua Leihe - jleihe@ucsc.edu
+# Some functions adapted from Assignments/asg1-perl-pmake/code/graph.perl
+
+use strict;
+use warnings;
+use Getopt::Std;
+
+# Hashes for storing the various conponents of the make file
+my (%commands, %deps, %macros);
+
+my $firstTarget;	# The first target encountered in the file
+my $commandTarget;	# The target of the command found on the next line
+my $systemCall;		# The call to be sent to the system
+
+# Command Line Options
+my %options=();
+getopts("dnf:",\%options);
+
+my $nonEx = $options{n};
+
+# Functions
+
+# getDeps(): Return dependencies found in the make file in the form of
+# a target followed by an array of dependencies
+sub getDeps ($) {
+	my ($line) = @_;
+	#Search for a dependency line in the file
+	return undef unless $line =~ m/^(\S+)\s*:\s*(.*?)\s*$/;
+	#$1 is the target. $2 is a string representing the list of deps
+	my ($target, $dependency) = ($1, $2);
+	my @dependencies = split m/\s+/, $dependency;
+	return $target, \@dependencies;
+}
+
+# Returns the macro name and content if they exist on the current line
+# otherwise it returns undef
+sub getMacros ($) {
+	my ($line) = @_;
+	#match lines the define a macro
+	return undef unless $line =~ m/(\w*)\s?=(.*)/;
+	my ($macro, $content) = ($1, $2);
+	return $macro, $content;
+}
+
+# Expand any macros in the string provided
+sub expandMacros {
+	my $str = shift;
+	my $currentMacro;
+	while ($str =~ m/\$\{(\w+)\}/) {
+		$currentMacro = $macros{$1} or die "ERROR: $1 was not defined!";
+		$str =~ s/\$\{\w+\}/$currentMacro/;
+	}
+	
+	return $str;
+}
+
+# Makes system calls or print out the commands deppending on cmd options
+sub makeSystemCalls;
+sub makeSystemCalls {
+	my ($head) = @_;
+	my $currentDeps = $deps{$head};
+	
+	foreach my $i (@$currentDeps) {
+		makeSystemCalls($i);
+	}
+	
+	# Target .o files whenever .c or .h files are found
+	$head =~ s/(.*?)\.[ch]$/$1\.o/g;
+	
+	if (exists $commands{$head}) {
+		$systemCall = $commands{$head};
+		print "\nSystem call: $systemCall\n\n" if $nonEx;
+		system($systemCall) if !$nonEx;
+	}
+}
+
+# Using the provided makefile if available otherwise use "Makefile"
+my $filename = $options{f};
+$filename = "Makefile" if (not defined $filename);
+
+# Open $filename 
+open(my $file, '<', $filename) or die "Could not open '$filename' $!";
+
+# Using provided target if it exists
+	$firstTarget = $ARGV[0] if exists $ARGV[0];
+
+# Loop through the makefile and extract information
+while (my $line = <$file>) {
+	# Expand any marcos found in $line
+	$line = expandMacros($line);
+	my ($target, $deps) = getDeps $line;
+
+	if (defined $target) {
+		# Store first target if it exists on the current line
+		$firstTarget = $target if (not defined $firstTarget);
+		# Store current target for using parsing the next line
+		$commandTarget = $target;
+	}
+
+	# Match lines that contain commands
+	$line =~ m/^\t{1}(.*\w.*)?/;
+	if (defined $1) {
+		# Add a command to the hash with the last target as it's key
+		$commands{$commandTarget} = $1;
+	}
+	my ($macro, $content) = getMacros $line; # Get macros
+	$deps{$target} = $deps if defined $target; # Store Dependencies
+	$macros{$macro} = $content if defined $macro; # Store macros
+}
+
+# Make system calls
+makeSystemCalls($firstTarget);

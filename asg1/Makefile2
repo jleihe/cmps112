@@ -1,0 +1,16 @@
+MKFILE = Makefile
+HELLO = helloWorld
+BAR = bar
+
+#this is a comment
+all : foo ${BAR}
+	echo all
+	
+foo :
+	echo foo
+	
+bar :
+	echo bar
+
+foobar: bar
+	echo foobar

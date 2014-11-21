@@ -1,0 +1,21 @@
+****mks**** writebits.st 2>&1
+Hello, World!
+****status: 0x0000
+
+****mks**** writebits.st | od -c 2>&1
+0000000   H   e   l   l   o   ,       W   o   r   l   d   !  \n
+0000016
+****status: 0x0000
+
+****mks**** writebits.st /tmp/foo2 2>&1
+****status: 0x0000
+
+****mks**** cat -nv /tmp/foo2 2>&1
+     1	Hello, World!
+****status: 0x0000
+
+****mks**** od -c /tmp/foo2 2>&1
+0000000   H   e   l   l   o   ,       W   o   r   l   d   !  \n
+0000016
+****status: 0x0000
+

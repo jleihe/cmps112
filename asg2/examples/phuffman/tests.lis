@@ -1,0 +1,29 @@
+::::::::::::::::::::::::::::::::
+test1.in
+::::::::::::::::::::::::::::::::
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+tttttttttttttttttttttttttttttttttttttttt
+aaaaaaaaaaaaaaaaaaaa
+oooooooooooooooooooo
+::::::::::::::::::::::::::::::::
+test1.out
+::::::::::::::::::::::::::::::::
+./mk: 22: ./mk: phuffman.perl: not found
+::::::::::::::::::::::::::::::::
+test2.in
+::::::::::::::::::::::::::::::::
+eeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeee eeeeeeeeee
+eeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeee eeeeeeeeee
+tttttttttttttttttttt tttttttttttttttttttt
+aaaaaaaaaaaaaaaaaaaa
+oooooooooooooooooooo
+iiiiiiiiii
+nnnnn
+sssss
+h
+r
+::::::::::::::::::::::::::::::::
+test2.out
+::::::::::::::::::::::::::::::::
+./mk: 38: ./mk: phuffman.perl: not found
