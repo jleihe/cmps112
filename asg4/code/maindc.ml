@@ -51,7 +51,7 @@ let execute (thestack: stack_t) (oper: char) =
         | ' '  -> ()
         | _    -> printf "0%o is unimplemented\n%!" (ord oper)
     with Stack.Empty -> print_stackempty()
-
+
 let toploop (thestack: stack_t) inputchannel =
     let scanbuf = Lexing.from_channel inputchannel in
     let rec toploop () = 
@@ -80,4 +80,3 @@ let interact () =
     in  toploop thestack stdin
 
 let _ = if not !Sys.interactive then readfiles ()
-

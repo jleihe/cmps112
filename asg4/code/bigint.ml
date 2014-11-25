@@ -45,7 +45,14 @@ module Bigint = struct
                    in  strcat ""
                        ((if sign = Pos then "" else "-") ::
                         (map string_of_int reversed))
-
+
+    (*Lists > list2 (true/false)?*)
+    let rec comp' list1 list2 c = match (list1, list2, c) with
+        | list1, []     -> true
+        | [], list2     -> false
+        let c = 
+        
+
     let rec add' list1 list2 carry = match (list1, list2, carry) with
         | list1, [], 0       -> list1
         | [], list2, 0       -> list2
@@ -59,8 +66,20 @@ module Bigint = struct
         if neg1 = neg2
         then Bigint (neg1, add' value1 value2 0)
         else zero
+    
+    let rec sub' list1 list2 carry = match (list1, list2, carry) with
+        | list1, [], 0       -> list1
+        | [], list2, 0       -> list2
+        | list1, [], carry   -> sub' list1 [carry] 0
+        | [], list2, carry   -> sub' [carry] list2 0
+        | car1::cdr1, car2::cdr2, carry ->
+          let sum = car1 + car2 + carry
+          in  sum mod radix :: sub' cdr1 cdr2 (sum / radix)
 
-    let sub = add
+    let sub = (Bigint (neg1, value1)) (Bigint (neg2, value2)) =
+        if neg1 = neg2
+        then Bigint (neg1, add' value1 value2 0)
+        else zero
 
     let mul = add
 
@@ -68,7 +87,21 @@ module Bigint = struct
 
     let rem = add
 
-    let pow = add
+
+    (*let odd n = n mod 2 <> 0;;
+    let pow (Bigint (neg1, a)) (Bigint (neg2, n)) =
+        let rec powert' a n result = match n with
+            | 0            -> result
+            | n when odd n -> powert' a (n - 1) (result *. a)
+            | n            -> powert' (a *. a) (n / 2) result
+        in  if n < 0 then powert' (1. /. a) (- n) 1.
+                     else powert' a n 1.
+        ;;*)
+    let lengthrec list =
+        let rec lengthrec' list' len' = match list' with
+            | [] -> len'
+            | _::cdr -> lengthrec' cdr (len' + 1)
+        in  lengthrec' list 0
 
 end
 
