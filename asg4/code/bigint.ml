@@ -47,16 +47,20 @@ module Bigint = struct
                         (map string_of_int reversed))
 
     (*Lists > list2 (true/false)?*)
-    let rec lessThan' list1 list2 result = match (list1, list2) with
+    let rec lessThan' list1 list2 = match (list1, list2) with
         | list1, []     -> true
         | [], list2     -> false
         | car1::cdr1, car2::cdr2 -> 
-            let result = (car1 < car2)
-            in (if (lessThan' cdr1 cdr2 result) = true 
-            then true else result)
+            let result = lessThan' list1 list2
+            in if result = 0 then let eq = match (car1 < car2) with
+                | false -> false
+            
+                else
+                    let eq = result
+            in eq
             
     let lessThan List(list1) List(list2) =
-        lessThan' list1 list2 false
+        lessThan' list1 list2
 
     let rec add' list1 list2 carry = match (list1, list2, carry) with
         | list1, [], 0       -> list1
