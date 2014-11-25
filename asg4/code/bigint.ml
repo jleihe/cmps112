@@ -47,11 +47,16 @@ module Bigint = struct
                         (map string_of_int reversed))
 
     (*Lists > list2 (true/false)?*)
-    let rec comp' list1 list2 c = match (list1, list2, c) with
+    let rec lessThan' list1 list2 result = match (list1, list2) with
         | list1, []     -> true
         | [], list2     -> false
-        let c = 
-        
+        | car1::cdr1, car2::cdr2 -> 
+            let result = (car1 < car2)
+            in (if (lessThan' cdr1 cdr2 result) = true 
+            then true else result)
+            
+    let lessThan List(list1) List(list2) =
+        lessThan' list1 list2 false
 
     let rec add' list1 list2 carry = match (list1, list2, carry) with
         | list1, [], 0       -> list1
@@ -76,9 +81,9 @@ module Bigint = struct
           let sum = car1 + car2 + carry
           in  sum mod radix :: sub' cdr1 cdr2 (sum / radix)
 
-    let sub = (Bigint (neg1, value1)) (Bigint (neg2, value2)) =
-        if neg1 = neg2
-        then Bigint (neg1, add' value1 value2 0)
+    let sub (Bigint (neg1, value1)) (Bigint (neg2, value2)) =
+        if lessThan [9, 1] [1]
+        then Bigint(neg1, [1])
         else zero
 
     let mul = add
@@ -87,7 +92,7 @@ module Bigint = struct
 
     let rem = add
 
-
+    let pow = add
     (*let odd n = n mod 2 <> 0;;
     let pow (Bigint (neg1, a)) (Bigint (neg2, n)) =
         let rec powert' a n result = match n with

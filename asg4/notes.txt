@@ -1,0 +1,5 @@
+implementing sub
+
+same as add. but carry gets subtracted.  given val1 - val2 
+    if val1 > val2 then [result = val1 - val2 with carry = 0] 
+    else [result = (val1+10) - val2 with carry = 1]
