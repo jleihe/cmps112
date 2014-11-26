@@ -51,8 +51,9 @@ module Bigint = struct
         | [], list2         -> -1
         | list1, list2    -> 
             let res = cmp' (cdr list1) (cdr list2)
-            in if res != 0 then 0 else 1
-        (*(if  ((car list1) < (car list2)) then -1 else (if  ((car list1) > (car list2)) then 1 else 0))*)
+            in if res != 0 then res else 
+                if (car list1) < (car list2) then -1 else
+                    if (car list1) > (car list2) then 1 else 0
         
     let cmp (Bigint (neg1, list1)) (Bigint (neg2, list2)) = 
         cmp' list1 list2
@@ -93,9 +94,7 @@ module Bigint = struct
           in  sum mod radix :: sub' cdr1 cdr2 (sum / radix)
 *)
     let sub (Bigint (neg1, value1)) (Bigint (neg2, value2)) =
-        if cmp (Bigint (neg1, value1)) (Bigint (neg2, value2)) = 1;
-        then Bigint(neg1, [1])
-        else zero
+        Bigint(neg1, [cmp (Bigint (neg1, value1)) (Bigint (neg2, value2))])
 
     let mul = add
 
