@@ -1,5 +1,3 @@
-(* $Id: bigint.ml,v 1.5 2014-11-11 15:06:24-08 - - $ *)
-
 open Printf
 
 module Bigint = struct
@@ -47,20 +45,29 @@ module Bigint = struct
                         (map string_of_int reversed))
 
     (*Lists > list2 (true/false)?*)
-    let rec lessThan' list1 list2 = match (list1, list2) with
-        | list1, []     -> true
-        | [], list2     -> false
-        | car1::cdr1, car2::cdr2 -> 
-            let result = lessThan' list1 list2
-            in if result = 0 then let eq = match (car1 < car2) with
+    let rec cmp' list1 list2 = match (list1, list2) with
+        | [], []             -> 0
+        | list1, []         -> 1
+        | [], list2         -> -1
+        | list1, list2    -> 
+            let res = cmp' (cdr list1) (cdr list2)
+            in if res != 0 then 0 else 1
+        (*(if  ((car list1) < (car list2)) then -1 else (if  ((car list1) > (car list2)) then 1 else 0))*)
+        
+    let cmp (Bigint (neg1, list1)) (Bigint (neg2, list2)) = 
+        cmp' list1 list2
+        (*
+            let result = (car1 < car2)
+            in let prevRes = lessThan list1 list2
+            in result
+           *) 
+            
+            (*in if prev = 0 then let eq = match (car1 < car2) with
                 | false -> false
             
                 else
                     let eq = result
-            in eq
-            
-    let lessThan List(list1) List(list2) =
-        lessThan' list1 list2
+            in eq*)
 
     let rec add' list1 list2 carry = match (list1, list2, carry) with
         | list1, [], 0       -> list1
@@ -76,7 +83,7 @@ module Bigint = struct
         then Bigint (neg1, add' value1 value2 0)
         else zero
     
-    let rec sub' list1 list2 carry = match (list1, list2, carry) with
+    (*let rec sub' list1 list2 carry = match (list1, list2, carry) with
         | list1, [], 0       -> list1
         | [], list2, 0       -> list2
         | list1, [], carry   -> sub' list1 [carry] 0
@@ -84,9 +91,9 @@ module Bigint = struct
         | car1::cdr1, car2::cdr2, carry ->
           let sum = car1 + car2 + carry
           in  sum mod radix :: sub' cdr1 cdr2 (sum / radix)
-
+*)
     let sub (Bigint (neg1, value1)) (Bigint (neg2, value2)) =
-        if lessThan [9, 1] [1]
+        if cmp (Bigint (neg1, value1)) (Bigint (neg2, value2)) = 1;
         then Bigint(neg1, [1])
         else zero
 
