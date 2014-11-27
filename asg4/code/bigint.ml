@@ -146,13 +146,49 @@ module Bigint = struct
                     | Pos, Neg   -> Bigint (Neg, add' value2 value1 0)
                     | Neg, Pos   -> Bigint (Pos, add' value2 value1 0)
                     | Neg, Neg  -> Bigint (Pos, add' value2 value1 0)
+    
+    (*Double the given value*)
+    let double number = add' number number 0
+    
+    (*mul' is a helper function for mul*)
+    let rec mul' (multiplier, powerof2, multiplicand') =
+        if cmp powerof2 multiplier = 1
+        then multiplier, 0
+        else let remainder, product =
+                 mul' (multiplier, double powerof2, double multiplicand')
+             in  if cmp remainder powerof2 = -1
+                 then remainder, product
+                 else sub' remainder powerof2, add' product multiplicand'
 
-    let mul = add
-
+    let mul (Bigint (neg1, multiplier)) (Bigint (neg2, multiplicand)) =
+        let _, product = mul' (multiplier, [1], multiplicand)
+        in  Bigint(neg1, product)
+    
     let div = add
+    (*
+    let rec divrem' (dividend, powerof2, divisor') =
+    if divisor' > dividend
+    then 0, dividend
+    else let quotient, remainder =
+             divrem' (dividend, double powerof2, double divisor')
+         in  if remainder < divisor'
+             then quotient, remainder
+             else quotient + powerof2, remainder - divisor'
 
+let divrem (dividend, divisor') = divrem' (dividend, 1, divisor')
+    *)
+
+    (*
+    let rem (dividend, divisor) =
+    let _, remainder = divrem (dividend, divisor)
+    in remainder
+    *)
     let rem = add
-
+    (*
+    let rem (dividend, divisor) =
+    let _, remainder = divrem (dividend, divisor)
+    in remainder
+    *)
     let pow = add
     (*
     let rec power' (base, expt, result) = match expt with
