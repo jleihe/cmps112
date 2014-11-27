@@ -15,7 +15,28 @@ module Bigint = struct
     let strlen    = String.length
     let strsub    = String.sub
     let zero      = Bigint (Pos, [])
+    
+    (*Compose*)
+    let compose f g x = f (g x)
+    (*Even?*)
+    let even x = x mod 2 = 0
+    (*Odd*)
+    let odd = compose not even
+    
+    (*Trim leading zeros*)
+    let trimzeros list =
+    let rec trimzeros' list' = match list' with
+        | []       -> []
+        | [0]      -> []
+        | car::cdr ->
+             let cdr' = trimzeros' cdr
+             in  match car, cdr' with
+                 | 0, [] -> []
+                 | car, cdr' -> car::cdr'
+    in trimzeros' list
+    ;;
 
+    (*Convert String to Charlist*)
     let charlist_of_string str = 
         let last = strlen str - 1
         in  let rec charlist pos result =
@@ -23,7 +44,8 @@ module Bigint = struct
             then result
             else charlist (pos - 1) (str.[pos] :: result)
         in  charlist last []
-
+    
+    (*Convert String to Bigint*)
     let bigint_of_string str =
         let len = strlen str
         in  let to_intlist first =
@@ -35,7 +57,8 @@ module Bigint = struct
                 else if   str.[0] = '_'
                      then Bigint (Neg, to_intlist 1)
                      else Bigint (Pos, to_intlist 0)
-
+    
+    (*Convert Bigint to String*)
     let string_of_bigint (Bigint (sign, value)) =
         match value with
         | []    -> "0"
@@ -54,10 +77,12 @@ module Bigint = struct
             in if res != 0 then res else 
                 if (car list1) < (car list2) then -1 else
                     if (car list1) > (car list2) then 1 else 0
-        
+    
+    (*Compare two numbers*)
     let cmp (Bigint (neg1, list1)) (Bigint (neg2, list2)) = 
         cmp' list1 list2
 
+    (*add' is a helper function for add*)
     let rec add' list1 list2 carry = match (list1, list2, carry) with
         | list1, [], 0       -> list1
         | [], list2, 0       -> list2
@@ -65,8 +90,9 @@ module Bigint = struct
         | [], list2, carry   -> add' [carry] list2 0
         | car1::cdr1, car2::cdr2, carry ->
           let sum = car1 + car2 + carry
-          in  sum mod radix :: add' cdr1 cdr2 (sum / radix)
+          in  trimzeros (sum mod radix :: add' cdr1 cdr2 (sum / radix))
     
+    (*sub' is a helper function for sub*)
     let rec sub' list1 list2 carry = match (list1, list2, carry) with
         | list1, [], 0       -> list1
         | [], list2, 0       -> list2
@@ -75,8 +101,9 @@ module Bigint = struct
         | car1::cdr1, car2::cdr2, carry ->
           let is_carry = (car1 - car2 - carry) < 0
           in let sum = (if is_carry then (car1 + 10 - car2 - carry) else (car1 - car2 - carry))
-          in  sum :: sub' cdr1 cdr2 (if is_carry then 1 else 0)
+          in  trimzeros (sum :: sub' cdr1 cdr2 (if is_carry then 1 else 0))
 
+    (*Add two bigints*)
     let add (Bigint (neg1, value1)) (Bigint (neg2, value2)) =
         let res = cmp (Bigint (neg1, value1)) (Bigint (neg2, value2));
         in if res = 0 then
@@ -97,7 +124,8 @@ module Bigint = struct
                     | Pos, Neg   -> Bigint (Neg, sub' value2 value1 0)
                     | Neg, Pos   -> Bigint (Pos, sub' value2 value1 0)
                     | Neg, Neg  -> Bigint (Neg, add' value2 value1 0)
-          
+    
+    (*Subtract two bigints*)
     let sub (Bigint (neg1, value1)) (Bigint (neg2, value2)) =
         let res = cmp (Bigint (neg1, value1)) (Bigint (neg2, value2));
         in if res = 0 then
@@ -126,16 +154,17 @@ module Bigint = struct
     let rem = add
 
     let pow = add
-    (*let odd n = n mod 2 <> 0;;
-    let pow (Bigint (neg1, a)) (Bigint (neg2, n)) =
-        let rec powert' a n result = match n with
-            | 0            -> result
-            | n when odd n -> powert' a (n - 1) (result *. a)
-            | n            -> powert' (a *. a) (n / 2) result
-        in  if n < 0 then powert' (1. /. a) (- n) 1.
-                     else powert' a n 1.
-        ;;*)
-    let lengthrec list =
+    (*
+    let rec power' (base, expt, result) = match expt with
+    | 0                   -> result
+    | expt when even expt -> power' (base *. base, expt / 2, result)
+    | expt                -> power' (base, expt - 1, base *. result)
+
+    let power (base, expt) =
+        if expt < 0 then power' (1. /. base, - expt, 1.)
+        else power' (base, expt, 1.)
+    *)
+    let lengthrec list = (*deprecate?*)
         let rec lengthrec' list' len' = match list' with
             | [] -> len'
             | _::cdr -> lengthrec' cdr (len' + 1)
