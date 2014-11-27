@@ -15,6 +15,8 @@ module Bigint = struct
     let strlen    = String.length
     let strsub    = String.sub
     let zero      = Bigint (Pos, [])
+    let listone = 1 :: []
+    let listzero = []
     
     (*Compose*)
     let compose f g x = f (g x)
@@ -152,16 +154,16 @@ module Bigint = struct
     
     (*mul' is a helper function for mul*)
     let rec mul' (multiplier, powerof2, multiplicand') =
-        if cmp powerof2 multiplier = 1
-        then multiplier, 0
+        if cmp' powerof2 multiplier = 1
+        then multiplier, listzero
         else let remainder, product =
-                 mul' (multiplier, double powerof2, double multiplicand')
-             in  if cmp remainder powerof2 = -1
+                 mul' (multiplier,  listone, double multiplicand')
+             in  if cmp' remainder powerof2 = -1
                  then remainder, product
-                 else sub' remainder powerof2, add' product multiplicand'
+                 else ((sub' remainder powerof2 0), (add' product multiplicand' 0))
 
     let mul (Bigint (neg1, multiplier)) (Bigint (neg2, multiplicand)) =
-        let _, product = mul' (multiplier, [1], multiplicand)
+        let _, product = mul' (multiplier,  listone, multiplicand)
         in  Bigint(neg1, product)
     
     let div = add
