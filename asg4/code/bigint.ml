@@ -159,47 +159,52 @@ module Bigint = struct
                  mul' (multiplier,  double powerof2, double multiplicand')
              in  if cmp' remainder powerof2 = -1
                  then remainder, product
-                 else ((sub' remainder powerof2 0), (add' product multiplicand' 0))
-
+                 else (sub' remainder powerof2 0), (add' product multiplicand' 0)
+    (*Multiply multiplier by multiplicand*)
     let mul (Bigint (neg1, multiplier)) (Bigint (neg2, multiplicand)) =
         let neg = match (neg1, neg2) with
-            | Pos, Pos -> Pos
-            | Neg, Pos -> Neg
-            | Pos, Neg -> Neg
-            | Neg, Neg -> Pos
+            | neg1, neg2 when neg1 = neg2 -> Pos
+            | neg1, neg2 -> Neg
         in let _, product = mul' (multiplier,  listone, multiplicand)
         in Bigint(neg, product)
-    
-    let div = add
-    (*
+    (*divrem' is a help function for divrem*)
     let rec divrem' (dividend, powerof2, divisor') =
-    if divisor' > dividend
-    then 0, dividend
-    else let quotient, remainder =
-             divrem' (dividend, double powerof2, double divisor')
-         in  if remainder < divisor'
-             then quotient, remainder
-             else quotient + powerof2, remainder - divisor'
-
-let divrem (dividend, divisor') = divrem' (dividend, 1, divisor')
-    *)
-    let rem = add
-    (*
-    let rem (dividend, divisor) =
-    let _, remainder = divrem (dividend, divisor)
-    in remainder
-    *)
+        if cmp' divisor' dividend = 1
+        then listzero, dividend
+        else let quotient, remainder =
+                 divrem' (dividend, double powerof2, double divisor')
+             in  if cmp' remainder divisor' = -1
+                 then quotient, remainder
+                 else (add' quotient powerof2 0), (sub' remainder divisor' 0)
+    (*divrem is a helper function for div and rem*)
+    let divrem (dividend, divisor') = divrem' (dividend, listone, divisor')
+    (*Divide dividend by divisor*)
+    let div (Bigint (neg1, dividend)) (Bigint (neg2, divisor)) =
+        let neg = match (neg1, neg2) with
+            | neg1, neg2 when neg1 = neg2 -> Pos
+            | neg1, neg2 -> Neg
+        in let quotient, _ = divrem (dividend, divisor)
+        in Bigint(neg, quotient)
+    (*The remainder after dividing dividend by divisor*)
+    let rem (Bigint (neg1, dividend)) (Bigint (neg2, divisor)) =
+        let neg = match (neg1, neg2) with
+            | neg1, neg2 when neg1 = neg2 -> Pos
+            | neg1, neg2 -> Neg
+        in let _, remainder = divrem (dividend, divisor)
+        in Bigint(neg, remainder)
+    
     let pow = add
     (*
-    let rec power' (base, expt, result) = match expt with
-    | 0                   -> result
-    | expt when even expt -> power' (base *. base, expt / 2, result)
-    | expt                -> power' (base, expt - 1, base *. result)
+    let concat var = mul' base list1 base
+    
+    let rec pow' (base, expt, result) = match expt with
+        | listzero                   -> result
+        | expt when even expt -> power' (concat base, divrem expt [2], result)
+        | expt                -> power' (base, expt - 1, base *. result)
 
-    let power (base, expt) =
+    let pow  (Bigint (neg1, base)) (Bigint (neg2, expt)) =
         if expt < 0 then power' (1. /. base, - expt, 1.)
-        else power' (base, expt, 1.)
-    *)
+        else power' (base, expt, 1.)*)
 
 end
 
