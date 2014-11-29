@@ -27,16 +27,15 @@ module Bigint = struct
     
     (*Trim leading zeros*)
     let trimzeros list =
-    let rec trimzeros' list' = match list' with
-        | []       -> []
-        | [0]      -> []
-        | car::cdr ->
-             let cdr' = trimzeros' cdr
-             in  match car, cdr' with
-                 | 0, [] -> []
-                 | car, cdr' -> car::cdr'
+        let rec trimzeros' list' = match list' with
+            | []       -> []
+            | [0]     -> []
+            | car::cdr ->
+                 let cdr' = trimzeros' cdr
+                 in  match car, cdr' with
+                     | 0, [] -> []
+                     | car, cdr' -> car::cdr'
     in trimzeros' list
-    ;;
 
     (*Convert String to Charlist*)
     let charlist_of_string str = 
@@ -69,9 +68,9 @@ module Bigint = struct
                        ((if sign = Pos then "" else "-") ::
                         (map string_of_int reversed))
 
-    (*Lists > list2 (true/false)?*)
+    (*List1 > list2 (true/false)?*)
     let rec cmp' list1 list2 = match (list1, list2) with
-        | [], []             -> 0
+        | [], []              -> 0
         | list1, []         -> 1
         | [], list2         -> -1
         | list1, list2    -> 
@@ -157,14 +156,19 @@ module Bigint = struct
         if cmp' powerof2 multiplier = 1
         then multiplier, listzero
         else let remainder, product =
-                 mul' (multiplier,  listone, double multiplicand')
+                 mul' (multiplier,  double powerof2, double multiplicand')
              in  if cmp' remainder powerof2 = -1
                  then remainder, product
                  else ((sub' remainder powerof2 0), (add' product multiplicand' 0))
 
     let mul (Bigint (neg1, multiplier)) (Bigint (neg2, multiplicand)) =
-        let _, product = mul' (multiplier,  listone, multiplicand)
-        in  Bigint(neg1, product)
+        let neg = match (neg1, neg2) with
+            | Pos, Pos -> Pos
+            | Neg, Pos -> Neg
+            | Pos, Neg -> Neg
+            | Neg, Neg -> Pos
+        in let _, product = mul' (multiplier,  listone, multiplicand)
+        in Bigint(neg, product)
     
     let div = add
     (*
@@ -178,12 +182,6 @@ module Bigint = struct
              else quotient + powerof2, remainder - divisor'
 
 let divrem (dividend, divisor') = divrem' (dividend, 1, divisor')
-    *)
-
-    (*
-    let rem (dividend, divisor) =
-    let _, remainder = divrem (dividend, divisor)
-    in remainder
     *)
     let rem = add
     (*
@@ -202,11 +200,6 @@ let divrem (dividend, divisor') = divrem' (dividend, 1, divisor')
         if expt < 0 then power' (1. /. base, - expt, 1.)
         else power' (base, expt, 1.)
     *)
-    let lengthrec list = (*deprecate?*)
-        let rec lengthrec' list' len' = match list' with
-            | [] -> len'
-            | _::cdr -> lengthrec' cdr (len' + 1)
-        in  lengthrec' list 0
 
 end
 
