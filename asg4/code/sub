@@ -1,0 +1,2 @@
+#!/bin/bash
+submit cmps112-wm.f14 asg4 Makefile bigint.ml bigint.mli maindc.ml scanner.mll

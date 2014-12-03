@@ -16,7 +16,7 @@ LISTING   = Listing.ps
 all : ${CAMLRUN}
 
 ${CAMLRUN} : ${OBJCMO} ${OBJCMI}
-	ocamlc ${OBJCMO} -o ${CAMLRUN}
+	ocamlc str.cma ${OBJCMO} -o ${CAMLRUN}
 
 %.cmi : %.mli
 	ocamlc -c $<

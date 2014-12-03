@@ -22,7 +22,9 @@ module Bigint = struct
     (*Compose*)
     let compose f g x = f (g x)
     (*Even?*)
-    let even x = x mod 2 = 0
+    let even (x: int list) = match x with
+        | [] -> false
+        | x -> car x mod 2 = 0
     (*Odd*)
     let odd = compose not even
     
@@ -206,11 +208,6 @@ module Bigint = struct
         in let _, remainder = divrem (dividend, divisor)
         in Bigint(neg, remainder)
     
-    (*let pow = add*)
-    
-    (*Double*)
-    let double var = 
-        mul' (var, listone, var)
     
     (*helper div*)
     let hDiv  (dividend, divisor') = 
@@ -221,28 +218,40 @@ module Bigint = struct
     let hMul (mPlier, mPlicand) =
         let _, product = mul' (mPlier,  listone, mPlicand)
         in product
-          
-          
-     let pow = add     
-    (*let rec pow' (base, expt, result) = match expt with
-        | listzero -> result
+        
+    (*Double*)
+    let double var = 
+        let _, res = mul' (var, listone, var)
+        in res
+       
+       
+       let rec pow' (base: int list) (expt: int list) 
+            (result: int list) = 
+            match expt with
+                | [] -> result
+                | expt  -> 
+                    let a = sub' expt listone 0
+                    in let _, b = mul' (result, listone, base)
+                    in pow' base a b
+        
+        
+        (*(result: int list) = match expt with
+        | [0] -> result
         | expt when odd expt -> 
-            let n = listone(*sub' expt listone 0;*)
-            in pow' (base, n, hMul result base)
+            let a = sub' expt listone 0;
+            in let _, b = mul' (result, listone, base)
+            in pow' base a b
         | expt -> 
-            pow' (double base, hDiv expt listtwo, result)
+            let a = double base
+            in let _, b = divrem' (expt, listone, listtwo)
+            in pow' a b result*)
             
-            
-
     let pow  (Bigint (neg1, base)) (Bigint (neg2, expt)) =
-        Bigint (neg1, pow' (base, expt, listone))
-    
         if neg2 = Pos then 
-            let res = pow' (base, expt, listone)
+            let res = pow' base expt listone
             in Bigint (neg1, res)
-        else 
-            let res = pow' (hDiv (listone, base), expt, listone)
-            in Bigint (neg1, res)*)
+        else
+            Bigint (neg1, listzero)
 
             
 end
