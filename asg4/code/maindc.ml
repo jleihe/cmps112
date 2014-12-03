@@ -28,7 +28,7 @@ let wrap s postfix width =
       in let sub  = String.sub s start stop
       in let sub = match len with
         | len when len < 69 -> sub
-        | len when (len - stop) < 69 -> sub ^ postfix
+        | len when (len - start) > 69 -> sub ^ postfix
         | len -> sub 
       in sub :: loop (start+stop)
   in

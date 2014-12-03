@@ -226,32 +226,24 @@ module Bigint = struct
        
        
        let rec pow' (base: int list) (expt: int list) 
-            (result: int list) = 
-            match expt with
+            (result: int list) = match expt with
                 | [] -> result
-                | expt  -> 
+                | expt  when odd expt -> 
                     let a = sub' expt listone 0
                     in let _, b = mul' (result, listone, base)
                     in pow' base a b
-        
-        
-        (*(result: int list) = match expt with
-        | [0] -> result
-        | expt when odd expt -> 
-            let a = sub' expt listone 0;
-            in let _, b = mul' (result, listone, base)
-            in pow' base a b
-        | expt -> 
-            let a = double base
-            in let _, b = divrem' (expt, listone, listtwo)
-            in pow' a b result*)
+                | expt -> 
+                    let a = double base
+                    in let b, _ = divrem' (expt, listone, listtwo)
+                    in pow' a b result
             
     let pow  (Bigint (neg1, base)) (Bigint (neg2, expt)) =
-        if neg2 = Pos then 
+        let neg = if even expt then Pos else neg1
+        in if neg2 = Pos then 
             let res = pow' base expt listone
-            in Bigint (neg1, res)
+            in Bigint (neg, res)
         else
-            Bigint (neg1, listzero)
+            Bigint (neg, listzero)
 
             
 end
