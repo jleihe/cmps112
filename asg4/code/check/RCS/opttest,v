@@ -1,0 +1,28 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2009.03.31.21.59.39;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: testopt,v 1.1 2009-03-31 14:59:17-07 - - $
+
+set -- `getopt c $*`
+echo $*
+@

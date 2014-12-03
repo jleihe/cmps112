@@ -1,0 +1,48 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2013.02.07.21.02.39;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2013.02.07.21.01.59;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: readme,v 1.1 2013-02-07 13:01:59-08 - - $
+for cat in README.cat HEADER.cat
+do
+   test -r $cat && cat $cat
+done
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+d5 1
+a5 1
+   test $cat && cat $cat
+@

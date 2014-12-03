@@ -1,0 +1,49 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: tarcpdir,v 1.2 2007-12-19 18:04:23-08 - - $
+#
+# NAME
+#    tarcpdir - use tar to copy directories/files
+#
+# SYNOPSIS
+#    tarcpdir sourcefiles... destdir
+#
+# DESCRIPTION
+#    Uses tar to copy directories or files, from the list of source
+#    files given into a destination directory.
+#
+
+use strict;
+use warnings;
+$0 =~ s|^(.*/)?([^/]+)/*$|$2|;
+
+print STDERR "Usage: $0 sourcefiles... destdir\n" and exit 1
+      unless @@ARGV >= 2;
+
+my $destdir = pop @@ARGV;
+my $command = "tar cvf - @@ARGV | (cd $destdir; tar xvf -)";
+print "$0: $command\n";
+print `$command`;
+exit $?;
+@

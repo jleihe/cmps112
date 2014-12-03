@@ -1,0 +1,33 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@ * @;
+
+
+1.1
+date	2013.06.14.22.08.05;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@// $Id$
+
+#include <stdio.h>
+#include <gnu/libc-version.h>
+
+int main (void) {
+   printf ("%s\n", gnu_get_libc_version());
+   return 0;
+}
+
+@

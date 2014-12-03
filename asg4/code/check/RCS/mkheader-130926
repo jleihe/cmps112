@@ -1,0 +1,187 @@
+#!/usr/bin/perl
+# $Id: mkheader-130926,v 1.1 2013-10-02 19:15:55-07 - - $
+#
+# NAME
+#    mkheader - make header for root of course directory
+#    
+# SYNOPSIS
+#    mkheader
+#
+# DESCRIPTION
+#    Reads in the file README.cat and tries to detect all due dates
+#    with leading text of the form Ddd Mmm Nn, sorts them into order
+#    by date, assuming the current year and makes a header file
+#    HEADER.html to appear ahead of the default directory listing.
+#    Output in the current directory.
+#
+
+BEGIN {
+   push @INC, "/afs/cats.ucsc.edu/courses/cmps012b-wm/usr/share/perl5"
+}
+
+use strict;
+use warnings;
+use HTTP::Date qw (str2time);
+use POSIX qw (strftime);
+
+my $daylen = 24 * 60 * 60;
+my %months = qw (Jan 0 Feb 1 Mar 2 Apr 3 May 4 Jun 5
+                 Jul 6 Aug 7 Sep 8 Oct 9 Nov 10 Dec 11);
+my $monthpat = join "|", keys %months;
+my $daypat = join "|", qw (Sun Mon Tue Wed Thu Fri Sat);
+my $datepat = qr {(\.\s+($daypat)\s+($monthpat)\s+(\d+)\.)(.*)};
+my $timenow = $^T;
+my @timenow = localtime $timenow;
+my $year = $timenow[5] + 1900;
+
+$0 =~ s|.*/||;
+@ARGV == 0 or die "Usage: $0\n";
+
+my $readmename = "README.cat";
+open README, "<$readmename" or die "$0: $readmename: $!";
+
+my %duedates;
+my $rcsid = "";
+my $quarter = "";
+my @registrar;
+my $first_time = 1e1000;
+my $last_time = 0;
+my %calendar;
+while (defined (my $line = <README>)) {
+   $rcsid = $& and next if $line =~ m/\$(Id): .*?\$/;
+   $quarter = $1 and next if $line =~ m/\.\s+Quarter:\s+(.*)/;
+   push @registrar, $& and next if $line =~ m|http://registrar\.\S+|;
+   next unless $line =~ m/$datepat/;
+   my ($date, $wday, $month, $mday, $item) = ($1, $2, $3, $4, $5);
+   my $duedate = "$month $mday $year";
+   my $duetime = str2time $duedate;
+   $first_time = $duetime if $first_time > $duetime;
+   $last_time = $duetime if $last_time < $duetime;
+   print "$duedate - not a valid date\n" and next unless $duetime;
+   my @localduetime = localtime $duetime;
+   my $chkwday = strftime "%a", @localduetime;
+   if ($wday ne $chkwday) {
+      $duedates{$date} = "$date is really $chkwday";
+      print STDERR "$duedates{$date}\n";
+   }
+   my $duetimekey = strftime "%Y-%m-%d", @localduetime;
+   $duedates{$duetimekey} = "$date$item";
+   my $weeknum = strftime "%U", @localduetime;
+   my $daynum = strftime "%w", @localduetime;
+   my $caldate = strftime "%a %b %d", @localduetime;
+   $calendar{$weeknum}{$daynum} = [$caldate, $item];
+}
+close README;
+print "$0: quarter $quarter\n";
+
+for (my $time = $first_time; $time <= $last_time; $time += $daylen) {
+   my @localtime = localtime $time;
+   my $week = strftime "%U", @localtime;
+   my $day = strftime "%w", @localtime;
+   my $caldate = strftime "%a %b %d", @localtime;
+   $calendar{$week}{$day} = [$caldate] unless $calendar{$week}{$day};
+}
+
+$rcsid =~ s/\$(Id): (.*?)(,v(\s+\S+){3}).*/$2$3/;
+
+my $cal;
+if ($quarter =~ m/(\w+)\s+(20\d+)/) {
+   my ($quarter, $year) = ($1, $2);
+   my %quarters = qw (Winter 2 Spring 5 Summer 8 Fall 11);
+   my $month = $quarters{$quarter};
+   $cal = `cal -3 $month $year`
+         if $month and 2 <= $month and $month <= 11;
+}
+
+my $coursepwd = "/afs/\.?cats.ucsc.edu/courses";
+my $courseurl = "http://www2.ucsc.edu/courses";
+my $pwd = `pwd`;
+chomp $pwd;
+$pwd .= "/";
+my $url = $pwd;
+$url =~ s|^$coursepwd(.*)|$courseurl$1:/|;
+my $title = $pwd;
+$title =~ s|^$coursepwd/(.*?)/*$|$1|;
+my $datenow = strftime "%a %b %e %T %Z %Y", @timenow;
+
+sub urlify($) {
+   my ($line) = @_;
+   $line =~ s|http:([^,\s])+|<A HREF=$&>$&</A>|
+            unless $line =~ m|http:\S+\*|;
+   return $line;
+}
+
+my $headerhtml = "HEADER.html";
+open HDRHTML, ">$headerhtml" or die "$0: $headerhtml: $!";
+my $headercat = "HEADER.cat";
+open HDRCAT, ">$headercat" or die "$0: $headercat: $!";
+
+sub print_both($) {
+   my ($line) = @_;
+   print HDRHTML urlify $line;
+   $line =~ s/http://;
+   print HDRCAT $line;
+}
+
+print HDRHTML "<TITLE>$title</TITLE>\n";
+print HDRHTML "<PRE><B><BIG>\n";
+print_both    "PWD: $pwd\n";
+print_both    "URL: $url\n";
+print_both    "$duedates{$_}\n" for sort keys %duedates;
+print HDRCAT  "README: $rcsid\n";
+$rcsid =~ s/\.txt,v/.html,v/;
+print HDRHTML urlify "README: http:$rcsid\n";
+print HDRCAT  "HEADER: HEADER.cat\n";
+print HDRHTML urlify "HEADER: http:HEADER.html\n";
+print_both    "REGISTRAR: $_\n" for @registrar;
+print HDRHTML "</BIG></B>";
+print_both    "\n";
+print_both    $cal if $cal;
+print HDRHTML "</PRE>\n";
+
+print HDRHTML "<TT>\n";
+print HDRHTML "<TABLE style=\"border:3px solid; border-color:#7F7F7F;"
+            . " border-spacing:1px\">\n";
+my $width = "width:8em; border-width=1px; border-style:solid";
+my $plainstyle = "style=\"$width\"";
+my $notestyle = "style=\"$width; background-color:#BFBFBF\"";
+my $boldstyle = "style=\"$width; background-color:#FFFF7F; "
+              . "border-color:#FF0000\"";
+for my $weeknum (sort keys %calendar) {
+   print HDRHTML "<TR>\n";
+   for my $daynum (0..6) {
+      my $data = $calendar{$weeknum}{$daynum};
+      if (not defined $data) {
+         print HDRHTML "<TD $plainstyle>&nbsp;<BR>&nbsp;</TD>\n";
+      }else {
+         my ($date, $info) = @$data;
+         $date =~ s/0(\d)$/&nbsp;$1/;
+         if (not defined $info) {
+            print HDRHTML "<TD $plainstyle>\n";
+            print HDRHTML "$date<BR>&nbsp;\n";
+            print HDRHTML "</TD>\n";
+         }elsif ($info =~ m/^(.*?)\.\s*(http:\S+)/) {
+            my ($info, $url) = ($1, $2);
+            print HDRHTML "<TD $boldstyle>\n";
+            print HDRHTML "<A HREF=$url\n";
+            print HDRHTML "<B>$date<BR>$info</B>\n";
+            print HDRHTML "</A>\n";
+            print HDRHTML "</TD>\n";
+         }else {
+            $info =~ s/\.+$//;
+            print HDRHTML "<TD $notestyle>\n";
+            print HDRHTML "$date<BR>$info\n";
+            print HDRHTML "</TD>\n";
+         }
+      }
+   }
+   print HDRHTML "</TR>\n";
+}
+print HDRHTML "</TABLE>\n";
+
+close HDRHTML;
+close HDRCAT;
+
+system "ls -la $headerhtml $headercat";
+system "cat $headercat";
+

@@ -1,0 +1,263 @@
+head	1.9;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.9
+date	2009.10.28.03.12.29;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2009.10.28.03.10.23;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2009.05.28.20.12.24;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2009.05.13.02.42.56;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2009.04.29.02.25.53;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2009.04.18.02.20.31;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2009.03.31.22.04.35;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2009.03.31.22.04.09;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.03.26.22.29.02;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.9
+log
+@-
+@
+text
+@#!/bin/sh -x
+# $Id: mkj,v 1.8 2009-10-27 20:10:23-07 - - $
+#
+# NAME
+#    mkj - compile a java program into a jar
+#
+# SYNOPSIS
+#    mkj program.java...
+#
+# DESCRIPTION
+#    Compiles a java program into a jar.  The jarname must be
+#    the name of the main class and is taken from the first
+#    java file.
+#
+
+jar=`echo $1 | sed 's/\.java//'`
+cid + $*
+javac $*
+if [ $? -ne 0 ] ; then exit $? ; fi
+echo Main-class: $jar >Manifest
+jar cfm $jar Manifest `echo $* | sed 's/\.java/*.class/g'`
+rm Manifest *.class
+chmod +x $jar
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkj,v 1.7 2009-05-28 13:12:24-07 - - $
+d21 1
+a21 1
+jar cfm $jar Manifest `echo $* | sed 's/\.java$/*.class/'`
+@
+
+
+1.7
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkj,v 1.6 2009-05-12 19:42:56-07 - - $
+d8 1
+a8 1
+#    mkj program.java
+d11 3
+a13 3
+#    Compiles a java program.  If successful puts it into a
+#    jar of the same name.  Handles only programs that fit
+#    into a single java source file.
+d16 3
+a18 3
+source=$1
+cid + $source
+javac $source
+a19 1
+jar=`echo $source | sed 's/\.java$//'`
+d21 2
+a22 2
+jar cfm $jar Manifest $jar*.class
+rm Manifest $jar*.class
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkj,v 1.5 2009-04-28 19:25:53-07 - - $
+d17 1
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkj,v 1.4 2009-04-17 19:20:31-07 - - $
+d22 1
+@
+
+
+1.4
+log
+@-
+@
+text
+@d1 2
+a2 2
+#!/bin/sh
+# $Id$
+a21 1
+rm Manifest $jar*.class
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkj,v 1.2 2009-03-31 15:04:09-07 - - $
+d5 1
+a5 1
+#    mkj - compile a Java program into a jar
+d8 1
+a8 1
+#    mkj [-c] prog.java...
+d11 3
+a13 3
+#    This script compiles java programs into jar files.  It
+#    assumes each program fits in a single source file, so does
+#    not work for larger applications.
+a14 21
+# OPTIONS
+#    -c   Do not delete the class files after jarring them.
+#
+
+SCRIPT=`basename $0`
+
+set -- `getopt c $*`
+for opt in $* ; do
+   case $opt in -c) OPTC=$opt; shift;;
+                --) shift; break;;
+   esac
+done
+
+announce () {
+   echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $SCRIPT: $1 $2
+}
+
+run () {
+   echo $*
+   $*
+}
+d16 8
+a23 14
+for source in $* ; do
+   announce starting $source
+   cid + $source
+   echo `ident $source`
+   checksource $source
+   JAR=`echo $source | sed 's/\.java$//'`
+   run javac $source
+   echo Main-class: $JAR >Manifest
+   run jar cvfm $JAR Manifest $JAR*.class
+   rm Manifest
+   if [ "$OPTC" = "" ] ; then run rm $JAR*.class ; fi
+   run chmod +x $JAR
+   announce finished $source
+done
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkj,v 1.1 2009-03-26 15:29:02-07 - - $
+d25 1
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkj,v 1.10 2009/02/27 00:47:57 - - $
+d8 1
+a8 1
+#    mkj prog.java...
+d15 3
+d21 6
+d36 1
+a36 2
+for source in $*
+do
+d45 2
+a46 1
+   run rm Manifest $JAR*.class
+@

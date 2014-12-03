@@ -1,0 +1,874 @@
+head	1.37;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.37
+date	2011.01.20.22.53.30;	author -;	state -;
+branches;
+next	1.36;
+
+1.36
+date	2011.01.20.22.51.37;	author -;	state -;
+branches;
+next	1.35;
+
+1.35
+date	2011.01.20.22.25.21;	author -;	state -;
+branches;
+next	1.34;
+
+1.34
+date	2011.01.20.22.25.06;	author -;	state -;
+branches;
+next	1.33;
+
+1.33
+date	2011.01.20.22.23.51;	author -;	state -;
+branches;
+next	1.32;
+
+1.32
+date	2011.01.20.22.23.38;	author -;	state -;
+branches;
+next	1.31;
+
+1.31
+date	2011.01.20.22.13.14;	author -;	state -;
+branches;
+next	1.30;
+
+1.30
+date	2011.01.20.03.46.43;	author -;	state -;
+branches;
+next	1.29;
+
+1.29
+date	2010.11.03.20.07.35;	author -;	state -;
+branches;
+next	1.28;
+
+1.28
+date	2010.10.15.22.00.13;	author -;	state -;
+branches;
+next	1.27;
+
+1.27
+date	2010.10.15.21.57.13;	author -;	state -;
+branches;
+next	1.26;
+
+1.26
+date	2010.10.15.00.48.53;	author -;	state -;
+branches;
+next	1.25;
+
+1.25
+date	2010.10.15.00.48.36;	author -;	state -;
+branches;
+next	1.24;
+
+1.24
+date	2010.10.15.00.47.44;	author -;	state -;
+branches;
+next	1.23;
+
+1.23
+date	2010.10.15.00.47.14;	author -;	state -;
+branches;
+next	1.22;
+
+1.22
+date	2010.10.15.00.46.59;	author -;	state -;
+branches;
+next	1.21;
+
+1.21
+date	2010.10.15.00.43.30;	author -;	state -;
+branches;
+next	1.20;
+
+1.20
+date	2010.10.15.00.43.14;	author -;	state -;
+branches;
+next	1.19;
+
+1.19
+date	2010.10.15.00.35.00;	author -;	state -;
+branches;
+next	1.18;
+
+1.18
+date	2010.10.14.23.39.24;	author -;	state -;
+branches;
+next	1.17;
+
+1.17
+date	2010.10.14.23.35.46;	author -;	state -;
+branches;
+next	1.16;
+
+1.16
+date	2010.10.14.21.49.54;	author -;	state -;
+branches;
+next	1.15;
+
+1.15
+date	2010.10.14.21.48.40;	author -;	state -;
+branches;
+next	1.14;
+
+1.14
+date	2010.10.14.21.48.15;	author -;	state -;
+branches;
+next	1.13;
+
+1.13
+date	2010.10.14.21.47.33;	author -;	state -;
+branches;
+next	1.12;
+
+1.12
+date	2010.10.14.21.47.15;	author -;	state -;
+branches;
+next	1.11;
+
+1.11
+date	2010.10.14.21.38.27;	author -;	state -;
+branches;
+next	1.10;
+
+1.10
+date	2010.10.14.21.35.04;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2010.10.14.21.00.51;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2010.10.14.20.55.12;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2010.10.14.20.36.20;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2010.10.14.20.32.53;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2010.10.14.20.31.27;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2010.10.14.20.27.02;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2010.10.14.20.26.46;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2010.10.14.20.25.55;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.12.18.02.41.26;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.37
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: partnercheck,v 1.36 2011-01-20 14:51:37-08 - - $
+use strict;
+use warnings;
+$0 =~ s|.*/||;
+
+my $usage = <<__END__;
+#
+# NAME
+#    partnercheck - check for formatting on PARTNER file
+#
+# SYNOPSIS
+#    partnercheck [directory...]
+#
+# DESCRIPTION
+#    Reads PARTNER files and checks for validity.  If no directories
+#    are specified, "." is used as the default.  Otherwise checks each
+#    directory/PARTNER file.  PARTNER file must contain a username
+#    followed by a newline and nothing else in the file.
+#
+__END__
+$usage =~ s/^#[ ]?//gm;
+
+my @@directories = @@ARGV ? @@ARGV : qw(.);
+
+my $error = 0;
+for my $directory (@@directories) {
+   next if -d $directory;
+   print STDERR "$0: $directory: not a directory\n";
+   $error = 1;
+}
+print STDERR $usage and exit 1 if $error;
+
+for my $directory (@@directories) {
+
+   my $filename = "$directory/PARTNER";
+   unless (open PARTNER, "<$filename") {
+      print "$0: $filename: $!\n";
+      print "This is not an error if this student is working alone.\n";
+      print "This *IS* AN ERROR if working with a partner.\n";
+      next;
+   }
+
+   my $partner = join "", <PARTNER>;
+   close PARTNER;
+
+   $partner =~ s/\s+//g;
+   $partner =~ s/[\x00-\x1F\x7F]/sprintf "^%c", (ord $&) ^ 0x40/ge;
+   $partner =~ s/[\x80-\xFF]/sprintf "\\x%02X", ord $&/ge;
+
+   my ($user, $passwd, $uid, $gid, $quota, $comment, $gecos, $home,
+       $shell, $expire) = getpwnam $partner;
+
+   unless ($user) {
+      print "$0: $filename: no such user: \"$partner\"\n";
+      print "ERROR: INVALID FILE FORMAT FOR PARTNER FILE\n";
+      next;
+   }
+
+   print "$0: $filename: format OK:\n";
+   print "user    = $user\n";
+   print "uid     = $uid\n";
+   print "gecos   = $gecos\n";
+   print "home    = $home\n";
+   print "shell   = $shell\n";
+
+}continue {
+   print "\n";
+}
+
+@
+
+
+1.36
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.30 2011/01/20 03:46:43 - - $
+d39 2
+a40 2
+      print "This is NOT an error if this student is working alone.\n";
+      print "This IS AN ERROR if working with a partner.\n";
+@
+
+
+1.35
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.34 2011-01-20 14:25:06-08 - - $
+a33 5
+sub complain (@@) {
+   print "$0: @@_\n";
+   print "ERROR: INVALID FILE FORMAT FOR PARTNER FILE\n";
+}
+
+d47 1
+a47 3
+   complain "$filename: missing \\n at end of file"
+         unless $partner =~ s/\n$//;
+
+d54 5
+a58 2
+   complain "$filename: no such user: \"$partner\""
+         and next unless $user;
+@
+
+
+1.34
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.33 2011-01-20 14:23:51-08 - - $
+d35 1
+a35 1
+   print "$0: @@_";
+@
+
+
+1.33
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.32 2011-01-20 14:23:38-08 - - $
+d52 1
+a52 1
+   complain "$filename: missing \\n at end of file\n"
+d61 1
+a61 1
+   complain "$filename: no such user:\n", "\"$partner\"\n"
+@
+
+
+1.32
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.30 2011/01/20 03:46:43 - - $
+d53 1
+a53 1
+         unless $partner =~ s/\n$//
+@
+
+
+1.31
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.30 2011-01-19 19:46:43-08 - - $
+d34 5
+d52 3
+a54 1
+   $partner =~ s/\s+//g;
+d61 2
+a62 6
+   unless ($user) {
+      print "$0: $filename: no such user:\n";
+      print "\"$partner\"\n";
+      print "ERROR: INVALID FILE FORMAT FOR PARTNER FILE\n";
+      next;
+   }
+@
+
+
+1.30
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.29 2010-11-03 13:07:35-07 - - $
+d47 1
+a47 5
+   unless ($partner =~ s/\n$//) {
+      print "$0: $filename: missing \\n at end of file\n";
+      print "ERROR: INVALID FILE FORMAT FOR PARTNER FILE\n";
+   }
+
+@
+
+
+1.29
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.28 2010-10-15 15:00:13-07 - - $
+d60 1
+a60 1
+      print $partner, "\n";
+@
+
+
+1.28
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.27 2010-10-15 14:57:13-07 - - $
+d39 2
+a40 1
+      print "This is NOT an error if this student is working alone\n";
+@
+
+
+1.27
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.26 2010-10-14 17:48:53-07 - - $
+d28 1
+a28 1
+   next if -d $directory && -r $directory;
+@
+
+
+1.26
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.25 2010-10-14 17:48:36-07 - - $
+d39 1
+a39 1
+      print "Not a problem if this user is working alone\n";
+@
+
+
+1.25
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.24 2010-10-14 17:47:44-07 - - $
+d10 1
+a10 1
+#    partnercheck - check for formatting on PARTNER FILE
+@
+
+
+1.24
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.23 2010-10-14 17:47:14-07 - - $
+d22 1
+a22 1
+$usage =~ s/^#\s?//m;
+@
+
+
+1.23
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.22 2010-10-14 17:46:59-07 - - $
+d18 1
+a18 1
+#    $directory/PARTNER file.  PARTNER file must contain a username
+@
+
+
+1.22
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.21 2010-10-14 17:43:30-07 - - $
+d17 1
+a17 1
+#    are specified, "." is used as the default.  Otherwise checks ecah
+@
+
+
+1.21
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.20 2010-10-14 17:43:14-07 - - $
+d17 2
+a18 2
+#    are specified, "." is assumed.  Otherwise checks directories
+#    containing PARTNER files.  PARTNER file must contain a username
+d28 1
+a28 1
+   next unless -d $directory && -r $directory;
+@
+
+
+1.20
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.19 2010-10-14 17:35:00-07 - - $
+d27 1
+a27 1
+for mY $directory (@@directories) {
+@
+
+
+1.19
+log
+@-
+@
+text
+@d2 6
+a7 1
+# $Id: partnercheck,v 1.18 2010-10-14 16:39:24-07 - - $
+d16 1
+a16 1
+#    Reads PARTNER FILES and checks for validity.  If no directories
+d18 2
+a19 1
+#    containing PARTNER files.
+d21 2
+d24 1
+a24 2
+use strict;
+use warnings;
+d26 7
+a32 1
+$0 =~ s|.*/||;
+d34 1
+a34 1
+for my $directory (@@ARGV ? @@ARGV : qw(.)) {
+@
+
+
+1.18
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.17 2010-10-14 16:35:46-07 - - $
+d61 1
+@
+
+
+1.17
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.16 2010-10-14 14:49:54-07 - - $
+d38 1
+a38 1
+   $partner =~ s/[\x00-\x20\x7F]/sprintf "^%c", (ord $&) ^ 0x40/ge;
+@
+
+
+1.16
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.15 2010-10-14 14:48:40-07 - - $
+d51 1
+a51 1
+   print "$0: $filename:\n";
+@
+
+
+1.15
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.14 2010-10-14 14:48:15-07 - - $
+d45 2
+a46 1
+      printf "$0: $filename: \"%s\": no such user\n", $partner;
+@
+
+
+1.14
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.13 2010-10-14 14:47:33-07 - - $
+d45 1
+a45 1
+      print "$0: $filename: \"%s\": no such user\n", $partner;
+@
+
+
+1.13
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.12 2010-10-14 14:47:15-07 - - $
+d56 2
+a58 1
+
+@
+
+
+1.12
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.11 2010-10-14 14:38:27-07 - - $
+d56 1
+@
+
+
+1.11
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.10 2010-10-14 14:35:04-07 - - $
+d51 5
+a55 5
+   print "\$USER  = $user\n";
+   print "UID    = $uid\n";
+   print "GECOS  = $gecos\n";
+   print "\$HOME  = $home\n";
+   print "\$SHELL = $shell\n";
+@
+
+
+1.10
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.9 2010-10-14 14:00:51-07 - - $
+d45 1
+a45 1
+      print "$0: \"$partner\": no such user or invalid file format\n";
+d50 1
+a50 1
+   print "$filename: file is valid:\n";
+@
+
+
+1.9
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.8 2010-10-14 13:55:12-07 - - $
+d26 1
+d35 1
+a35 1
+      print "ERROR: invalid file format\n";
+d46 1
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.7 2010-10-14 13:36:20-07 - - $
+d25 1
+a25 1
+      warn "$0: $filename: $!\n";
+d33 2
+a34 2
+      warn "$0: $filename: missing \\n at end of file\n";
+      next;
+d44 1
+a44 1
+      warn "$0: \"$partner\": no such user or invalid file format\n";
+d48 1
+a48 1
+   print "$filename file is valid:\n";
+@
+
+
+1.7
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.6 2010-10-14 13:32:53-07 - - $
+d24 5
+a28 1
+   open PARTNER, "<$filename" or die "$0: $filename: $!\n";
+d31 6
+a36 1
+   $partner =~ s/\n$// or die "$0: $filename: invalid format\n";
+d42 5
+a46 1
+   warn "$0: \"$partner\": no such user\n" unless $user;
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.5 2010-10-14 13:31:27-07 - - $
+d33 1
+a33 1
+   die "$0: \"$partner\": no such user\n" unless $user;
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.4 2010-10-14 13:27:02-07 - - $
+d33 1
+a33 1
+   die "$0: $partner: no such user\n" unless $user;
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.3 2010-10-14 13:26:46-07 - - $
+d31 2
+a32 2
+   ($user, $_, $uid, $_, $_, $_, $gecos, $home, $shell, $_)
+               = getpwnam $partner;
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.2 2010-10-14 13:25:55-07 - - $
+d21 1
+a21 1
+for my $directory (@@filenames = @@ARGV ? @@ARGV : qw(.)) {
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: partnercheck,v 1.1 2009-12-17 18:41:26-08 - - $
+d16 3
+d21 1
+a21 1
+for $filename (@@filenames = @@ARGV ? @@ARGV : qw(.)) {
+d23 1
+d25 1
+a25 1
+   $partner = join "", <PARTNER>;
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: usercheck.perl,v 1.5 2009-09-23 17:22:03-07 - - $
+d4 10
+a13 1
+# Read a PARTNER file.  Check to see if it has a valid username.
+d18 1
+a18 1
+$filename = "PARTNER";
+d20 17
+a36 17
+open PARTNER, "<$filename" or die "$0: $filename: $!\n";
+$partner = join "", <PARTNER>;
+close PARTNER;
+$partner =~ s/\n$// or die "$0: $filename: invalid format\n";
+$partner =~ s/[\x00-\x20\x7F]/sprintf "^%c", (ord $&) ^ 0x40/ge;
+$partner =~ s/[\x80-\xFF]/sprintf "\\x%02X", ord $&/ge;
+
+($user, $_, $uid, $_, $_, $_, $gecos, $home, $shell, $_)
+            = getpwnam $partner;
+die "$0: $partner: no such user\n" unless $user;
+
+print "$filename file is valid:\n";
+print "\$USER  = $user\n";
+print "UID    = $uid\n";
+print "GECOS  = $gecos\n";
+print "\$HOME  = $home\n";
+print "\$SHELL = $shell\n";
+d38 1
+@

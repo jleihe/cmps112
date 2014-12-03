@@ -1,0 +1,46 @@
+#!/usr/bin/perl -w
+# $Id: gigrep,v 1.1 2008-10-01 14:50:48-07 - - $
+#
+# synopsis:  gigrep -h header.h
+#            gigrep pattern
+#
+# purpose:   search gcc's hierarchy of #include information
+#            -h prints the whole header file.
+#            otherwise use the pattern as an argument to grep,
+#            and search all of gcc's top level include files..
+#
+@gccv = `gcc -v 2>&1`;
+chomp @gccv;
+print "$0: ", grep( /version/, @gccv ), "\n";
+$gccv = join( ' ', @gccv );
+$gccv =~ s{^[^/]*(.*)/[^/]*$}{$1/include/};
+print "gccinclude: $gccv\n";
+if( ! @ARGV ){
+   print STDERR "Usage: $0 -h header.h | pattern\n";
+   exit -1;
+};
+if( $ARGV[0] eq "-h" ){
+   shift @ARGV;
+   for $file( @ARGV ){
+      $file =~ s/^/$gccv/;
+      open( GCCE, $file ) || die "gcc -E: $!";
+      $lines = 0;
+      while( <GCCE> ){
+         s/(\S)\t+/$1 /g;
+         s/[ \t]+$//;
+         s/ +(\,)/$1/g;
+         s/(\*) +/$1/g;
+         s/ +(\()/$1 /g;
+         s/(\)) +/ $1/g;
+         $lines++;
+         $lines = 0 if m/./;
+         print unless $lines > 1;
+      };
+      close GCCE;
+   };
+}else{
+   $grep = `grep @ARGV ${gccv}*.h ${gccv}sys/*.h`;
+   $gccv =~ s/\W/\\$&/g;
+   $grep =~ s{^$gccv([^:]*):}{<$1>}mg;
+   print $grep;
+};

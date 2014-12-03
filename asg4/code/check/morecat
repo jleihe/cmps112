@@ -1,0 +1,14 @@
+#!/bin/sh
+# $Id: morecat,v 1.3 2014-10-21 20:05:30-07 - - $
+#
+# Concatenate multiple short files into a longer file with
+# headers like more but use cat -nv for line numbers.
+#
+
+for file in $*
+do
+   echo ::::::::::::::::::::::::::::::::
+   echo $file
+   echo ::::::::::::::::::::::::::::::::
+   cat -nv $file
+done

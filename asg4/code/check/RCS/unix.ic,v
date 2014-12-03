@@ -1,0 +1,71 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2012.01.10.21.16.11;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/bin/perl -w
+# $Id: unix.ic,v 357.40 2011-08-18 17:27:55-07 - - $
+#
+# NAME
+#    unix.ic - log into a IC host
+#
+# SYNOPSIS
+#    unix.ic [hostname]
+#
+# DESCRIPTION
+#    Do an ssh login to a remote host, bringing up multiple xterms.
+#
+
+$0 =~ s{.*/}{};
+
+%aliases = (
+   "1" => "unix1",
+   "2" => "unix2",
+   "3" => "unix3",
+);
+
+$hostname = $ARGV[0] && $aliases{$ARGV[0]} || $ARGV[0] || "unix";
+$hostname .= ".ic.ucsc.edu" unless $hostname =~ m/\./;
+$hostname = "$username\@@$hostname" if $username =
+      $ENV{UNIX_IC_LOGNAME} || $ENV{LOGNAME} || $ENV{USER};
+
+$ssh_cmd = <<__END_COMMAND__;
+eval `ssh-agent -s`
+ssh-add </dev/null
+ssh -f -X $hostname 'set hostname=`hostname | sed "s/\\.ucsc\\.edu//"`'
+__END_COMMAND__
+
+for ($xtnum = 0; $xtnum < 3; $xtnum++){
+   $xcoord = $xtnum * 512 + 64;
+   $ycoord = 0;
+   $geom = "=80x75+$xcoord-$ycoord";
+   $key = $xtnum + 7;
+   $name = "+X$key+\$hostname";
+   $ssh_cmd =~ s{'\n$}
+         {\nxterm -ls -ut -geom $geom -n $name -T $name &$&}x;
+};
+
+print "Command:\n", $ssh_cmd;
+print "-" x 50, "\n";
+print "Output:\n";
+system $ssh_cmd;
+print "-" x 50, "\n";
+
+@

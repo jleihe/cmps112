@@ -1,0 +1,182 @@
+head	1.5;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.5
+date	2013.07.18.21.47.02;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2013.01.15.20.01.47;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2011.01.25.23.38.43;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2011.01.18.21.12.21;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2010.12.04.03.33.03;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@-
+@
+text
+@" $Id: .vimrc,v 1.23 2013-04-26 18:46:53-07 - - $
+
+highlight Directory none
+highlight ErrorMsg term=reverse
+highlight IncSearch none
+highlight LineNr none
+highlight LineNr none
+highlight ModeMsg none
+highlight MoreMsg none
+highlight NonText none
+highlight Normal none
+highlight Question none
+highlight Search none
+highlight SignColumn none
+highlight SpecialKey none
+highlight StatusLine none
+highlight StatusLineNC none
+highlight TabLine none
+highlight TabLineFill none
+highlight TabLineSel none
+highlight Title none
+highlight Visual term=reverse
+highlight VisualNOS term=reverse
+highlight WarningMsg term=reverse
+highlight WildMenu none
+
+filetype off
+syntax off
+
+autocmd FileType * setlocal formatoptions-=ro
+
+set compatible
+set fileformat=unix
+set noautoindent
+set nohlsearch
+set nomodeline
+set noshowmatch
+set numberwidth=8
+set t_Co=0
+set viminfo='0,n/dev/null
+
+map ;1 1G
+map ;I :set noignorecase
+map ;M :set noshowmatch
+map ;N :set nonumber
+map ;S {!}sort -f
+map ;W :set wrapmargin=0
+map ;a :set all
+map ;f {!}fmt -65 -c
+map ;g {!}fmt -50 -c
+map ;i :set ignorecase
+map ;m :set showmatch
+map ;n :set number
+map ;s {!}sort
+map ;u {!}uniq
+map ;w :set wrapmargin=1
+
+"set autoindent
+"set modeline
+"set showmatch
+
+set autoprint
+set ignorecase
+set noslowopen
+set number
+set report=1
+set shell=/bin/sh
+set showmode
+set wrapmargin=0
+
+@
+
+
+1.4
+log
+@-
+@
+text
+@d1 1
+a1 1
+" $Id: vimrc,v 1.3 2011-01-25 15:38:43-08 - - $
+a41 1
+map ;$ :.m$
+d69 1
+a69 1
+set wrapmargin=1
+@
+
+
+1.3
+log
+@-
+@
+text
+@d1 1
+a1 1
+" $Id: vimrc,v 1.2 2011-01-18 13:12:21-08 - - $
+d27 5
+d33 2
+d36 2
+a41 2
+syntax off
+
+d62 1
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 1
+a1 1
+" $Id: vimrc,v 1.1 2010-12-03 19:33:03-08 - - $
+d8 2
+a9 2
+highlight ModeMsg term=bold
+highlight MoreMsg term=bold
+d18 4
+a21 4
+highlight TabLine term=bold
+highlight TabLineFill term=bold
+highlight TabLineSel term=bold
+highlight Title term=bold
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+a1 1
+" $Id: .vimrc,v 1.12 2010-12-03 19:04:45-08 - - $
+d35 29
+a63 1
+source $HOME/.exrc
+@

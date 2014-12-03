@@ -1,0 +1,83 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2009.11.04.21.23.07;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.05.26.21.59.25;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: killps,v 1.1 2009-05-26 14:59:25-07 - - $
+#
+# NAME
+#    killps - kill ghostview, xpdf, etc., processes
+#
+# SYNOPSIS
+#    killps [programname...]
+#
+# DESCRIPTION
+#    Uses ps to identify processes specified as operands.
+#    Kills processes owned by that user and which match
+#    any of the programs listed.  Tries default programs
+#    if none.  See default @@ARGV below.
+# 
+
+use strict;
+use warnings;
+$0 =~ s|^.*/||;
+
+@@ARGV = qw (acroread acroread4 gs ghostview xpdf xv) unless @@ARGV;
+map {s[.*][(^|/)$&\$]} @@ARGV;
+my $killpat = join "|", @@ARGV;
+
+for my $psline (`ps -u$ENV{USER} -opid,uid,args`) {
+   my ($pid, $uid, $prog, @@args) = split " ", $psline;
+   my $args = " @@args" || "";
+   next unless $prog =~ m/$killpat/ && $uid == $<;
+   printf "%5d %5d %s%s\n", $pid, $uid, $prog, $args;
+   kill 9, $pid or warn "$0: kill $pid: $!\n";
+}
+
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: killps,v 1.2 2009-04-23 19:10:39-07 - - $
+d5 1
+a5 1
+#    killviz - kill ghostview, xpdf, etc., processes
+d8 1
+a8 1
+#    killviz [programname...]
+d21 1
+a21 1
+@@ARGV = qw (acroread acroread4 ps ghostview xpdf xv) unless @@ARGV;
+d25 1
+a25 1
+for my $psline (`ps -eopid,uid,args`) {
+@

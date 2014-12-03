@@ -1,0 +1,95 @@
+head	1.4;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.4
+date	2011.03.23.23.10.51;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2011.03.23.23.09.24;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2011.03.23.23.09.03;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2011.03.23.23.05.08;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: weeks-to-log.perl,v 1.3 2011-03-23 16:09:24-07 - - $
+# Convert weeks output listing to lecture log.
+#
+@@lectures = sort <>;
+die "$0: should be 30 lines\n" unless @@lectures == 30;
+map {chomp; die "$_: bad date\n" unless s/^\d+-\d+-\d+\s+//} @@lectures;
+for $day (0..$#lectures) {
+   printf "\nweek %2d:\n", ++$week if $day % 3 == 0;
+   printf "%2d. %s -\n", $day + 1, $lectures[$day];
+}
+print "\n\$Id\$\n";
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: weeks-to-log.perl,v 1.2 2011-03-23 16:09:03-07 - - $
+d12 1
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: weeks-to-log.perl,v 1.1 2011-03-23 16:05:08-07 - - $
+d9 2
+a10 2
+   printf "\nweek %2d:\n", ++$week if $day % 3 == 1;
+   printf "%2d. %s -\n", $day, $lectures[$day];
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+d6 2
+a7 2
+die "$0: should be 30 lines\n" unless @@lectures = 30;
+map {die "$_: bad date\n" unless s/^\d+-\d+-\d+\s+//} @@lectures;
+d9 1
+a9 1
+   printf "\nweek %2d:\n" ++$week" if $day % 3 == 1;
+@

@@ -1,0 +1,87 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2010.05.07.01.10.29;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@# $Id: .mailrc,v 362.58 2010-03-31 14:26:30-07 - - $
+ignore Content-Disposition
+ignore Content-Disposition: inline
+ignore Content-Length: 164
+ignore Content-Transfer-Encoding
+ignore Content-Transfer-Encoding: 7bit
+ignore Content-Type
+ignore DKIM-Signature
+ignore DomainKey-Signature
+ignore Importance
+ignore List-Help
+ignore List-Subscribe
+ignore List-Unsubscribe
+ignore Managed-By
+ignore Mime-Version
+ignore Received
+ignore Received-SPF
+ignore User-Agent
+ignore X-ASG-Debug-ID
+ignore X-ASG-Orig-Subj
+ignore X-ASG-Whitelist
+ignore X-Accept-Language
+ignore X-Authentication-Warning
+ignore X-Barracuda-BBL-IP
+ignore X-Barracuda-Connect
+ignore X-Barracuda-Encrypted
+ignore X-Barracuda-Envelope-From
+ignore X-Barracuda-RBL-IP
+ignore X-Barracuda-Spam-Report
+ignore X-Barracuda-Spam-Score
+ignore X-Barracuda-Spam-Status
+ignore X-Barracuda-Start-Time
+ignore X-Barracuda-URL
+ignore X-Barracuda-Virus-Scanned
+ignore X-BeenThere
+ignore X-MIME-Autoconverted
+ignore X-Mailman-Version
+ignore X-OriginalArrivalTime
+ignore X-Originating-Email
+ignore X-Originating-IP
+ignore X-Priority
+ignore X-RT-Loop-Prevention
+ignore X-Scanned-By
+ignore X-Spam-Checker-Version
+ignore X-Spam-Flag
+ignore X-Spam-Level
+ignore X-Spam-Status
+ignore X-UCSC-CATS-MailScanner
+ignore X-UCSC-CATS-MailScanner-From
+ignore X-UCSC-CATS-MailScanner-SpamCheck
+ignore X-UCSC-CATS-MailScanner-SpamScore
+ignore X-UCSC-EDU-ClamAV
+ignore X-UCSC-EDU-ClamAVCheck
+ignore X-UCSC-EDU-MIMEDefang
+ignore X-UCSC-EDU-Scanned-By
+ignore X-UCSC-EDU-Sender
+ignore X-UCSC-EDU-SpamCheck
+ignore X-UCSC-EDU-SpamFlag
+ignore X-UCSC-EDU-SpamReport
+ignore X-UCSC-EDU-SpamScore
+ignore X-UCSC-EDU-Submitted-Via
+ignore X-Virus-Scanned
+set alwaysignore
+unignore reply-to
+@

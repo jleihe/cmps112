@@ -1,0 +1,66 @@
+#!/bin/bash
+# $Id: mkpspdf,v 1.24 2014-06-05 17:57:07-07 - - $
+#
+# NAME
+#    mkpspdf - create ps and pdf files from source code
+#
+# SYNOPSIS
+#    mkpspdf [-cg] [dirname/]psfilename sources
+#
+# DESCRIPTION
+#    From the [dirname/]psfilename specification, create a Postscript
+#    file of the sources and bring it up in ghostview.  Also create
+#    a pdf.
+#
+# OPTIONS
+#    -c  Suppress the use of --line-numbers (-C).
+#    -h  Suppress --header
+#    -g  Suppress calling gv to display the Postscript file.
+#    -s  Font size in points.
+#
+
+function usage {
+   echo 1>&2 \
+   Usage: $(basename $0) [-cgs] [dirname/]psfilename filename... 1>&2
+   exit 1
+}
+
+LINE_NUMBERS=--line-numbers
+HEADER=--header="$(pwd | sed 's|^/afs/cats.ucsc.edu/courses/|$$|')/"
+FONT_SIZE=11
+while getopts chgs: opt; do
+echo w $# $OPTIND $@
+   case $opt in
+      c) LINE_NUMBERS=;;
+      g) SUPPRESS_GV=1;;
+      h) HEADER=;;
+      s) FONT_SIZE=$OPTARG;;
+      *) usage;;
+   esac
+done
+shift $(($OPTIND-1))
+
+dirname=$(dirname $1)
+psfilename=$(basename $1)
+shift
+
+font=Courier-Bold$FONT_SIZE
+
+enscript \
+   --media=Letter \
+   --borders \
+   $LINE_NUMBERS \
+   --font=$font \
+   --fancy-header \
+   --output $dirname/$psfilename \
+   $HEADER \
+   $@
+
+enscript-title $dirname/$psfilename $psfilename
+
+if [ "$SUPPRESS_GV" = "" ]; then
+   gv --scale=1.1 $dirname/$psfilename &
+fi
+
+cd $dirname
+mkpdf $psfilename

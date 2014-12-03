@@ -1,0 +1,89 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/bin/perl
+$RCSID = '$Id: post-news,v 7.4 2007-01-04 17:04:31-08 - - $';
+
+$MANPAGE = <<'__END_MANPAGE__';
+
+   SYNOPSIS
+      post-news newsgroup filename [subject...]
+      post-news newsgroup - [subject...] <filename
+
+   DESCRIPTION
+      Posts a file to the given newsgroup.  The subject is the name
+      of the file, the date, followed by the other args, which may
+      be arbitrary strings.
+
+   OPERANDS
+      The first two operands are the names, respectively, of the
+      newsgroup and the file to be posted.  The rest of the
+      words are appended to the subject line.  If the filename
+      is specified as `-', STDIN is read at that point.
+
+   USAGE
+      Usually called by another script which will automatically
+      supply the newsgroup name.  See `Post.cmps012b', etc.
+
+__END_MANPAGE__
+$MANPAGE =~ s/^   //mg;
+$MANPAGE .= "$RCSID\n\n";
+
+use POSIX qw (strftime);
+
+$PROG = $0;
+$PROG =~ s|/*$||;
+$PROG =~ s|^.*/||;
+
+if (@@ARGV < 2) {
+   print STDERR $MANPAGE;
+   die "Usage: $PROG newsgroup file [args...]\n";
+};
+
+$NEWSGROUP = shift;
+$FILE = shift;
+unshift @@ARGV, "[$FILE]" unless $FILE eq "-";
+$subject = "@@ARGV";
+$subject = "[no subject]" unless $subject;
+$inews = "/usr/local/bin/inews";
+$ENV{NNTPSERVER} = "news.ucsc.edu";
+
+open FILE,  "<$FILE" or die "$PROG: $FILE: $!";
+@@article = (
+   "Newsgroups: $NEWSGROUP\n",
+   "Distribution: ucsc\n",
+   "Subject: $subject\n",
+   "X-No-Archive: yes\n",
+   "X-Posted-by: $0\n",
+   "Expires: +60days\n",
+   "\n",
+   <FILE>,
+);
+close FILE;
+print @@article;
+
+open INEWS, "|$inews -h" or die "$PROG: $inews: $!";
+print INEWS @@article;
+close INEWS;
+print "$PROG: Posted $FILE to $NEWSGROUP\n";
+
+@

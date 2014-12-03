@@ -1,0 +1,133 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2009.01.03.01.23.35;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.01.03.01.23.11;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/usr/local/bin/perl
+# $Id$
+#
+# NAME
+#    fixsubmitacl.perl - Fix ACLs on submit directories.
+#
+# SYNOPSIS
+#    fixsubmitacl.perl [-TA user | -grader user]... classdirectory [homework...]
+#
+# DESCRIPTION
+#    The Cats submit command sets up ACLs so that students do not
+#    have write access to the directory into which they submit 
+#    their files.  This command changes that and sets up the ACLs
+#    so that they do.  It also locks out system:anyuser and
+#    system:authuser.
+#
+# WARNING
+#    The command assumes that the directory name is the username
+#    and assumes the structure
+#       /afs/cats.ucsc.edu/class/$CLASSQTR/$HOMEWORK/$USERNAME/
+#    This command may only be run by someone with an admin ACL
+#    on the directory.
+# 
+
+sub usage{
+   my( @@messages ) = @@_;
+   print STDERR @@messages if @@messages;
+   print STDERR "Usage: $0 [-TA user|-tutor user]... classdirectory homeworkdir...\n";
+   exit 1;
+};
+
+sub choose{
+   my( $dir ) = @@_;
+   return "Choose from:\n" . `ls -C $dir`;
+};
+
+sub docommand{
+   my( $command ) = @@_;
+   print "% $command\n";
+   print `$command`;
+   print "Status: $?\n" if $?;
+};
+
+$TA_tutor_ACL = "";
+while( @@ARGV && $ARGV[0] =~ m/^-/ ){
+   $option = shift;
+   $operand = shift or &usage;
+   if( $option =~ m/^-TA$/i ){
+      $TA_tutor_ACL .= " -acl $operand all";
+   }elsif( $option =~ m/^-grader$/i ){
+      $TA_tutor_ACL .= " -acl $operand write";
+   }else{
+      &usage;
+   };
+};
+
+$CLASSROOT = "/afs/cats.ucsc.edu/class";
+( $PROG = $0 ) =~ s{.*/}{};
+
+$CLASSQTR = shift;
+&usage(
+   "$PROG: Missing classdirectory\n",
+   &choose( $CLASSROOT )
+) unless defined $CLASSQTR;
+
+$CLASSDIR = "/afs/cats.ucsc.edu/class/$CLASSQTR";
+&usage(
+   "$PROG: $CLASSQTR: Incorrect classdirectory\n",
+   &choose( $CLASSROOT )
+) unless -d $CLASSDIR;
+
+&usage( &choose( $CLASSDIR )) unless @@ARGV;
+
+for $HOMEWORK( @@ARGV ){
+   $HOMEWORKDIR = "$CLASSDIR/$HOMEWORK";
+   &usage( 
+      "$PROG: $HOMEWORK: Incorrect homework directory\n",
+      &choose( $CLASSDIR )
+   ) unless -d $HOMEWORKDIR;
+   &docommand( "fs sa -dir $HOMEWORKDIR $TA_tutor_ACL"
+             . " -acl system:authuser rli system:anyuser none" );
+   for $submitdir( glob( "$HOMEWORKDIR/*" )){
+      ( $submituser = $submitdir ) =~ s{.*/}{};
+      $oldacl = `fs la $submitdir`;
+      #next unless $oldacl =~ m/system:authuser/
+      #         or $oldacl =~ m/system:anyuser/
+      #         or $oldacl !~ m/$submituser rlidwk/;
+      &docommand( "fs sa -dir $submitdir -acl $submituser write"
+                . " $TA_tutor_ACL"
+                . " system:authuser none system:anyuser none" );
+      &docommand( "fs la $submitdir" );
+      print '_' x 64, "\n\n";
+   };
+};
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $RCSfile: fixacl.submit.perl,v $$Revision: 1.1 $
+@

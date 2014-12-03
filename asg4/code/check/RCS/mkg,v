@@ -1,0 +1,57 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2009.10.08.21.39.56;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.10.08.21.39.41;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: mkg,v 1.1 2009-10-08 14:39:41-07 - - $
+#
+# NAME
+#    mkg - run gmake with the groff Makefile
+#
+# SYNOPSIS
+#    mkg [gmakeoptions...]
+#
+# DESCRIPTION
+#    Runs gmake using the makefile in the groff directory.
+#
+
+GROFFDIR=/afs/cats.ucsc.edu/courses/cmps012b-wm/groff
+gmake -f $GROFFDIR/Makefile $*
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+d14 1
+a14 1
+GROFFDIR=/afs/cats.ucsc.edu/courses/cmps012b-wm/groff/
+@

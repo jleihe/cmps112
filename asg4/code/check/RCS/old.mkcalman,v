@@ -1,0 +1,35 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2009.12.18.02.20.05;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/sh -x
+# $Id: mkcalman,v 7.1 2007-03-27 16:54:23-07 - - $
+#
+# Use man(1) to format the cal(1) man page and generate output
+# in Postscript, PDF, and plain text.
+#
+psman -s 1 cal >cal.1.ps
+pstopdf cal.1.ps
+man -s 1 cal | perl -00pe '
+	s/(.)[\b]\1/$1/g;
+	s/_[\b]|[\b]_//g;
+	s/o[\b]\+|\+[\b]o/\+/g' >cal.1.tt
+@

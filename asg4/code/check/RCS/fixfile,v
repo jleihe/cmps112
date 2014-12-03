@@ -1,0 +1,65 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2013.01.11.02.54.30;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!//usr/bin/perl
+# $Id: fixfile,v 1.7 2012-10-25 13:31:49-07 - - $
+#
+# NAME
+#    fixfile - fix basic formatting in a text file
+#
+# SYNOPSIS
+#    fixfile [filename...]
+#
+# DESCRIPTION
+#    Fixes basic formatting on a text file:
+#    Expands tabs to 8 spaces using expand(1).
+#    Deletes trailing carriage return characters.
+#    Adds a final newline if missing from the file.
+#
+# BUGS
+#    Does not fix lines longer than 72 characters.
+#
+
+$0 =~ s|.*/||;
+$ex = "/usr/bin/ex";
+
+for $file (@@ARGV) {
+   system "cid + $file";
+   open EX, "| $ex $file" or warn "$0: $ex $file: $!\n" and next;
+   print "$ex $file: OK\n";
+   print EX "1,$!expand\n" unless $file =~ m{(^|/)Makefile$};
+   print EX "1,$s/\r//\n";
+   print EX "w\n";
+   print EX "q\n";
+   close EX;
+}
+__DATA__
+for file in $* ; do
+   cid + $file
+   if [ `basename $file` != Makefile ] ; then expand='%!expand\n' ; fi
+   expand="$expand"'%s/\r//\nw\nq'
+   echo $0: file=$file
+   /bin/echo "$expand" | /usr/bin/ex $file
+   checksource $file
+   cid + $file
+done
+@

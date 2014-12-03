@@ -1,0 +1,202 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/bin/perl -w
+# $RCSfile: submit.perl-2000,v $$Revision: 1.1 $
+#
+# To print the man page for this command, type:
+#    submit.perl -m
+#
+
+$BIN_FS = "/usr/afsws/bin/fs";
+$class_root = "/afs/cats.ucsc.edu/class";
+
+print "Executing: $0 @@ARGV\n\n";
+
+sub usage{
+   my( @@error_messages ) = @@_;
+   print STDERR @@error_messages if @@error_messages;
+   print STDERR "\n";
+   print STDERR "Usage: $0 Class.Qtr Assignment Filename...\n";
+   print STDERR "Usage: $0 -m|-p\n";
+   print STDERR "$0 -m | more ... will display the documentation\n";
+   exit 1;
+};
+
+sub choose{
+   my( $command ) = @@_;
+   return "Choose one from: $command\n", `$command`;
+};
+
+sub docommand{
+   my( $message, $command ) = @@_;
+   print "$message\n$command\n.\n";
+   print `$command\n`;
+   print '_' x 64, "\n\n";
+};
+
+# Check for the -man options.
+
+if( defined( $ARGV[0] ) && $ARGV[0] =~ m/^-/ ){
+   $NROFF = "nroff -man";
+   $SQUEEZE = q(nawk 'BEGIN{RS="";ORS="\n\n"};/.*/');
+   $command = "| $NROFF | $SQUEEZE";
+   open GROFF, $command or die "$0: $command: $!";
+   for( <DATA> ){ s/\$0/$0/g; print GROFF; };
+   close GROFF;
+   exit 0;
+};
+
+# Find the class homework directory.
+
+( $class = shift ) || ( $class = "" );
+$hwkdir = $class ? "$class_root/$class" : "";
+unless( -d $hwkdir ){
+   &usage( "$0: missing or incorrect Class.Qtr ($class)\n",
+           &choose( "ls -C $class_root" ));
+};
+
+# Find the assignment subdirectory.
+
+( $asg = shift ) || ( $asg = "" );
+$asgdir = $asg ? "$hwkdir/$asg" : "";
+unless( -d $asgdir ){
+   &usage( "$0: missing or incorrect Assignment ($asg)\n",
+           &choose( "ls -C $hwkdir" ));
+};
+
+# Check to see if there are any files to submit.
+
+unless( @@ARGV ){
+   &usage( "$0: missing Filename(s).\n",
+           "Specify what file(s) you want to submit.\n" );
+};
+
+# Compute user's directory from username of real UID.
+
+$username = getpwuid $<;
+$userdir = "$asgdir/$username";
+
+# Make sure user's directory is there and fix the ACLs.
+
+-d $userdir || mkdir( $userdir, 0700 ) || &usage( "$userdir: $!" );
+
+$acl = " \\\n -acl system:authuser none \\\n -acl $username all";
+&docommand( "Setting the ACL on your submit directory...",
+            "$BIN_FS sa \\\n -dir $userdir $acl" );
+&docommand( "Verify the correct ACL on your submit directory...",
+           "$BIN_FS la $userdir" );
+
+# Finally do the submit.
+&docommand( "Submitting the files you specified...",
+            "/bin/cp -i @@ARGV $userdir" );
+&docommand( "Your have submitted the following files...",
+            "/bin/ls -la $userdir" );
+
+__END__
+.de D2
+.   ds D. \\$2
+..
+.D2 $Date: 2008-09-24 17:55:12-07 $
+.TH $0 L "\*(D." "" "Submitting Assignments"
+.SH NAME
+submit.perl \- submit an assignment
+.SH SYNOPSIS
+.B $0
+.IR class.qtr
+.IR assignment
+.IR filename \|.\|.\|.
+.br
+.B $0
+.BR \-m | \-p
+.SH DESCRIPTION
+Submits one or more files to a homework directory under the
+.B /afs/cats.ucsc.edu/class/
+directory.
+Creates the directory and sets ACLs
+.RB ( "fs sa" )
+if needed.
+Copies
+.RB ( "cp \-i" )
+files into the directory.
+Verifies the submit
+.RB ( "ls \-la" ).
+.SH OPTIONS
+The following options are supported.
+They are mutually exclusive with operands.
+.TP
+.B \-p
+Formats the man page into Postscript using
+.BR groff .
+.TP
+.B \-m
+Formats the man page into ASCII text using
+.BR groff .
+Any invalid option will cause this to occur.
+.SH OPERANDS
+The first two operands and at least one filename is required
+if no options are present.
+.TP
+.I class.qtr
+The class and quarter must be the name of a directory immediately
+under the root of the submit directories.
+.TP
+.IR assignment
+The assignment specified must be the name of a directory immediately
+under the
+.IR class.qtr
+directory.
+.TP
+.IR filename \|.\|.\|.
+One or more filenames are given with either absolute pathnames or
+pathnames relative to the student's current directory.
+.SH EXIT STATUS
+.TP
+0
+For successful completion of a submit or a man page request.
+.TP
+1
+If any error messages are printed.
+.SH DIRECTORIES
+.B /afs/cats.ucsc.edu/class/
+.SH SEE ALSO
+Cats
+.BR submit
+and
+.BR peek .
+.SH DIAGNOSTICS
+Errors are printed if the target directories are missing or source
+files can not be located.
+Errors may also be printed by commands spawned by
+.BR $0 .
+.SH USAGE RESTRICTIONS
+When the Cats
+.BR submit
+program is used, it creates a directory owned by
+.BR icsubmit
+and the ACL thereon allows the student doing the submit only
+list access to the directory instead of write access.
+Hence 
+.BR $0
+can not be used after the Cats submit script until the TA
+or instructor fixes the ACLs.
+@

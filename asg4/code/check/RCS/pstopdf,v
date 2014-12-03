@@ -1,0 +1,116 @@
+head	1.3;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.3
+date	2012.11.02.01.26.44;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2009.09.15.23.29.19;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@-
+@
+text
+@#!/bin/sh -x
+# $Id: pstopdf,v 1.2 2009-09-15 16:29:19-07 - - $
+distill=/usr/local/bin/distill
+if [ -x $distill ]
+then
+   distill \
+      -noprefs \
+      -embedallfonts on \
+      -maxsubsetpct 99 \
+      -asciipdf on \
+      -compresstext off \
+      -resolution 2400 \
+      $*
+else
+   echo Running $ps2pdf
+   ps2pdf \
+      -dPDFSETTINGS=/prepress \
+      -dColorImageResolution=2400 \
+      -dGrayImageResolution=2400 \
+      -dMonoImageResolution=2400 \
+      -dASCII85EncodePages=true \
+      -dCompressPages=false \
+      -dMaxSubsetPct=99 \
+      -dSubsetFonts=true \
+      -dEmbedAllFonts=true \
+      -dPermissions=-44 \
+      $*
+   echo Finished $ps2pdf
+fi
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pstopdf,v 1.1 2008-10-01 14:50:48-07 - - $
+a14 1
+   ps2pdf=/usr/sfw/bin/ps2pdf
+d16 1
+a16 1
+   $ps2pdf \
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: pstopdf,v 1.2 2008-09-24 17:55:12-07 - - $
+d6 8
+a13 8
+	distill \
+		-noprefs \
+		-embedallfonts on \
+		-maxsubsetpct 99 \
+		-asciipdf on \
+		-compresstext off \
+		-resolution 2400 \
+		$*
+d15 15
+a29 15
+	ps2pdf=/usr/sfw/bin/ps2pdf
+	echo Running $ps2pdf
+	$ps2pdf \
+		-dPDFSETTINGS=/prepress \
+		-dColorImageResolution=2400 \
+		-dGrayImageResolution=2400 \
+		-dMonoImageResolution=2400 \
+		-dASCII85EncodePages=true \
+		-dCompressPages=false \
+		-dMaxSubsetPct=99 \
+		-dSubsetFonts=true \
+		-dEmbedAllFonts=true \
+		-dPermissions=-44 \
+		$*
+	echo Finished $ps2pdf
+@

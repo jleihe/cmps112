@@ -1,0 +1,146 @@
+head	1.5;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.5
+date	2013.03.28.03.08.01;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2013.03.28.00.13.51;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2013.03.28.00.12.40;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2013.03.28.00.11.41;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2013.03.28.00.09.46;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@-
+@
+text
+@#!//usr/bin/perl
+# $Id: elimcrtab.perl,v 1.4 2013-03-27 17:13:51-07 - - $
+
+use strict;
+use warnings;
+$0 =~ s|.*/||;
+
+my $MANPAGE = <<__END_MAN_PAGE__;
+#
+# NAME
+#    $0 - fix basic formatting in a text file
+#
+# SYNOPSIS
+#    $0 filename...
+#
+# DESCRIPTION
+#    Fixes basic formatting on a text file:
+#    Expands tabs to 8 spaces using expand(1).
+#    Deletes trailing carriage return characters.
+#    Adds a final newline if missing from the file.
+#
+# BUGS
+#    Does not fix lines longer than 72 characters.
+#    Ignore this message - stdin: is not a tty
+#
+__END_MAN_PAGE__
+$MANPAGE =~ s/^#//mg;
+
+print $MANPAGE and exit unless @@ARGV;
+
+my $edit = "/usr/bin/ex -u NONE";
+
+for my $file (@@ARGV) {
+   system "cp $file $file~~";
+   system "cid + $file";
+   print "$0: checksource $file\n";
+   system "checksource $file";
+   open EDIT, "| $edit $file" or warn "$0: $edit $file: $!\n" and next;
+   print "$0: $file: OK\n";
+   print EDIT "1,\$!expand\n" unless $file =~ m{(^|/)Makefile$};
+   print EDIT "1,\$s/\\r//\n";
+   print EDIT "w\n";
+   print EDIT "q\n";
+   close EDIT;
+   print "$0: checksource $file\n";
+   system "checksource $file";
+}
+
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: elimcrtab.perl,v 1.3 2013-03-27 17:12:40-07 - - $
+d34 1
+a37 1
+   system "cp $file $file~~";
+d40 1
+a40 1
+#  print EDIT "1,\$!expand\n" unless $file =~ m{(^|/)Makefile$};
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: elimcrtab.perl,v 1.2 2013-03-27 17:11:41-07 - - $
+d37 1
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: elimcrtab.perl,v 1.1 2013-03-27 17:09:46-07 - - $
+d39 1
+a39 1
+   print EDIT "1,\$!expand\n" unless $file =~ m{(^|/)Makefile$};
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: editcrtab.perl,v 1.1 2013-03-27 16:31:27-07 - - $
+d24 1
+@

@@ -1,0 +1,11 @@
+#!/bin/sh
+# $Id: xcd,v 1.3 2013-04-16 15:55:25-07 - - $
+
+for dir in $*
+do
+   shellcmd="cd $dir; xtlabel $dir; exec $SHELL"
+   echo `basename $0`: $shellcmd
+   xterm -ut +ls -e sh -c "$shellcmd" &
+   sleep 1
+done
+

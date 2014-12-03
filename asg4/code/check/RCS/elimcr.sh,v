@@ -1,0 +1,57 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2013.03.29.20.14.55;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/bash
+# $Id: elimcrtab.perl,v 1.5 2013-03-27 20:08:01-07 - - $
+#
+# NAME
+#    elimcr - fix basic formatting in a text file
+#
+# SYNOPSIS
+#    elimcr [-t] filename...
+#
+# DESCRIPTION
+#    Fixes basic formatting on a text file:
+#    Expands tabs to 3 spaces using expand(1).
+#    Deletes trailing carriage return characters.
+#    Adds a final newline if missing from the file.
+#
+# BUGS
+#    Does not fix lines longer than 72 characters.
+#    Ignore this message - stdin: is not a tty
+#
+
+if (( $# == 0 )); then
+   grep '^#' $0
+   exit
+fi
+
+for file in $*; do
+   if /bin/cp $file $file~~; then
+      if [[ $file != *Makefile ]]; then echo '1,$!expand -3'; fi
+      echo 'g/\r/s///'
+      echo w
+      echo q
+   fi | /usr/bin/vim -E $file
+done
+
+@

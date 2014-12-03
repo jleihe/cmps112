@@ -1,0 +1,3557 @@
+head	1.130;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.130
+date	2014.05.30.01.42.23;	author -;	state -;
+branches;
+next	1.129;
+
+1.129
+date	2014.05.30.01.34.05;	author -;	state -;
+branches;
+next	1.128;
+
+1.128
+date	2014.04.03.00.30.24;	author -;	state -;
+branches;
+next	1.127;
+
+1.127
+date	2014.03.28.02.53.41;	author -;	state -;
+branches;
+next	1.126;
+
+1.126
+date	2014.03.28.01.36.34;	author -;	state -;
+branches;
+next	1.125;
+
+1.125
+date	2014.03.27.22.53.27;	author -;	state -;
+branches;
+next	1.124;
+
+1.124
+date	2014.03.27.02.13.57;	author -;	state -;
+branches;
+next	1.123;
+
+1.123
+date	2014.03.26.21.59.20;	author -;	state -;
+branches;
+next	1.122;
+
+1.122
+date	2014.03.26.21.23.33;	author -;	state -;
+branches;
+next	1.121;
+
+1.121
+date	2014.03.26.21.10.38;	author -;	state -;
+branches;
+next	1.120;
+
+1.120
+date	2014.03.26.20.42.56;	author -;	state -;
+branches;
+next	1.119;
+
+1.119
+date	2014.03.26.02.25.53;	author -;	state -;
+branches;
+next	1.118;
+
+1.118
+date	2014.03.26.01.53.10;	author -;	state -;
+branches;
+next	1.117;
+
+1.117
+date	2014.03.26.01.50.28;	author -;	state -;
+branches;
+next	1.116;
+
+1.116
+date	2014.03.26.01.19.14;	author -;	state -;
+branches;
+next	1.115;
+
+1.115
+date	2014.03.26.00.22.21;	author -;	state -;
+branches;
+next	1.114;
+
+1.114
+date	2014.03.26.00.18.20;	author -;	state -;
+branches;
+next	1.113;
+
+1.113
+date	2014.03.26.00.15.59;	author -;	state -;
+branches;
+next	1.112;
+
+1.112
+date	2014.03.26.00.04.22;	author -;	state -;
+branches;
+next	1.111;
+
+1.111
+date	2014.03.25.23.55.28;	author -;	state -;
+branches;
+next	1.110;
+
+1.110
+date	2014.03.25.23.38.55;	author -;	state -;
+branches;
+next	1.109;
+
+1.109
+date	2014.03.25.22.43.38;	author -;	state -;
+branches;
+next	1.108;
+
+1.108
+date	2014.03.25.03.53.26;	author -;	state -;
+branches;
+next	1.107;
+
+1.107
+date	2014.03.25.03.03.10;	author -;	state -;
+branches;
+next	1.106;
+
+1.106
+date	2014.03.25.03.02.26;	author -;	state -;
+branches;
+next	1.105;
+
+1.105
+date	2014.03.25.02.57.42;	author -;	state -;
+branches;
+next	1.104;
+
+1.104
+date	2014.03.25.02.49.42;	author -;	state -;
+branches;
+next	1.103;
+
+1.103
+date	2014.03.25.01.03.25;	author -;	state -;
+branches;
+next	1.102;
+
+1.102
+date	2014.03.25.00.58.22;	author -;	state -;
+branches;
+next	1.101;
+
+1.101
+date	2014.03.25.00.45.31;	author -;	state -;
+branches;
+next	1.100;
+
+1.100
+date	2014.03.25.00.41.34;	author -;	state -;
+branches;
+next	1.99;
+
+1.99
+date	2014.03.24.23.19.56;	author -;	state -;
+branches;
+next	1.98;
+
+1.98
+date	2014.03.24.23.18.10;	author -;	state -;
+branches;
+next	1.97;
+
+1.97
+date	2014.03.24.23.15.18;	author -;	state -;
+branches;
+next	1.96;
+
+1.96
+date	2014.03.24.23.11.19;	author -;	state -;
+branches;
+next	1.95;
+
+1.95
+date	2014.03.22.02.55.09;	author -;	state -;
+branches;
+next	1.94;
+
+1.94
+date	2014.03.22.02.53.25;	author -;	state -;
+branches;
+next	1.93;
+
+1.93
+date	2014.03.22.01.16.03;	author -;	state -;
+branches;
+next	1.92;
+
+1.92
+date	2014.03.22.01.10.16;	author -;	state -;
+branches;
+next	1.91;
+
+1.91
+date	2014.03.22.01.08.24;	author -;	state -;
+branches;
+next	1.90;
+
+1.90
+date	2014.03.22.01.07.31;	author -;	state -;
+branches;
+next	1.89;
+
+1.89
+date	2014.03.22.01.07.10;	author -;	state -;
+branches;
+next	1.88;
+
+1.88
+date	2014.03.21.00.27.08;	author -;	state -;
+branches;
+next	1.87;
+
+1.87
+date	2014.03.21.00.06.07;	author -;	state -;
+branches;
+next	1.86;
+
+1.86
+date	2014.03.20.23.50.55;	author -;	state -;
+branches;
+next	1.85;
+
+1.85
+date	2014.03.19.05.44.06;	author -;	state -;
+branches;
+next	1.84;
+
+1.84
+date	2014.03.19.05.40.31;	author -;	state -;
+branches;
+next	1.83;
+
+1.83
+date	2014.03.19.01.55.24;	author -;	state -;
+branches;
+next	1.82;
+
+1.82
+date	2014.03.19.01.35.35;	author -;	state -;
+branches;
+next	1.81;
+
+1.81
+date	2014.03.19.01.35.08;	author -;	state -;
+branches;
+next	1.80;
+
+1.80
+date	2014.03.19.01.28.27;	author -;	state -;
+branches;
+next	1.79;
+
+1.79
+date	2014.03.19.01.27.29;	author -;	state -;
+branches;
+next	1.78;
+
+1.78
+date	2014.03.19.01.18.58;	author -;	state -;
+branches;
+next	1.77;
+
+1.77
+date	2014.03.19.01.12.05;	author -;	state -;
+branches;
+next	1.76;
+
+1.76
+date	2014.03.19.01.03.35;	author -;	state -;
+branches;
+next	1.75;
+
+1.75
+date	2014.03.19.00.48.41;	author -;	state -;
+branches;
+next	1.74;
+
+1.74
+date	2014.03.18.21.55.09;	author -;	state -;
+branches;
+next	1.73;
+
+1.73
+date	2014.03.11.03.30.52;	author -;	state -;
+branches;
+next	1.72;
+
+1.72
+date	2014.03.08.02.23.28;	author -;	state -;
+branches;
+next	1.71;
+
+1.71
+date	2014.01.08.00.42.07;	author -;	state -;
+branches;
+next	1.70;
+
+1.70
+date	2014.01.08.00.27.09;	author -;	state -;
+branches;
+next	1.69;
+
+1.69
+date	2014.01.06.22.31.14;	author -;	state -;
+branches;
+next	1.68;
+
+1.68
+date	2014.01.06.22.30.16;	author -;	state -;
+branches;
+next	1.67;
+
+1.67
+date	2013.10.18.02.00.47;	author -;	state -;
+branches;
+next	1.66;
+
+1.66
+date	2013.10.18.01.59.55;	author -;	state -;
+branches;
+next	1.65;
+
+1.65
+date	2013.10.18.01.55.52;	author -;	state -;
+branches;
+next	1.64;
+
+1.64
+date	2013.10.15.01.51.33;	author -;	state -;
+branches;
+next	1.63;
+
+1.63
+date	2013.10.08.21.34.37;	author -;	state -;
+branches;
+next	1.62;
+
+1.62
+date	2013.10.08.21.33.36;	author -;	state -;
+branches;
+next	1.61;
+
+1.61
+date	2013.10.03.20.49.41;	author -;	state -;
+branches;
+next	1.60;
+
+1.60
+date	2013.10.03.02.12.52;	author -;	state -;
+branches;
+next	1.59;
+
+1.59
+date	2013.10.02.00.51.32;	author -;	state -;
+branches;
+next	1.58;
+
+1.58
+date	2013.10.02.00.48.09;	author -;	state -;
+branches;
+next	1.57;
+
+1.57
+date	2013.10.02.00.34.08;	author -;	state -;
+branches;
+next	1.56;
+
+1.56
+date	2013.10.01.20.43.53;	author -;	state -;
+branches;
+next	1.55;
+
+1.55
+date	2013.09.27.02.37.17;	author -;	state -;
+branches;
+next	1.54;
+
+1.54
+date	2013.09.27.00.33.04;	author -;	state -;
+branches;
+next	1.53;
+
+1.53
+date	2013.09.27.00.30.43;	author -;	state -;
+branches;
+next	1.52;
+
+1.52
+date	2013.09.27.00.23.58;	author -;	state -;
+branches;
+next	1.51;
+
+1.51
+date	2013.09.26.23.45.29;	author -;	state -;
+branches;
+next	1.50;
+
+1.50
+date	2013.09.26.23.35.34;	author -;	state -;
+branches;
+next	1.49;
+
+1.49
+date	2013.09.26.23.35.07;	author -;	state -;
+branches;
+next	1.48;
+
+1.48
+date	2013.09.26.23.29.43;	author -;	state -;
+branches;
+next	1.47;
+
+1.47
+date	2013.09.26.20.31.45;	author -;	state -;
+branches;
+next	1.46;
+
+1.46
+date	2013.09.26.02.50.07;	author -;	state -;
+branches;
+next	1.45;
+
+1.45
+date	2013.09.26.02.04.42;	author -;	state -;
+branches;
+next	1.44;
+
+1.44
+date	2013.09.26.02.04.11;	author -;	state -;
+branches;
+next	1.43;
+
+1.43
+date	2013.09.26.02.03.46;	author -;	state -;
+branches;
+next	1.42;
+
+1.42
+date	2013.09.26.01.59.38;	author -;	state -;
+branches;
+next	1.41;
+
+1.41
+date	2013.09.26.01.57.08;	author -;	state -;
+branches;
+next	1.40;
+
+1.40
+date	2013.09.26.01.55.42;	author -;	state -;
+branches;
+next	1.39;
+
+1.39
+date	2013.09.26.01.53.08;	author -;	state -;
+branches;
+next	1.38;
+
+1.38
+date	2013.09.26.01.51.55;	author -;	state -;
+branches;
+next	1.37;
+
+1.37
+date	2013.06.20.22.14.06;	author -;	state -;
+branches;
+next	1.36;
+
+1.36
+date	2013.03.28.02.10.45;	author -;	state -;
+branches;
+next	1.35;
+
+1.35
+date	2013.03.13.02.26.58;	author -;	state -;
+branches;
+next	1.34;
+
+1.34
+date	2013.03.08.02.12.56;	author -;	state -;
+branches;
+next	1.33;
+
+1.33
+date	2013.03.08.02.12.37;	author -;	state -;
+branches;
+next	1.32;
+
+1.32
+date	2013.03.08.02.12.22;	author -;	state -;
+branches;
+next	1.31;
+
+1.31
+date	2013.03.08.01.43.06;	author -;	state -;
+branches;
+next	1.30;
+
+1.30
+date	2013.03.08.01.25.47;	author -;	state -;
+branches;
+next	1.29;
+
+1.29
+date	2013.03.08.01.21.10;	author -;	state -;
+branches;
+next	1.28;
+
+1.28
+date	2013.03.08.01.08.51;	author -;	state -;
+branches;
+next	1.27;
+
+1.27
+date	2013.03.02.01.43.04;	author -;	state -;
+branches;
+next	1.26;
+
+1.26
+date	2013.03.02.01.41.56;	author -;	state -;
+branches;
+next	1.25;
+
+1.25
+date	2013.02.27.02.32.59;	author -;	state -;
+branches;
+next	1.24;
+
+1.24
+date	2013.02.21.22.27.16;	author -;	state -;
+branches;
+next	1.23;
+
+1.23
+date	2013.02.20.21.17.36;	author -;	state -;
+branches;
+next	1.22;
+
+1.22
+date	2013.02.13.01.47.23;	author -;	state -;
+branches;
+next	1.21;
+
+1.21
+date	2013.02.13.01.45.12;	author -;	state -;
+branches;
+next	1.20;
+
+1.20
+date	2013.02.02.03.39.39;	author -;	state -;
+branches;
+next	1.19;
+
+1.19
+date	2013.01.31.01.47.17;	author -;	state -;
+branches;
+next	1.18;
+
+1.18
+date	2013.01.30.21.11.08;	author -;	state -;
+branches;
+next	1.17;
+
+1.17
+date	2013.01.30.03.35.20;	author -;	state -;
+branches;
+next	1.16;
+
+1.16
+date	2013.01.30.03.23.52;	author -;	state -;
+branches;
+next	1.15;
+
+1.15
+date	2013.01.30.03.23.29;	author -;	state -;
+branches;
+next	1.14;
+
+1.14
+date	2013.01.30.03.22.47;	author -;	state -;
+branches;
+next	1.13;
+
+1.13
+date	2013.01.30.03.15.18;	author -;	state -;
+branches;
+next	1.12;
+
+1.12
+date	2013.01.30.03.12.18;	author -;	state -;
+branches;
+next	1.11;
+
+1.11
+date	2013.01.30.03.03.00;	author -;	state -;
+branches;
+next	1.10;
+
+1.10
+date	2013.01.30.02.52.13;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2012.05.09.04.32.10;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2012.05.09.02.26.05;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2012.05.09.02.25.37;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2012.05.09.02.25.11;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2012.05.09.02.24.25;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2012.05.09.02.24.04;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2012.05.09.02.23.42;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2012.05.09.02.23.08;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2012.05.09.02.18.15;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.130
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: mkheader,v 1.129 2014-05-29 18:34:05-07 - - $
+#
+# NAME
+#    mkheader - make header for root of course directory
+#    
+# SYNOPSIS
+#    mkheader
+#
+# DESCRIPTION
+#    Reads in the file README.cat and tries to detect all due dates
+#    with leading text of the form Ddd Mmm Nn, sorts them into order
+#    by date, assuming the current year and makes a header file
+#    HEADER.html to appear ahead of the default directory listing.
+#    Output in the current directory.
+#
+
+BEGIN {
+   push @@INC, "/afs/cats.ucsc.edu/courses/cmps012b-wm/usr/share/perl5"
+}
+
+use strict;
+use warnings;
+use Getopt::Std;
+use HTTP::Date qw (str2time);
+use POSIX qw (strftime);
+
+my $status = 0;
+$SIG{'__WARN__'} = sub {print STDERR @@_; $status = 1; };
+$SIG{'__DIE__'} = sub {warn @@_; exit 1; };
+
+my $daylen = 24 * 60 * 60;
+my %months = qw (Jan 0 Feb 1 Mar 2 Apr 3 May 4 Jun 5
+                 Jul 6 Aug 7 Sep 8 Oct 9 Nov 10 Dec 11);
+my $monthpat = join "|", keys %months;
+my $daypat = join "|", qw (Sun Mon Tue Wed Thu Fri Sat);
+my $datepat = qr {(\.\s+($daypat)\s+($monthpat)\s+(\d+)\.)(.*)};
+my $timenow = $^T;
+my @@localtime_now = localtime $timenow;
+my $year = $localtime_now[5] + 1900;
+
+$0 =~ s|.*/||;
+@@ARGV == 0 or die "Usage: $0\n";
+
+my $coursepwd = "/afs/cats.ucsc.edu/courses";
+my $pwd = `pwd`;
+chomp $pwd;
+my $url = `pwd2url`;
+chomp $url;
+my $TITLE = $pwd;
+$TITLE =~ s|/afs/cats.ucsc.edu/courses/|~|;
+print "$0: $TITLE\n";
+
+my $bg_data_color = "#0F3F3F";
+my $bg_empty_color = "#2F2F2F";
+my $fg_hover_color = "#FF2F2F";
+my $fg_link_color = "#2FFFFF";
+my $fg_text_color = "#2FFF2F";
+my $fg_visited_color = "#FFFF2F";
+
+sub print_html_head ($;$) {
+   my ($htmlfile, $calendar_table) = @@_;
+
+   print $htmlfile "<HEAD>\n";
+   print $htmlfile "<TITLE>$TITLE</TITLE>\n";
+   print $htmlfile "<STYLE>\n";
+   print $htmlfile "body {\n";
+   print $htmlfile "   color: $fg_text_color !important;\n";
+   print $htmlfile "   background-color: $bg_empty_color !important;\n";
+   print $htmlfile "}\n";
+   if ($calendar_table) {
+      print $htmlfile "table {\n";
+      print $htmlfile "   border: 2px solid;\n";
+      print $htmlfile "   border-spacing: 0px;\n";
+      print $htmlfile "}\n";
+      print $htmlfile "td {\n";
+      print $htmlfile "   border: 2px solid;\n";
+      print $htmlfile "   padding: 3px;\n";
+      print $htmlfile "   width: 14%;\n";
+      print $htmlfile "   vertical-align: top;\n";
+      print $htmlfile "}\n";
+   }
+   print $htmlfile "A:link {color: $fg_link_color}\n";
+   print $htmlfile "A:visited {color: $fg_visited_color}\n";
+   print $htmlfile "A:hover {color: $fg_hover_color}\n";
+   print $htmlfile "</STYLE>\n";
+   print $htmlfile "</HEAD>\n";
+
+}
+
+my $readmename = "README.cat";
+my $readme_opened = open README, "<$readmename";
+unless (defined $readme_opened) {
+   my $headerhtml = "HEADER.html";
+   open my $HDRHTML, ">$headerhtml" or die "$0: $headerhtml: $!\n";
+   print_html_head $HDRHTML;
+   print $HDRHTML "<BODY>\n";
+   print $HDRHTML "<BIG><B>Index of:\n";
+   print $HDRHTML "<BR><TT><A HREF=$url>$url</A></TT>\n";
+   print $HDRHTML "<BR><TT>$pwd</TT>\n";
+   print $HDRHTML "</B></BIG>\n";
+   close $HDRHTML;
+   exit;
+}
+
+my %duedates;
+my $rcsid = "";
+my $quarter = "";
+my @@registrar;
+my $first_time = 1e1000;
+my $last_time = 0;
+my %calendar;
+while (defined (my $line = <README>)) {
+   $rcsid = $& and next if $line =~ m/\$(Id): .*?\$/;
+   $quarter = $1 and next if $line =~ m/\.\s+Quarter:\s+(.*)/;
+   push @@registrar, $& and next if $line =~ m|http://registrar\.\S+|;
+   next unless $line =~ m/$datepat/;
+   my ($date, $wday, $month, $mday, $item) = ($1, $2, $3, $4, $5);
+   my $duedate = "$month $mday $year";
+   my $duetime = str2time $duedate;
+   $first_time = $duetime if $first_time > $duetime;
+   $last_time = $duetime if $last_time < $duetime;
+   print "$duedate - not a valid date\n" and next unless $duetime;
+   my @@localduetime = localtime $duetime;
+   my $chkwday = strftime "%a", @@localduetime;
+   if ($wday ne $chkwday) {
+      $duedates{$date} = "$date is really $chkwday";
+      warn "$duedates{$date}\n";
+   }
+   my $duetimekey = strftime "%Y-%m-%d", @@localduetime;
+   $duedates{$duetimekey} = "$date$item";
+   my $weeknum = strftime "%U", @@localduetime;
+   my $daynum = strftime "%w", @@localduetime;
+   my $caldate = strftime "%a %b %d", @@localduetime;
+   if (defined $calendar{$weeknum}{$daynum}) {
+      warn "\$calendar{$weeknum}{$daynum}:\n";
+      warn "Defined:   [@@{$calendar{$weeknum}{$daynum}}]\n";
+      warn "Redefined: [$caldate $item]\n";
+   }else {
+      $calendar{$weeknum}{$daynum} = [$caldate, $item];
+   }
+}
+close README;
+exit $status if $status;
+
+print "$0: quarter $quarter\n";
+
+$first_time -= $daylen while $timenow < $first_time
+                         and $first_time <= $last_time;
+for (my $time = $first_time; $time <= $last_time; $time += $daylen) {
+   my @@gmtime = gmtime $time;
+   my $week = strftime "%U", @@gmtime;
+   my $day = strftime "%w", @@gmtime;
+   my $caldate = strftime "%a %b %d", @@gmtime;
+   $calendar{$week}{$day} = [$caldate] unless $calendar{$week}{$day};
+}
+
+$rcsid =~ s/\$(Id): (.*?)(,v(\s+\S+){3}).*/$2$3/;
+
+sub urlify($) {
+   my ($line) = @@_;
+   $line =~ s|http:([^,\s])+|<A HREF=$&>$&</A>|
+            unless $line =~ m|http:\S+\*|;
+   return $line;
+}
+
+my $headerhtml = "HEADER.html";
+open my $HDRHTML, ">$headerhtml" or die "$0: $headerhtml: $!\n";
+my $headercat = "HEADER.cat";
+open my $HDRCAT, ">$headercat" or die "$0: $headercat: $!\n";
+
+sub print_both($) {
+   my ($line) = @@_;
+   print $HDRHTML urlify $line;
+   $line =~ s/<.*?>//g;
+   print $HDRCAT $line;
+}
+
+sub ten_chars($) {
+   my ($chars) = @@_;
+   $chars = substr $chars . " " x 10, 0, 10;
+   return $chars;
+}
+
+print_html_head $HDRHTML, 1;
+print $HDRHTML "<BODY>\n";
+print_both     "<B><BIG><TT>Index of:\n";
+print_both     "<BR>$url\n";
+print_both     "<BR>$pwd\n";
+print_both     "<PRE>\n";
+print_both     "$duedates{$_}\n" for sort keys %duedates;
+print_both     "</PRE>\n";
+print $HDRCAT  "HEADER: HEADER.cat\n";
+print $HDRHTML urlify "HEADER: http:HEADER.html\n";
+print $HDRCAT  "README: $rcsid\n";
+$rcsid =~ s/\.txt,v/.html,v/;
+print $HDRHTML urlify "<BR>README: http:$rcsid\n";
+print_both     "<BR>REGISTRAR: $_\n" for @@registrar;
+print_both     "<P>\n";
+print $HDRHTML "</TT></BIG></B>\n";
+
+if ($first_time < $last_time) {
+   print $HDRHTML "<TT>\n";
+   print $HDRHTML "<TABLE>\n";
+   for my $weeknum (sort keys %calendar) {
+      print $HDRHTML "<TR>\n";
+      for my $daynum (0..6) {
+         my $data = $calendar{$weeknum}{$daynum};
+         my $htline = "&nbsp;<BR>&nbsp;";
+         my $td_style = "";
+         if (defined $data) {
+            my ($date, $info) = @@$data;
+            $date =~ s/\s/&nbsp;/g;
+            $date =~ s/&nbsp;0/&nbsp;&nbsp;/;
+            if (not defined $info) {
+               $htline = "$date<BR>&nbsp;";
+            }else {
+               $info =~ m/^\s*(.*?)\.\s*(http:\S+)?/;
+               my ($item, $url) = (ten_chars $1, $2);
+               $item =~ s/\s/&nbsp;/g;
+               $htline = "\n<B>$date\n<BR>$item</B>";
+               $htline = "\n<A HREF=$url>$htline</A>"
+                       if $url and $url !~ m/\*$/;
+               $td_style = "background-color: $bg_data_color;";
+            }
+         }
+         print $HDRHTML "<TD style=\"$td_style\">$htline\n</TD>\n";
+      }
+      print $HDRHTML "</TR>\n";
+   }
+   print $HDRHTML "</TABLE>\n";
+}
+print $HDRHTML "</BODY>\n";
+
+if ($first_time < $last_time) {
+   sub print_sep_line { print $HDRCAT "+----------" x 7, "+\n" }
+   for my $weeknum (sort keys %calendar) {
+      print_sep_line;
+      my $week = $calendar {$weeknum};
+      for my $row (0..1) {
+         for my $daynum (0..6) {
+            my $day = $week->{$daynum};
+            my $data = defined ($day) && defined ($day->[$row])
+                     ? $day->[$row] : "";
+            $data =~ s/^\s*(.*?)\..*/$1/;
+            $data =~ s/ 0(\d)/  $1/;
+            print $HDRCAT "|", ten_chars $data;
+         }
+         print $HDRCAT "|\n";
+      }
+   }
+   print_sep_line;
+}
+
+close $HDRHTML;
+close $HDRCAT;
+
+system "ls -la $headerhtml $headercat";
+system "cat $headercat";
+
+@
+
+
+1.129
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.128 2014-04-02 17:30:24-07 - - $
+d98 1
+a98 1
+   print $HDRHTML "<BIG><B>\n";
+@
+
+
+1.128
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.127 2014-03-27 19:53:41-07 - - $
+a98 1
+   print $HDRHTML "Index of\n";
+d175 1
+a175 1
+   $line =~ s/http://;
+d187 6
+a192 4
+print $HDRHTML "<PRE><B><BIG>\n";
+print_both    "PWD: $pwd\n";
+print_both    "URL: $url\n";
+print_both    "$duedates{$_}\n" for sort keys %duedates;
+d197 4
+a200 4
+print $HDRHTML urlify "README: http:$rcsid\n";
+print_both    "REGISTRAR: $_\n" for @@registrar;
+print_both    "\n";
+print $HDRHTML "</BIG></B></PRE>\n";
+@
+
+
+1.127
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.126 2014-03-27 18:36:34-07 - - $
+d51 1
+a51 1
+$TITLE =~ s|/afs/cats.ucsc.edu/courses/|*|;
+@
+
+
+1.126
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.125 2014-03-27 15:53:27-07 - - $
+d98 1
+a98 1
+   print $HDRHTML "<BIG><B><PRE>\n";
+d100 3
+a102 3
+   print $HDRHTML "<A HREF=$url>$url</A>\n";
+   print $HDRHTML "$pwd\n";
+   print $HDRHTML "</PRE></B></BIG>\n";
+@
+
+
+1.125
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.124 2014-03-26 19:13:57-07 - - $
+d102 1
+a102 1
+   print $HDRHTML "</PRE>\n";
+a197 1
+print $HDRHTML "</BIG></B>";
+d199 1
+a199 1
+print $HDRHTML "</PRE>\n";
+@
+
+
+1.124
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.123 2014-03-26 14:59:20-07 - - $
+d54 1
+a54 1
+my $bg_data_color = "#3F2F1F";
+@
+
+
+1.123
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.122 2014-03-26 14:23:33-07 - - $
+d54 1
+a54 1
+my $bg_data_color = "#0F3F3F"; #
+@
+
+
+1.122
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.121 2014-03-26 14:10:38-07 - - $
+d87 1
+a87 1
+   print $htmlfile "</HEAD\n";
+d102 1
+@
+
+
+1.121
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.120 2014-03-26 13:42:56-07 - - $
+d98 4
+a101 5
+   print $HDRHTML "<BIG><B>\n";
+   print $HDRHTML "<BR>Index of\n";
+   print $HDRHTML "<BR><TT><A HREF=$url>$url</A></TT>\n";
+   print $HDRHTML "<BR><TT>$pwd</TT>\n";
+   print $HDRHTML "</BODY>\n";
+@
+
+
+1.120
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.119 2014-03-25 19:25:53-07 - - $
+a93 1
+   print "$0: $pwd\n";
+@
+
+
+1.119
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.118 2014-03-25 18:53:10-07 - - $
+d54 1
+a54 1
+my $bg_date_color = "#0F3F3F"; #
+d225 1
+a225 1
+               $td_style = "background-color: $bg_date_color;";
+@
+
+
+1.118
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.117 2014-03-25 18:50:28-07 - - $
+d214 2
+a215 1
+            $date =~ s/ 0(\d)$/ &nbsp;$1/;
+d221 5
+a225 4
+               $htline = ($url && $url !~ m/\*$/)
+                       ? "<B><A HREF=$url>$date<BR>$item</B></A>"
+                       : "<B>$date<BR>$item</B>";
+               $td_style = "style=\"background-color: $bg_date_color\"";
+d228 1
+a228 1
+         print $HDRHTML "<TD $td_style>$htline</TD>\n";
+@
+
+
+1.117
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.116 2014-03-25 18:19:14-07 - - $
+d50 3
+a52 7
+my @@TITLE = split "/", $pwd;
+splice @@TITLE, 1, 3;
+$TITLE[1] =~ s/\D*(\w+).*/$1/;
+map {s/(.{4}).*/$1/} @@TITLE;
+push @@TITLE, "";
+my $TITLE = join "*", @@TITLE;
+print "$TITLE\n";
+@
+
+
+1.116
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.113 2014-03-25 17:15:59-07 - - $
+a97 1
+   print "$0: $readmename: $!\n";
+@
+
+
+1.115
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.114 2014-03-25 17:18:20-07 - - $
+d50 7
+a56 2
+my $TITLE = $pwd;
+$TITLE =~ s|$coursepwd/|*|;
+d65 2
+a66 2
+sub print_html_head ($) {
+   my ($htmlfile) = @@_;
+d75 12
+a86 10
+   print $htmlfile "table {\n";
+   print $htmlfile "   border: 2px solid;\n";
+   print $htmlfile "   border-spacing: 0px;\n";
+   print $htmlfile "}\n";
+   print $htmlfile "td {\n";
+   print $htmlfile "   border: 2px solid;\n";
+   print $htmlfile "   padding: 3px;\n";
+   print $htmlfile "   width: 14%;\n";
+   print $htmlfile "   vertical-align: top;\n";
+   print $htmlfile "}\n";
+d98 1
+d192 1
+a192 2
+
+print_html_head $HDRHTML;
+@
+
+
+1.114
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.113 2014-03-25 17:15:59-07 - - $
+d50 1
+a50 1
+my $TITLE = $url
+a51 1
+print "$TITLE\n";
+a90 1
+   print "$0: $readmename: $!\n";
+@
+
+
+1.113
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.112 2014-03-25 17:04:22-07 - - $
+d50 2
+a51 6
+my @@TITLE = split "/", $pwd;
+splice @@TITLE, 1, 3;
+$TITLE[1] =~ s/\D*(\w+).*/$1/;
+map {s/(.{4}).*/$1/} @@TITLE;
+push @@TITLE, "";
+my $TITLE = join "*", @@TITLE;
+@
+
+
+1.112
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.111 2014-03-25 16:55:28-07 - - $
+d50 6
+a55 4
+my $TITLE = $pwd;
+$TITLE =~ s|/afs/cats.ucsc.edu/courses/|*|;
+print "$TITLE\n";
+$TITLE =~ s|\*cmps(\w+).*?/(.*/)?(.*)|*$1*/$3|;
+@
+
+
+1.111
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.110 2014-03-25 16:38:55-07 - - $
+d51 4
+a54 1
+$TITLE =~ s|/afs/cats.ucsc.edu/courses/cmps(\w+)/.*/(.*)|$1/**/$2|;
+d63 1
+a63 1
+sub print_html_head ($$) {
+@
+
+
+1.110
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.109 2014-03-25 15:43:38-07 - - $
+d45 8
+d61 1
+a61 1
+   my ($htmlfile, $title) = @@_;
+d64 1
+a64 1
+   print $htmlfile "<TITLE>$title</TITLE>\n";
+a91 4
+   my $pwd = `pwd`;
+   chomp $pwd;
+   my $url = `pwd2url`;
+   chomp $url;
+d95 1
+a95 3
+   my $title = $url;
+   $title =~ s|^.*/(.*?/.*?/)|*$1|;
+   print_html_head $HDRHTML, $title;
+a159 10
+my $coursepwd = "/afs/\.?cats.ucsc.edu/courses";
+my $courseurl = "http://www2.ucsc.edu/courses";
+my $pwd = `pwd`;
+chomp $pwd;
+$pwd .= "/";
+my $url = $pwd;
+$url =~ s|^$coursepwd(.*)|$courseurl$1:/|;
+my $title = $pwd;
+$title =~ s|^$coursepwd/(.*?)/*$|*$1|;
+
+d186 1
+a186 1
+print_html_head ($HDRHTML, $title);
+@
+
+
+1.109
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.108 2014-03-24 20:53:26-07 - - $
+d92 1
+a92 1
+   $title =~ s|^.*/(.*?/.*?/)|$1|;
+d166 1
+a166 1
+$title =~ s|^$coursepwd/(.*?)/*$|$1|;
+d200 2
+a204 2
+print $HDRCAT  "HEADER: HEADER.cat\n";
+print $HDRHTML urlify "HEADER: http:HEADER.html\n";
+@
+
+
+1.108
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.107 2014-03-24 20:03:10-07 - - $
+d45 6
+a50 6
+my $text_color = "#2FFF2F";
+my $empty_color = "#2F2F2F";
+my $date_color = "#3F2F1F"; #
+my $link_color = "#2FFFFF";
+my $visited_color = "#FFFF2F";
+my $hover_color = "#FF2F2F";
+d59 2
+a60 2
+   print $htmlfile "   color: $text_color !important;\n";
+   print $htmlfile "   background-color: $empty_color !important;\n";
+d72 3
+a74 3
+   print $htmlfile "A:link {color: $link_color}\n";
+   print $htmlfile "A:visited {color: $visited_color}\n";
+   print $htmlfile "A:hover {color: $hover_color}\n";
+d230 1
+a230 1
+               $td_style = "style=\"background-color: $date_color\"";
+@
+
+
+1.107
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.106 2014-03-24 20:02:26-07 - - $
+d83 1
+d88 1
+a88 2
+   print "$0: pwd: $pwd\n";
+   print "$0: $readmename: $!\n";
+@
+
+
+1.106
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.105 2014-03-24 19:57:42-07 - - $
+d83 4
+a86 2
+   my $pwd = `pwd`; chomp $pwd;
+   my $url = `pwd2url`; chomp $url;
+a87 1
+   print "$0: url: $url\n";
+a90 1
+   print "$0: open \">$headerhtml\": OK\n";
+@
+
+
+1.105
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.104 2014-03-24 19:49:42-07 - - $
+d83 5
+a87 1
+   warn "$0: $readmename: $!\n";
+d90 1
+a90 5
+   print "open \">$headerhtml\": OK\n";
+   my $pwd = `pwd`;
+   chomp $pwd;
+   my $url = `pwd2url`;
+   chomp $url;
+@
+
+
+1.104
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.103 2014-03-24 18:03:25-07 - - $
+d24 1
+d27 1
+d92 1
+a92 1
+   $title =~ s|.*/:/||;
+@
+
+
+1.103
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.102 2014-03-24 17:58:22-07 - - $
+d43 35
+d79 22
+a100 1
+open README, "<$readmename" or die "$0: $readmename: $!\n";
+d174 1
+a174 1
+open HDRHTML, ">$headerhtml" or die "$0: $headerhtml: $!\n";
+d176 1
+a176 1
+open HDRCAT, ">$headercat" or die "$0: $headercat: $!\n";
+d180 1
+a180 1
+   print HDRHTML urlify $line;
+d182 1
+a182 1
+   print HDRCAT $line;
+a190 6
+my $text_color = "#2FFF2F";
+my $empty_color = "#2F2F2F";
+my $date_color = "#3F2F1F"; #
+my $link_color = "#2FFFFF";
+my $visited_color = "#FFFF2F";
+my $hover_color = "#FF2F2F";
+d192 3
+a194 24
+print HDRHTML "<HEAD>\n";
+print HDRHTML "<TITLE>$title</TITLE>\n";
+print HDRHTML "<STYLE>\n";
+print HDRHTML "body {\n";
+print HDRHTML "   color: $text_color !important;\n";
+print HDRHTML "   background-color: $empty_color !important;\n";
+print HDRHTML "}\n";
+print HDRHTML "table {\n";
+print HDRHTML "   border: 2px solid;\n";
+print HDRHTML "   border-spacing: 0px;\n";
+print HDRHTML "}\n";
+print HDRHTML "td {\n";
+print HDRHTML "   border: 2px solid;\n";
+print HDRHTML "   padding: 3px;\n";
+print HDRHTML "   width: 14%;\n";
+print HDRHTML "   vertical-align: top;\n";
+print HDRHTML "}\n";
+print HDRHTML "A:link {color: $link_color}\n";
+print HDRHTML "A:visited {color: $visited_color}\n";
+print HDRHTML "A:hover {color: $hover_color}\n";
+print HDRHTML "</STYLE>\n";
+print HDRHTML "</HEAD\n";
+print HDRHTML "<BODY>\n";
+print HDRHTML "<PRE><B><BIG>\n";
+d198 1
+a198 1
+print HDRCAT  "README: $rcsid\n";
+d200 3
+a202 3
+print HDRHTML urlify "README: http:$rcsid\n";
+print HDRCAT  "HEADER: HEADER.cat\n";
+print HDRHTML urlify "HEADER: http:HEADER.html\n";
+d204 1
+a204 1
+print HDRHTML "</BIG></B>";
+d206 1
+a206 1
+print HDRHTML "</PRE>\n";
+d209 2
+a210 2
+   print HDRHTML "<TT>\n";
+   print HDRHTML "<TABLE>\n";
+d212 1
+a212 1
+      print HDRHTML "<TR>\n";
+d231 1
+a231 1
+         print HDRHTML "<TD $td_style>$htline</TD>\n";
+d233 1
+a233 1
+      print HDRHTML "</TR>\n";
+d235 1
+a235 1
+   print HDRHTML "</TABLE>\n";
+d237 1
+a237 1
+print HDRHTML "</BODY>\n";
+d240 1
+a240 1
+   sub print_sep_line { print HDRCAT "+----------" x 7, "+\n" }
+d251 1
+a251 1
+            print HDRCAT "|", ten_chars $data;
+d253 1
+a253 1
+         print HDRCAT "|\n";
+d259 2
+a260 2
+close HDRHTML;
+close HDRCAT;
+@
+
+
+1.102
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.101 2014-03-24 17:45:31-07 - - $
+a137 3
+#my $link_color = "#2FFFFF";
+#my $visited_color = "#FFFF2F";
+#my $hover_color = "#FF2F2F";
+d139 2
+a140 2
+my $visited_color = "#2FDFDF";
+my $hover_color = "#4FFFFF";
+@
+
+
+1.101
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.99 2014-03-24 16:19:56-07 - - $
+d135 2
+a136 2
+my $text_color = "#2FFF2F"; # bright green
+my $empty_color = "#2F2F2F"; # dark gray
+d138 6
+a143 3
+my $link_color = "#2FFFFF"; # bright yellow
+my $visited_color = "#FFFF2F"; # bright cyan
+my $hover_color = "#FF2F2F"; # bright red
+@
+
+
+1.100
+log
+@-
+@
+text
+@a52 1
+my %duetime;
+a80 1
+      $duetime{$weeknum}{$daynum} = $duetime;
+a193 3
+               my $duetime = $duetime{$weeknum}{$daynum};
+               my $blink = $duetime < $timenow + 7 * $daylen
+                         ? "<BLINK>" : "";
+d197 1
+a197 1
+                       ? "<B>$blink<A HREF=$url>$date<BR>$item</B></A>"
+@
+
+
+1.99
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.98 2014-03-24 16:18:10-07 - - $
+d53 1
+d82 1
+d196 3
+d202 1
+a202 1
+                       ? "<B><A HREF=$url>$date<BR>$item</B></A>"
+@
+
+
+1.98
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.97 2014-03-24 16:15:18-07 - - $
+d137 1
+a137 1
+my $date_color = "#4F1F1F"; #
+@
+
+
+1.97
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.96 2014-03-24 16:11:19-07 - - $
+d137 1
+a137 1
+my $date_color = "#0F2F4F"; # dark blue-green
+@
+
+
+1.96
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.95 2014-03-21 19:55:09-07 - - $
+d135 6
+a140 6
+my $text_color = "#2FFF2F"; #green
+my $empty_color = "#2F2F2F"; #black
+my $date_color = "#3F0F3F"; #blue
+my $link_color = "#2FFFFF"; #yellow
+my $visited_color = "#FFFF2F"; #cyan
+my $hover_color = "#FF2F2F"; #red
+@
+
+
+1.95
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.94 2014-03-21 19:53:25-07 - - $
+d137 1
+a137 1
+my $date_color = "#4F0F4F"; #blue
+@
+
+
+1.94
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.93 2014-03-21 18:16:03-07 - - $
+d137 1
+a137 1
+my $date_color = "#2F2F4F"; #blue
+@
+
+
+1.93
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.92 2014-03-21 18:10:16-07 - - $
+d136 2
+a137 1
+my $background_color = "#2F2F2F"; #black
+d147 1
+a147 1
+print HDRHTML "   background-color: $background_color !important;\n";
+d187 1
+d199 1
+d202 1
+a202 1
+         print HDRHTML "<TD>$htline</TD>\n";
+@
+
+
+1.92
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.91 2014-03-21 18:08:24-07 - - $
+a187 1
+            $date =~ s/\s/&nbsp;/g;
+a193 1
+               $item =~ s/\s/&nbsp;/g;
+@
+
+
+1.91
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.90 2014-03-21 18:07:31-07 - - $
+d188 1
+@
+
+
+1.90
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.89 2014-03-21 18:07:10-07 - - $
+a131 1
+   $chars =~ s/\s/&nbsp;/g;
+d194 1
+@
+
+
+1.89
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.88 2014-03-20 17:27:08-07 - - $
+d131 1
+a131 1
+   $chars = substr $chars . " " x 10, 0, 10
+@
+
+
+1.88
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.87 2014-03-20 17:06:07-07 - - $
+a38 1
+sub ten_chars($) { substr "@@_" . " " x 10, 0, 10 }
+d129 7
+@
+
+
+1.87
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.86 2014-03-20 16:50:55-07 - - $
+a88 1
+#my $earliest_backup = $last_time - 11 * 7 * $daylen;
+a90 1
+#                         and $earliest_backup < $first_time;
+a109 1
+my $datenow = strftime "%a %b %e %T %Z %Y", @@localtime_now;
+d150 1
+a150 1
+#print HDRHTML "   width: 14%;\n";
+a159 1
+print_both    "DATE: $datenow\n";
+@
+
+
+1.86
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.85 2014-03-18 22:44:06-07 - - $
+d39 1
+a39 1
+sub ten_chars { substr "@@_" . " " x 10, 0, 10 }
+d133 6
+d143 2
+a144 2
+print HDRHTML "   color: #2FFF2F !important;\n";
+print HDRHTML "   background-color: #2F2F2F !important;\n";
+d153 1
+a153 1
+print HDRHTML "   width: 7em;\n";
+d156 3
+a158 3
+print HDRHTML "A:link {color: #2FFFFF}\n";
+print HDRHTML "A:visited {color: #FFFF2F}\n";
+print HDRHTML "A:hover {color: #FF2F2F}\n";
+@
+
+
+1.85
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.84 2014-03-18 22:40:31-07 - - $
+d39 1
+d186 1
+a186 1
+               my ($item, $url) = ($1, $2);
+a196 1
+   print HDRHTML "</BODY>\n";
+d198 1
+a200 1
+   sub ten_chars { substr "@@_" . " " x 10, 0, 10 }
+@
+
+
+1.84
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.83 2014-03-18 18:55:24-07 - - $
+d89 2
+a90 1
+$first_time -= $daylen while $timenow < $first_time;
+@
+
+
+1.83
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.82 2014-03-18 18:35:35-07 - - $
+d84 1
+a85 4
+if ($first_time > $last_time) {
+   warn "$0: No dates ($datepat) found\n";
+}
+exit $status if $status;
+@
+
+
+1.82
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.81 2014-03-18 18:35:08-07 - - $
+d91 3
+a93 3
+my $earliest_backup = $last_time - 11 * 7 * $daylen;
+$first_time -= $daylen while $timenow < $first_time
+                         and $earliest_backup < $first_time;
+@
+
+
+1.81
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.80 2014-03-18 18:28:27-07 - - $
+d27 2
+a28 2
+$SIG{'__WARN__'} = sub {print STDERR @@_; $status = 1; }
+$SIG{'__DIE__'} = sub {warn @@_; exit 1; }
+@
+
+
+1.80
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.79 2014-03-18 18:27:29-07 - - $
+d26 3
+a44 1
+my $errors = 0;
+d68 1
+a68 2
+      print STDERR "$duedates{$date}\n";
+      ++$errors;
+d76 3
+a78 3
+      print STDERR "\$calendar{$weeknum}{$daynum}:\n";
+      print STDERR "Defined:   [@@{$calendar{$weeknum}{$daynum}}]\n";
+      print STDERR "Redefined: [$caldate $item]\n";
+a80 1
+      ++$errors;
+d86 1
+a86 2
+   print STDERR "$0: No dates ($datepat) found\n";
+   ++$errors;
+d88 1
+a88 1
+exit 1 if $errors;
+@
+
+
+1.79
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.78 2014-03-18 18:18:58-07 - - $
+d75 3
+a77 3
+      print STDERR "\$calendar{$weeknum}{$daynum}: ";
+      print STDERR "Defined: [@@{$calendar{$weeknum}{$daynum}}]\n";
+      print STDERR "Redefined: [$caldate, $item]\n";
+@
+
+
+1.78
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.76 2014-03-18 18:03:35-07 - - $
+d42 1
+d67 1
+d74 8
+a81 1
+   $calendar{$weeknum}{$daynum} = [$caldate, $item];
+d87 1
+a87 1
+   exit 1;
+d89 1
+@
+
+
+1.77
+log
+@-
+@
+text
+@d69 2
+a70 2
+   my $week = strftime "%U", @@localduetime;
+   my $day = strftime "%w", @@localduetime;
+d72 1
+a72 2
+   $calendar{$week}{$day} = [$caldate] unless $calendar{$week}{$day};
+   push @@{$calendar{$week}{$day}}, $item;
+d166 1
+a166 1
+   for my $week (sort keys %calendar) {
+d168 2
+a169 2
+      for my $day (0..6) {
+         my $data = $calendar{$week}{$day};
+d195 1
+a195 1
+   for my $week (sort keys %calendar) {
+d197 1
+a197 1
+      my $week = $calendar {$week};
+d199 2
+a200 2
+         for my $day (0..6) {
+            my $day = $week->{$day};
+@
+
+
+1.76
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.73 2014-03-10 20:30:52-07 - - $
+d69 2
+a70 2
+   my $weeknum = strftime "%U", @@localduetime;
+   my $daynum = strftime "%w", @@localduetime;
+d72 2
+a73 1
+   $calendar{$weeknum}{$daynum} = [$caldate, $item];
+a128 2
+print HDRHTML "TABLE {border:2px solid; border-spacing:0px;}\n";
+print HDRHTML "TD    {border:2px solid; padding:3px; width:7em;}\n";
+d133 10
+d167 1
+a167 1
+   for my $weeknum (sort keys %calendar) {
+d169 2
+a170 2
+      for my $daynum (0..6) {
+         my $data = $calendar{$weeknum}{$daynum};
+d196 1
+a196 1
+   for my $weeknum (sort keys %calendar) {
+d198 1
+a198 1
+      my $week = $calendar {$weeknum};
+d200 2
+a201 2
+         for my $daynum (0..6) {
+            my $day = $week->{$daynum};
+@
+
+
+1.75
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.74 2014-03-18 14:55:09-07 - - $
+d72 1
+a72 1
+   push @@{$calendar{$weeknum}{$daynum}}, [$caldate, $item];
+d90 1
+a90 1
+   unshift @@{$calendar{$week}{$day}}, [$caldate];
+d128 2
+a133 10
+print HDRHTML "table {\n";
+print HDRHTML "   border:2px solid;\n";
+print HDRHTML "   border-spacing:0px;\n";
+print HDRHTML "}\n";
+print HDRHTML "td {\n";
+print HDRHTML "   border:2px solid;\n";
+print HDRHTML "   padding:3px;\n";
+print HDRHTML "   width:7em;\n";
+print HDRHTML "   vertical-align:top;\n";
+print HDRHTML "}\n";
+d155 1
+a155 1
+if ($first_time <= $last_time) {
+d184 1
+a184 1
+if ($first_time <= $last_time) {
+@
+
+
+1.74
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.73 2014-03-10 20:30:52-07 - - $
+d72 1
+a72 1
+   $calendar{$weeknum}{$daynum} = [$caldate, $item];
+d90 1
+a90 1
+   $calendar{$week}{$day} = [$caldate] unless $calendar{$week}{$day};
+a127 2
+print HDRHTML "TABLE {border:2px solid; border-spacing:0px;}\n";
+print HDRHTML "TD    {border:2px solid; padding:3px; width:7em;}\n";
+d132 10
+@
+
+
+1.73
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.72 2014-03-07 18:23:28-08 - - $
+d155 1
+a155 1
+if ($first_time < $last_time) {
+d184 1
+a184 1
+if ($first_time < $last_time) {
+@
+
+
+1.72
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.71 2014-01-07 16:42:07-08 - - $
+d41 1
+a41 1
+open README, "<$readmename" or die "$0: $readmename: $!";
+d114 1
+a114 1
+open HDRHTML, ">$headerhtml" or die "$0: $headerhtml: $!";
+d116 1
+a116 1
+open HDRCAT, ">$headercat" or die "$0: $headercat: $!";
+@
+
+
+1.71
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.70 2014-01-07 16:27:09-08 - - $
+d34 2
+a35 2
+my @@timenow = localtime $timenow;
+my $year = $timenow[5] + 1900;
+d86 4
+a89 4
+   my @@localtime = localtime $time;
+   my $week = strftime "%U", @@localtime;
+   my $day = strftime "%w", @@localtime;
+   my $caldate = strftime "%a %b %d", @@localtime;
+d104 1
+a104 1
+my $datenow = strftime "%a %b %e %T %Z %Y", @@timenow;
+d130 7
+@
+
+
+1.70
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.69 2014-01-06 14:31:14-08 - - $
+a160 4
+            }elsif ($info =~ m/^\s*(.*?)\.\s*(http:\S+)/) {
+               my ($info, $url) = ($1, $2);
+               $url =~ s|/[^/]*$|| if $url =~ m/\*$/;
+               $htline = "<B><A HREF=$url>$date<BR>$info</B></A>";
+d162 5
+a166 2
+               $info =~ s/^\s*(.*?)\..*$/$1/;
+               $htline = "<B>$date<BR>$info</B>";
+@
+
+
+1.69
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.68 2014-01-06 14:30:16-08 - - $
+d161 1
+a161 1
+            }elsif ($info =~ m/^\s*(.*?)\.\s*(http:\S+[^*])$/) {
+d163 1
+@
+
+
+1.68
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.67 2013-10-17 19:00:47-07 - - $
+d163 1
+a163 1
+               $htline = "<A HREF=$url>$date<BR><B>$info</B></A>";
+d166 1
+a166 1
+               $htline = "$date<BR><B>$info</B>";
+@
+
+
+1.67
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.66 2013-10-17 18:59:55-07 - - $
+d163 1
+a163 1
+               $htline = "<A HREF=$url>$date<BR>$info</A>";
+d166 1
+a166 1
+               $htline = "$date<BR>$info";
+@
+
+
+1.66
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.65 2013-10-17 18:55:52-07 - - $
+a187 1
+            my $star = $data =~ m/http:\S+[^*]$/;
+a188 1
+            $data .= '*' if $star;
+@
+
+
+1.65
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.64 2013-10-14 18:51:33-07 - - $
+d188 1
+d190 1
+a190 1
+            $data .= "*" if $2;
+@
+
+
+1.64
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.63 2013-10-08 14:34:37-07 - - $
+d165 1
+a165 1
+               $info =~ s/\.+$//;
+d189 1
+@
+
+
+1.63
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.62 2013-10-08 14:33:36-07 - - $
+d161 1
+a161 1
+            }elsif ($info =~ m/^\s*(.*?)\.\s*(http:\S+)/) {
+@
+
+
+1.62
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.61 2013-10-03 13:49:41-07 - - $
+d77 1
+a77 1
+   print STDERR "$0: first($first_time)  > last($last_time)\n";
+@
+
+
+1.61
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.60 2013-10-02 19:12:52-07 - - $
+d75 5
+@
+
+
+1.60
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.59 2013-10-01 17:51:32-07 - - $
+d123 2
+a124 2
+print HDRHTML "TD {width:7em; border:3px solid;}\n";
+print HDRHTML "TABLE {border:3px solid; border-spacing:1px;}\n";
+@
+
+
+1.59
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.58 2013-10-01 17:48:09-07 - - $
+a89 9
+#my $cal;
+#if ($quarter =~ m/(\w+)\s+(20\d+)/) {
+#   my ($quarter, $year) = ($1, $2);
+#   my %quarters = qw (Winter 2 Spring 5 Summer 8 Fall 11);
+#   my $month = $quarters{$quarter};
+#   $cal = `cal -3 $month $year`
+#         if $month and 2 <= $month and $month <= 11;
+#}
+
+d120 1
+d122 6
+a143 6
+   my $cell_width = "width:7em;";
+   my $cell_spacing = "border-spacing:1px;";
+   my $solid_style = "border-style:solid;";
+   my $border_width = "border-width=1px;";
+   my $basic_style = "$cell_width $border_width $solid_style";
+   my $style = "style=\"$basic_style=\"";
+d145 1
+a145 2
+   print HDRHTML "<TABLE style=\"border:3px solid;"
+               . " $cell_spacing\">\n";
+a148 1
+         print HDRHTML "<TD $style>\n";
+d150 2
+a151 3
+         if (not defined $data) {
+            print HDRHTML "&nbsp;<BR>&nbsp;\n";
+         }else {
+d155 1
+a155 1
+               print HDRHTML "$date<BR>&nbsp;\n";
+d158 1
+a158 3
+               print HDRHTML "<A HREF=$url>\n";
+               print HDRHTML "$date<BR>$info\n";
+               print HDRHTML "</A>\n";
+d161 1
+a161 1
+               print HDRHTML "$date<BR>$info\n";
+d164 1
+a164 1
+         print HDRHTML "</TD>\n";
+d169 1
+@
+
+
+1.58
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.57 2013-10-01 17:34:08-07 - - $
+d169 1
+a169 1
+               print HDRHTML "<A HREF=$url\n";
+@
+
+
+1.57
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.56 2013-10-01 13:43:53-07 - - $
+d146 1
+a146 6
+   my $border_gray = "border-color:#7F7F7F;";
+   my $border_red = "border-color:#FF0000;";
+   my $backgnd_gray = "background-color:#BFBFBF;";
+   my $backgnd_yellow = "background-color:#FFFF7F;";
+   my $table_backgnd = "background-color:#FFFFFF;";
+   my $cell_width = "width:8em;";
+d151 1
+a151 4
+   sub style (@@) { join "", "style=\"", $basic_style, @@_, "\"" }
+   my $style_plain = style;
+   my $style_note = style; # $backgnd_gray;
+   my $style_duedate = style $border_red; # $backgnd_yellow;
+d154 1
+a154 1
+               . " $border_gray $cell_spacing\">\n";
+d158 1
+d161 1
+a161 1
+            print HDRHTML "<TD $style_plain>&nbsp;<BR>&nbsp;</TD>\n";
+a165 1
+               print HDRHTML "<TD $style_plain>\n";
+a166 1
+               print HDRHTML "</TD>\n";
+a168 1
+               print HDRHTML "<TD $style_duedate>\n";
+d170 1
+a170 1
+               print HDRHTML "<B>$date<BR>$info</B>\n";
+a171 1
+               print HDRHTML "</TD>\n";
+a173 1
+               print HDRHTML "<TD $style_note>\n";
+a174 1
+               print HDRHTML "</TD>\n";
+d177 1
+@
+
+
+1.56
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.55 2013-09-26 19:37:17-07 - - $
+d149 2
+a150 1
+   my $backgnd_yellow = "background-color:#FFFF7F;;";
+d158 2
+a159 2
+   my $style_note = style $backgnd_gray;
+   my $style_duedate = style $backgnd_yellow, $border_red;
+@
+
+
+1.55
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.54 2013-09-26 17:33:04-07 - - $
+d131 1
+d152 7
+a158 4
+   my $width = "$cell_width border-width=1px; border-style:solid";
+   my $style_plain = "style=\"$width\"";
+   my $style_note = "style=\"$width; $backgnd_gray\"";
+   my $style_duedate = "style=\"$width; $backgnd_yellow $border_red\"";
+@
+
+
+1.54
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.53 2013-09-26 17:30:43-07 - - $
+d145 10
+d157 1
+a157 7
+               . " border-color:#7F7F7F;"
+               . " border-spacing:1px\">\n";
+   my $width = "width:8em; border-width=1px; border-style:solid";
+   my $plainstyle = "style=\"$width\"";
+   my $notestyle = "style=\"$width; background-color:#BFBFBF\"";
+   my $boldstyle = "style=\"$width; background-color:#FFFF7F; "
+                 . "border-color:#FF0000\"";
+d163 1
+a163 1
+            print HDRHTML "<TD $plainstyle>&nbsp;<BR>&nbsp;</TD>\n";
+d168 1
+a168 1
+               print HDRHTML "<TD $plainstyle>\n";
+d173 1
+a173 1
+               print HDRHTML "<TD $boldstyle>\n";
+d180 1
+a180 1
+               print HDRHTML "<TD $notestyle>\n";
+@
+
+
+1.53
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.52 2013-09-26 17:23:58-07 - - $
+a141 1
+#print_both    $cal if $cal;
+d144 1
+a144 1
+if $first_time < $last_time {
+d187 1
+a187 1
+if $first_time < $last_time {
+@
+
+
+1.52
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.51 2013-09-26 16:45:29-07 - - $
+d145 16
+a160 28
+print HDRHTML "<TT>\n";
+print HDRHTML "<TABLE style=\"border:3px solid; border-color:#7F7F7F;"
+            . " border-spacing:1px\">\n";
+my $width = "width:8em; border-width=1px; border-style:solid";
+my $plainstyle = "style=\"$width\"";
+my $notestyle = "style=\"$width; background-color:#BFBFBF\"";
+my $boldstyle = "style=\"$width; background-color:#FFFF7F; "
+              . "border-color:#FF0000\"";
+for my $weeknum (sort keys %calendar) {
+   print HDRHTML "<TR>\n";
+   for my $daynum (0..6) {
+      my $data = $calendar{$weeknum}{$daynum};
+      if (not defined $data) {
+         print HDRHTML "<TD $plainstyle>&nbsp;<BR>&nbsp;</TD>\n";
+      }else {
+         my ($date, $info) = @@$data;
+         $date =~ s/ 0(\d)$/ &nbsp;$1/;
+         if (not defined $info) {
+            print HDRHTML "<TD $plainstyle>\n";
+            print HDRHTML "$date<BR>&nbsp;\n";
+            print HDRHTML "</TD>\n";
+         }elsif ($info =~ m/^\s*(.*?)\.\s*(http:\S+)/) {
+            my ($info, $url) = ($1, $2);
+            print HDRHTML "<TD $boldstyle>\n";
+            print HDRHTML "<A HREF=$url\n";
+            print HDRHTML "<B>$date<BR>$info</B>\n";
+            print HDRHTML "</A>\n";
+            print HDRHTML "</TD>\n";
+d162 19
+a180 4
+            $info =~ s/\.+$//;
+            print HDRHTML "<TD $notestyle>\n";
+            print HDRHTML "$date<BR>$info\n";
+            print HDRHTML "</TD>\n";
+d183 1
+d185 1
+a185 1
+   print HDRHTML "</TR>\n";
+a186 1
+print HDRHTML "</TABLE>\n";
+d188 16
+a203 13
+sub ten_chars { substr "@@_" . " " x 10, 0, 10 }
+sub print_sep_line { print HDRCAT "+----------" x 7, "+\n" }
+for my $weeknum (sort keys %calendar) {
+   print_sep_line;
+   my $week = $calendar {$weeknum};
+   for my $row (0..1) {
+      for my $daynum (0..6) {
+         my $day = $week->{$daynum};
+         my $data = defined ($day) && defined ($day->[$row])
+                  ? $day->[$row] : "";
+         $data =~ s/^\s*(.*?)\..*/$1/;
+         $data =~ s/ 0(\d)/  $1/;
+         print HDRCAT "|", ten_chars $data;
+a204 1
+      print HDRCAT "|\n";
+d206 1
+a207 1
+print_sep_line;
+@
+
+
+1.51
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.50 2013-09-26 16:35:34-07 - - $
+d77 3
+a79 2
+$diff_time = int (($first_time - $timenow) / $daylen) * $daylen;
+$first_time -= $diff_time if $diff_time > 0;
+@
+
+
+1.50
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.49 2013-09-26 16:35:07-07 - - $
+d77 2
+@
+
+
+1.49
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.48 2013-09-26 16:29:43-07 - - $
+d193 1
+a193 1
+         $data +~ s/ 0(\d)/  $1/;
+@
+
+
+1.48
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.47 2013-09-26 13:31:45-07 - - $
+d158 1
+a158 1
+         $date =~ s/0(\d)$/&nbsp;$1/;
+d193 1
+@
+
+
+1.47
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.46 2013-09-25 19:50:07-07 - - $
+d87 8
+a94 8
+my $cal;
+if ($quarter =~ m/(\w+)\s+(20\d+)/) {
+   my ($quarter, $year) = ($1, $2);
+   my %quarters = qw (Winter 2 Spring 5 Summer 8 Fall 11);
+   my $month = $quarters{$quarter};
+   $cal = `cal -3 $month $year`
+         if $month and 2 <= $month and $month <= 11;
+}
+d139 1
+a139 1
+print_both    $cal if $cal;
+d163 1
+a163 1
+         }elsif ($info =~ m/^(.*?)\.\s*(http:\S+)/) {
+d182 18
+@
+
+
+1.46
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.45 2013-09-25 19:04:42-07 - - $
+d127 1
+a127 1
+print HDRHTML "<PRE><B><BIG><BIG>\n";
+d137 1
+a137 1
+print HDRHTML "</BIG></BIG></B>";
+@
+
+
+1.45
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.44 2013-09-25 19:04:11-07 - - $
+d143 7
+a149 2
+print HDRHTML "<TABLE border=1>\n";
+my $width = "style=\"width:8em\"";
+d155 1
+a155 1
+         print HDRHTML "<TD>&nbsp;<BR>&nbsp;</TD>\n";
+d160 1
+a160 1
+            print HDRHTML "<TD $width>\n";
+d165 1
+a165 1
+            print HDRHTML "<TD $width bgcolor=#FFFF7F>\n";
+d172 1
+a172 1
+            print HDRHTML "<TD $width bgcolor=#BFBFBF>\n";
+@
+
+
+1.44
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.43 2013-09-25 19:03:46-07 - - $
+d158 1
+a158 1
+         }elsif ($$info =~ m/^(.*?)\.\s*(http:\S+)/) {
+d168 1
+a168 1
+            print HDRHTML "$date<BR>$$info\n";
+@
+
+
+1.43
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.42 2013-09-25 18:59:38-07 - - $
+d154 1
+a154 1
+         if (not defined $$info) {
+@
+
+
+1.42
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.41 2013-09-25 18:57:08-07 - - $
+a150 11
+      }elsif (not defined $data->[1]) {
+         print HDRHTML "<TD $width>\n";
+         print HDRHTML "$data->[0]<BR>&nbsp;\n";
+         print HDRHTML "</TD>\n";
+      }elsif ($data->[1] =~ m/^(.*?)\.\s*(http:\S+)/) {
+         my ($info, $url) = ($1, $2);
+         print HDRHTML "<TD $width bgcolor=#FFFF7F>\n";
+         print HDRHTML "<A HREF=$url\n";
+         print HDRHTML "<B>$data->[0]<BR>$info</B>\n";
+         print HDRHTML "</A>\n";
+         print HDRHTML "</TD>\n";
+d152 19
+a170 4
+         $data->[0] =~ s/\.*$//;
+         print HDRHTML "<TD $width bgcolor=#BFBFBF>\n";
+         print HDRHTML "$data->[0]<BR>$data->[1]\n";
+         print HDRHTML "</TD>\n";
+@
+
+
+1.41
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.40 2013-09-25 18:55:42-07 - - $
+d163 1
+@
+
+
+1.40
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.39 2013-09-25 18:53:08-07 - - $
+d148 2
+a149 2
+      my ($date, $text) = @@{$calendar{$weeknum}{$daynum}};
+      if (not defined $date) {
+d151 1
+a151 1
+      }elsif (not defined $text) {
+d153 1
+a153 1
+         print HDRHTML "$date<BR>&nbsp;\n";
+d155 1
+a155 1
+      }elsif ($text =~ m/^(.*?)\.\s*(http:\S+)/) {
+d159 1
+a159 1
+         print HDRHTML "<B>$date<BR>$info</B>\n";
+d164 1
+a164 1
+         print HDRHTML "$date<BR>$text\n";
+@
+
+
+1.39
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.38 2013-09-25 18:51:55-07 - - $
+d148 2
+a149 2
+      my $data = $calendar{$weeknum}{$daynum};
+      if (not defined $data) {
+d151 1
+a151 1
+      }elsif (not defined $data->[1]) {
+d153 1
+a153 1
+         print HDRHTML "$data->[0]<BR>&nbsp;\n";
+d155 1
+a155 1
+      }elsif ($data->[1] =~ m/^(.*?)\.\s*(http:\S+)/) {
+d159 1
+a159 1
+         print HDRHTML "<B>$data->[0]<BR>$info</B>\n";
+d164 1
+a164 1
+         print HDRHTML "$data->[0]<BR>$data->[1]\n";
+@
+
+
+1.38
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.37 2013-06-20 15:14:06-07 - - $
+d157 1
+a157 1
+         print HDRHTML "<TD $width bgcolor=#FFFF40>\n";
+@
+
+
+1.37
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.36 2013-03-27 19:10:45-07 - - $
+d27 1
+d32 3
+a34 2
+my $datepat = qr {(\.\s+($daypat)\s+($monthpat)\s+(\d+)\.)};
+my @@timenow = localtime;
+d46 4
+d53 2
+a54 1
+   next unless $line =~ m/$datepat(.*)/;
+d58 2
+d69 4
+d77 8
+d87 1
+a87 1
+my $calendar;
+d92 1
+a92 1
+   $calendar = `cal -3 $month $year`
+d136 1
+d139 1
+a139 1
+print_both    $calendar if $calendar;
+d142 30
+@
+
+
+1.36
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.35 2013-03-12 19:26:58-07 - - $
+d54 4
+a57 1
+   print "$date is really $chkwday\n" and next unless $wday eq $chkwday;
+d62 1
+a62 1
+print "quarter $quarter\n";
+@
+
+
+1.35
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.34 2013-03-07 18:12:56-08 - - $
+d110 2
+@
+
+
+1.34
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.33 2013-03-07 18:12:37-08 - - $
+d108 1
+@
+
+
+1.33
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.32 2013-03-07 18:12:22-08 - - $
+d108 1
+a108 1
+print HDRHTML "README: http:$rcsid\n";
+@
+
+
+1.32
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.31 2013-03-07 17:43:06-08 - - $
+a106 1
+print_both    "README: http:$rcsid\n";
+@
+
+
+1.31
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.30 2013-03-07 17:25:47-08 - - $
+d104 9
+a112 6
+print_both "PWD: $pwd\n";
+print_both "URL: $url\n";
+print_both "$duedates{$_}\n" for sort keys %duedates;
+print_both "README: http:$rcsid\n";
+print_both "\n";
+print HDRHTML $calendar if $calendar;
+@
+
+
+1.30
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.29 2013-03-07 17:21:10-08 - - $
+d61 1
+a61 1
+$rcsid =~ s/\$(Id): (.*)(,v .*)\$/$2 $3/;
+d85 2
+a86 1
+   $line =~ s|http:\S+|<A HREF=$&>$&</A>| unless $line =~ m|http:\S+\*|;
+d98 1
+@
+
+
+1.29
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.28 2013-03-07 17:08:51-08 - - $
+d61 1
+a61 1
+$rcsid =~ s/\$Id: (.*)(,v .*) - - \$/$1 $2/;
+d94 4
+a97 3
+sub print_both(@@) {
+   print HDRHTML urlify @@_;
+   print HDRCAT @@_;
+a105 1
+print HDRHTML "</BIG></BIG></B>";
+@
+
+
+1.28
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.27 2013-03-01 17:43:04-08 - - $
+d61 2
+d91 8
+d101 6
+a106 4
+print HDRHTML "PWD: $pwd\n";
+print HDRHTML urlify "URL: $url\n";
+print HDRHTML urlify "$duedates{$_}\n" for sort keys %duedates;
+print HDRHTML "</BIG></BIG></B>\n";
+d109 1
+a110 7
+
+my $headercat = "HEADER.cat";
+open HDRCAT, ">$headercat" or die "$0: $headercat: $!";
+print HDRCAT "PWD: $pwd\n";
+print HDRCAT "URL: $url\n";
+print HDRCAT "$duedates{$_}\n" for sort keys %duedates;
+print HDRCAT "\n", $calendar if $calendar;
+@
+
+
+1.27
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.26 2013-03-01 17:41:56-08 - - $
+d90 1
+a90 1
+print HDRHTML "<PRE><B><BIG>\n";
+d94 1
+a94 1
+print HDRHTML "</BIG></B>\n";
+@
+
+
+1.26
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.25 2013-02-26 18:32:59-08 - - $
+d95 1
+a95 1
+print HDRHTML "\n", $calendar if $calendar;
+@
+
+
+1.25
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.24 2013-02-21 14:27:16-08 - - $
+d94 1
+d96 1
+a96 1
+print HDRHTML "</BIG></B></PRE>\n";
+@
+
+
+1.24
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.23 2013-02-20 13:17:36-08 - - $
+a92 1
+print HDRHTML "\n";
+d94 1
+a94 2
+print HDRHTML "\n";
+print HDRHTML $calendar;
+d103 1
+a103 2
+print HDRCAT "\n";
+print HDRCAT $calendar;
+@
+
+
+1.23
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.22 2013-02-12 17:47:23-08 - - $
+d31 1
+a31 1
+my $datepat = qr ((\.\s+($daypat)\s+($monthpat)\s+(\d+)\.));
+@
+
+
+1.22
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.21 2013-02-12 17:45:12-08 - - $
+d90 1
+a90 1
+print HDRHTML "<PRE><B><BIG><BIG>\n";
+d93 1
+a93 1
+print HDRHTML "</BIG>\n";
+@
+
+
+1.21
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.20 2013-02-01 19:39:39-08 - - $
+d46 1
+a46 1
+   $quarter = $1 and next if $line =~ m/^\.\s+Quarter:\s+(.*)/;
+d59 1
+@
+
+
+1.20
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.19 2013-01-30 17:47:17-08 - - $
+d43 1
+d46 1
+d60 9
+d94 2
+d104 2
+@
+
+
+1.19
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.18 2013-01-30 13:11:08-08 - - $
+d94 1
+@
+
+
+1.18
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.17 2013-01-29 19:35:20-08 - - $
+d66 1
+a66 1
+$title =~ s|^$coursepwd/|\$|;
+@
+
+
+1.17
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.16 2013-01-29 19:23:52-08 - - $
+d50 2
+a51 1
+   my $chkwday = strftime "%a", localtime $duetime;
+d53 2
+a54 1
+   $duedates{$duetime} = "$date$item";
+d75 17
+a91 12
+my $headername = "HEADER.html";
+open HEADER, ">$headername" or die "$0: $headername: $!";
+print HEADER "<TITLE>$title</TITLE>\n";
+print HEADER "<PRE><B><BIG><BIG>\n";
+print HEADER "PWD: $pwd\n";
+print HEADER urlify "URL: $url\n";
+print HEADER "</BIG>\n";
+for my $duedate (sort {$a <=> $b} keys %duedates) {
+   print HEADER urlify "$duedates{$duedate}\n";
+}
+print HEADER "</BIG></B></PRE>\n";
+close HEADER;
+d93 1
+a93 1
+system "ls -la $headername";
+@
+
+
+1.16
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.15 2013-01-29 19:23:29-08 - - $
+d68 3
+a70 2
+   $_[0] =~ s|http:\S+|<A HREF=$&>$&</A>|;
+   return $_[0];
+@
+
+
+1.15
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.14 2013-01-29 19:22:47-08 - - $
+d85 2
+@
+
+
+1.14
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.13 2013-01-29 19:15:18-08 - - $
+a84 32
+system "cat $headername";
+
+__DATA__
+
+sub html($@@) {
+   my ($fmt, @@text) = @@_;
+   map {s|.*|<$&>|} my @@prolog = @@$fmt;
+   map {s|.*|</$&>|} my @@epilog = reverse @@$fmt;
+   return @@prolog, "\n", @@text, @@epilog, "\n";
+}
+
+open my $infile, "<$infilename" or die "$0: $infilename: $!";
+my @@data = grep {m/^\*/} <$infile>;
+close $infile;
+
+my %htchars = qw (& &amp; < &lt; > &gt;);
+map {s|[&<>]|$htchars{$&}|g} @@data;
+map {s{(^|\b)https?:\S+}{<A HREF=$&>$&</A>}g} @@data;
+
+my $pwd = `pwd`;
+(my $title = $pwd) =~ s|/afs/cats.ucsc.edu/||;
+my $hr = "<HR SIZE=8 NOSHADE COLOR=#000000>\n";
+
+my $outfilename = "HEADER.html";
+open my $outfile, ">$outfilename" or die "$0: $outfilename: $!";
+print $outfile html ([qw(TITLE)], $title),
+      $hr, html ([qw(TT BIG B PRE)], @@data), $hr,
+      html ([qw(P P TT BIG BIG BIG B)], $pwd);
+close $outfile;
+
+system "cid + $outfilename";
+
+@
+
+
+1.13
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.12 2013-01-29 19:12:18-08 - - $
+d67 5
+d77 1
+a77 1
+print HEADER "URL: $url\n";
+d80 1
+a80 1
+   print HEADER "$duedates{$duedate}\n";
+@
+
+
+1.12
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.11 2013-01-29 19:03:00-08 - - $
+d44 1
+a44 1
+   $rcsid = $& and next if $line =~ m/\$Id: .*?\$/;
+d73 1
+a73 1
+print HEADER "</BIG>$rcsid\n";
+@
+
+
+1.11
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.10 2013-01-29 18:52:13-08 - - $
+d42 1
+d44 1
+a48 2
+print "$date$item\n";
+print strftime "%a %b %e %T %Z %Y\n", localtime $duetime;
+d73 1
+a73 1
+print HEADER "</BIG>\n";
+@
+
+
+1.10
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.9 2012-05-08 21:32:10-07 - - $
+d32 2
+a33 1
+my $year = (localtime)[5] + 1900;
+d47 2
+d65 1
+d67 2
+a68 1
+open HEADER, ">HEADER.html" or die "$0: HEADER.html: $!";
+d77 1
+d80 1
+a80 1
+system "cat HEADER.html";
+@
+
+
+1.9
+log
+@-
+@
+text
+@d2 19
+a20 1
+# $Id: mkheader,v 1.8 2012-05-08 19:26:05-07 - - $
+d24 9
+d35 42
+a76 2
+@@ARGV == 1 and my $infilename = $ARGV[0]
+           or die "Usage: $0 Readme-all-txt\n";
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.7 2012-05-08 19:25:37-07 - - $
+d22 4
+d28 1
+a28 1
+my $hr = "<HR SIZE=8 NOSHADE>\n";
+d34 1
+a34 2
+      html ([qw(P P TT BIG BIG BIG B)], $pwd),
+      html ([qw(TT)], "\$Id\$\n");
+@
+
+
+1.7
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.6 2012-05-08 19:25:11-07 - - $
+d34 1
+a34 1
+system "cid + $rcsid";
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.5 2012-05-08 19:24:25-07 - - $
+d31 1
+a31 1
+      html ([qw(TT)], $rcsid);
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $rcsid = '$Id: mkheader,v 1.4 2012-05-08 19:24:04-07 - - $';
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $rcsid = '$Id: mkheader,v 1.3 2012-05-08 19:23:42-07 - - $';
+d30 1
+a30 1
+      html ([qw(P P TT BIG BIG BIG B)], $pwd);
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $rcsid = '$Id: mkheader,v 1.2 2012-05-08 19:23:08-07 - - $';
+d34 1
+a34 1
+system "cid + $outfile";
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $rcsid = "$Id: mkheader,v 1.1 2012-05-08 19:18:15-07 - - $";
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheader,v 1.3 2012-05-08 19:04:43-07 - - $
+d28 4
+a31 5
+print $outfile html [qw(TITLE)], $title;
+print $outfile $hr;
+print $outfile html [qw(TT BIG B PRE)], @@data;
+print $outfile $hr;
+print $outfile html [qw(P P TT BIG BIG BIG B)], $pwd;
+d34 2
+@

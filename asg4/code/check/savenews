@@ -1,0 +1,36 @@
+#!/bin/sh
+# $Id: savenews,v 1.4 2010-03-22 18:09:40-07 - - $
+#
+# NAME
+#    savenews - save news to current class directories
+#
+# SYNOPSIS
+#    savenews [all]
+#
+# DESCRIPTION
+#    Edit the directories file to list the current quarter's
+#    directories.  Any argument will cause all arguments to be
+#    swept.
+#
+
+COURSES='cmps012b cmps111'
+
+if [ x$1 != x ] ; then
+   for dir in \
+      `find /afs/cats.ucsc.edu/courses/*-wm/News -type d | sort`
+   do
+      echo $dir
+      cd $dir
+      mkindex.perl | cut -c1-80
+      touchbydate.perl *.nn
+   done
+else
+   for course in $COURSES
+   do
+      newsgroup=ucsc.class.$course
+      directory=/afs/cats.ucsc.edu/courses/$course-wm/News
+      cd $directory
+      nntpsave.perl $newsgroup $directory
+      mkindex.perl | cut -c1-80
+   done
+fi

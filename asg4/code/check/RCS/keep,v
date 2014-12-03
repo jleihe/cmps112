@@ -1,0 +1,123 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/local/bin/perl -w
+# $Id: keep,v 357.1 2005-09-13 19:05:08-07 - - $
+#
+#
+# NAME
+#    keep - keep backup copies of files
+#
+# SYNOPSIS
+#    keep [-mdtp] file...
+#
+# DESCRIPTION
+#    Makes backup copies of the filenames given as arguments.
+#    Backups are given with a month-stamp, a day-stamp, and a
+#    minute-stamp.  The month and day stamped backups are made
+#    in the RCS subdirectory, if one exists, else in the current
+#    directory.  The minute backup is made in $TMPDIR, if it 
+#    exists, else in /tmp.
+#
+# OPTIONS
+#    Default options are -mdt
+#    -m   Makes a backup with the month stamp.
+#    -d   Makes a backup with the day stamp.
+#    -t   Makes a minute backup into the temp directory.
+#    -p   Prints out the name of the first temp filename,
+#         but does not do the copy.
+#
+
+use POSIX qw( strftime );
+
+$0 =~ s{.*/}{};
+@@now = localtime( $^T );
+$tmp = $ENV{ 'TMPDIR' };
+$tmp = "/tmp" unless defined( $tmp ) && -d $tmp && -w $tmp;
+
+sub copy($$){
+   my( $fromfile, $tofile ) = @@_;
+   my( @@command ) = ( "cp", $fromfile, $tofile );
+   return unless -r $fromfile;
+   print "$0: % @@command\n";
+   print qx( @@command 2>&1 );
+};
+
+sub usage(;$){
+   my( $message ) = @@_;
+   print STDERR "$0: $message\n" if $message;
+   print STDERR "Usage: $0 [-mdt] file...\n";
+   print STDERR "Usage: $0 -p file\n";
+   exit 1;
+};
+
+sub tmpname($){
+   my( $basename ) = @@_;
+   $basename = $$ unless defined $basename;
+   $basename =~ s{.*/}{};
+   my( $tmpbase ) = "$tmp/%.$basename." . strftime "%m%d.%H%M", @@now;
+   return $tmpbase unless -e $tmpbase;
+   $tmpbase .= strftime "%S", @@now;
+   return $tmpbase unless -e $tmpbase;
+   my( $tmpname ) = $tmpbase;
+   for( my $uniq = 'aa'; $uniq !~ m/.../; $uniq++ ){
+      last unless -e $tmpname;
+      $tmpname = $tmpbase . $uniq;
+   };
+   return $tmpname;
+};
+
+sub backup($$){
+   my( $filename, $format ) = @@_;
+   my( $stamp ) = strftime( $format, @@now );
+   my( $dirname ) = "./";
+   my( $basename ) = $filename;
+   $dirname = $& if $basename =~ s{.*/}{};
+   $rcsdir = $dirname . 'RCS';
+   $dirname = $rcsdir if -d $rcsdir && -w $rcsdir;
+   copy $filename, "$dirname/$basename.$stamp";
+};
+
+while( @@ARGV && $ARGV[0] =~ m/^-/ ){
+   my( $opts ) = shift @@ARGV;
+   last if $opts eq "--";
+   $opts =~ s/^-//;
+   $opt{$&} = 1 while $opts =~ s/[mdtp]//;
+   usage "invalid options $opts" if $opts;
+};
+
+map{ $opt{$_} = 1 } qw( m d t ) unless keys %opt;
+
+if( $opt{'p'} ){
+   usage "-p may have only one argument"
+         if keys( %opt ) != 1 || @@ARGV > 1;
+   print tmpname $ARGV[0], "\n";
+   exit 0;
+}else{
+   usage "missing options or filenames" unless @@ARGV;
+   while( $filename = shift @@ARGV ){
+      backup $filename, "%Y%m+%h" if $opt{'m'};
+      backup $filename, "%Y%m%d"  if $opt{'d'};
+      copy $filename, tmpname $filename;
+   };
+};
+@

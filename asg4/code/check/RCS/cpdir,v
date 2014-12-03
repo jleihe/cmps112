@@ -1,0 +1,224 @@
+head	1.7;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.7
+date	2009.06.12.01.01.48;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2009.06.12.01.00.33;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2009.06.12.00.53.38;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2009.05.02.02.27.23;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2009.05.02.02.25.32;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2009.05.02.02.22.06;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.05.02.02.18.18;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: cpdir,v 1.6 2009-06-11 18:00:33-07 - - $
+#
+# NAME
+#    cpdir - copy a directory using gtar
+#
+# SYNOPSIS
+#    cpdir [-v] fromdir... todir
+#
+# DESCRIPTION
+#    Copies a directory using two gtars and a pipe.  This is
+#    different from cp -R, in that symlinks themselves are
+#    copied, not the subdirectories they point at.
+#
+# OPTIONS
+#    -v   Sets the verbose option of gtar
+#
+# OPERANDS
+#    fromdir - specifies the directory to be copied.
+#    todir   - specifies the parent to be of copied directory.
+#
+# EXAMPLE
+#    cpdir foo/bar baz/qux
+#    will cause the directory foo/bar to be copied to baz/qux/bar
+#
+
+use strict;
+use warnings;
+
+$0 =~ s|^(.*/)?([^/]+)/*$|$2|;
+
+$SIG{'__DIE__'} = sub {print STDERR "$0: @@_"; exit 1};
+
+my $vopt = @@ARGV && $ARGV[0] eq "-v" ? (shift, "v") : "";
+
+die "Usage: $0 [-v] fromdir todir\n" unless @@ARGV >= 2;
+-d $_ or die "$0: $_: no such directory\n" for @@ARGV;
+my $todir = pop @@ARGV;
+
+for my $fromdir (@@ARGV) {
+   print "$0: copying dir from $fromdir to $todir\n";
+   system "gtar c${vopt}f - $fromdir | (cd $todir; gtar x${vopt}f -)";
+}
+
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: cpdir,v 1.5 2009-06-11 17:53:38-07 - - $
+d32 1
+a32 1
+$SIG{'__DIE__'} = sub {print STDERR "$0: @@_\n"; exit 1}
+d36 2
+a37 2
+die "Usage: $0 [-v] fromdir todir" unless @@ARGV > 2;
+-d $_ or die "$0: $dir: no such directory" for @@ARGV;
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: cpdir,v 1.4 2009-05-01 19:27:23-07 - - $
+d27 3
+d32 3
+a34 4
+sub usage () {
+   print STDERR "Usage: $0 fromdir todir\n";
+   exit 1
+}
+d36 3
+a38 4
+$vopt = $ARGV[0] eq "-v" ? (shift, "v") : "";
+$todir = pop @@ARGV;
+usage unless @@ARGV > 1 and -d $todir;
+-d $_ or usage for @@ARGV;
+d40 1
+a40 1
+for $fromdir (@@ARGV) {
+@
+
+
+1.4
+log
+@-
+@
+text
+@d1 2
+a2 2
+#!/bin/sh
+# $Id: cpdir,v 1.3 2009-05-01 19:25:32-07 - - $
+d8 1
+a8 1
+#    cpdir [-v] fromdir todir
+d27 4
+a30 2
+usage () {
+   echo Usage: cpdir fromdir todir 1>&2
+d34 4
+a37 3
+if [ "$1" = "-v" ] ; then v=v ; shift ; fi
+fromdir=$1
+todir=$2
+d39 4
+a42 6
+if [ $# -ne 2 ] ; then usage ; fi
+if [ ! -d $fromdir ] ; then usage ; fi
+if [ ! -d $todir ] ; then usage ; fi
+
+echo $0: copying from $fromdir to $todir
+gtar c${v}f - $fromdir | (cd $todir; gtar x${v}f -)
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: cpdir,v 1.2 2009-05-01 19:22:06-07 - - $
+d20 1
+a20 2
+#    todir   - specifies the directory to contain the copied 
+#              directory.
+d35 1
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: cpdir,v 1.1 2009-05-01 19:18:18-07 - - $
+d8 1
+a8 1
+#    cpdir fromdir todir
+d15 3
+d33 1
+d40 2
+a41 1
+gtar cvf - $fromdir | (cd $todir; gtar xvf -)
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+d15 9
+d36 1
+a36 1
+echo OK
+@

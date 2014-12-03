@@ -1,0 +1,37 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2013.09.25.20.57.25;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: morecat,v 1.1 2013-09-25 13:51:21-07 - - $
+#
+# Run
+# headers like more but use cat -nv for line numbers.
+#
+
+for file in $*
+do
+   echo ::::::::::::::::
+   echo $file
+   echo ::::::::::::::::
+   cat -nv $file
+done
+@

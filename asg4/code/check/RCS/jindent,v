@@ -1,0 +1,64 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2009.04.25.01.01.21;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.04.25.00.58.50;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: jindent,v 1.1 2009-04-24 17:58:50-07 - - $
+#
+# NAME
+#    jindent - reindent a Java program
+#
+# SYNOPSIS
+#    jindent program.java...
+#
+# DESCRIPTION
+#    Uses DrJava to reindent a java program using their
+#    IndentFiles utility.
+#
+# FILES
+#    /opt/local/drjava/
+#
+# BUGS
+#    This script will break if a later version of DrJava 
+#    is installed.
+#
+
+DRJPATH=/usr/local/drjava
+VERSION=drjava-stable-20080904-r4668.jar
+INDENT="edu.rice.cs.drjava.IndentFiles -indent 3"
+java -cp $DRJPATH/$VERSION $INDENT $*
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 20
+a21 1
+# $Id: drjindent,v 1.1 2009-04-24 14:41:39-07 - - $
+@

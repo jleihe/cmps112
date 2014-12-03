@@ -1,0 +1,139 @@
+#!/usr/bin/perl
+my $RCSID = '$Id: checksource,v 1.18 2008-12-19 15:35:01-08 - - $';
+use strict;
+use warnings;
+
+$0 =~ s|^.*/||;
+
+my $MANPAGE = <<__END_MAN_PAGE__;
+
+NAME
+
+   checksource - check source code for basic reasonable formatting
+
+SYNOPSIS
+
+   checksource [filename...]
+
+DESCRIPTION
+
+   Checks the input files for basic formatting sanity.  Prints
+   complaints for strange looking files and a summary.  If no
+   filenames are specified, prints out this man page.
+
+OPERANDS
+
+   Files to check for reasonable formatting.
+
+COMPLAINTS
+
+   The only invisible characters may be spaces and newlines,
+   except for a Makefile, where some lines begin with a tab.
+   Form feed is acceptable on a line by itself if used for
+   formatting purposes.
+
+   Printable characters are any ISO-Latin-1 characters in the
+   range '!' to '~' and '¡' to 'ÿ' (\\u0021 to \\u007E and
+   \\u00A1 to \\u00FF).  See:  http://www.unicode.org/charts/.
+   ASCII files contain a subset of these characters.
+
+   Each line must end in a newline.  The last character of the
+   file must be a newline.  M*cr*\$*ft format files are not
+   acceptable.  If you use emacs, be sure that your .emacs file
+   has:  (setq require-final-newline t)
+
+   You may remove carriage returns from your file with one of
+   the following commands:
+
+   . Perl:    perl -pi -e 's/\\r//' filename
+   . vi:      :g/^V^M/s///
+   . shell:   dos2unix oldfilename >newfilename
+
+   No line may have more than 72 characters before the newline.
+   Or:  with ``cat -n | expand'', lines including line numbers
+   should not be longer than 80 characters.  Long lines should
+   be wrapped in a sensible place, such as after a comma, and
+   properly indented on the next line.
+
+   Indent with 3 spaces for each level, and do not use tabs.
+
+   In a Makefile, a tab is required as the first character on a
+   shell command, but should never be used after a non-TAB
+   character.
+
+$RCSID
+
+__END_MAN_PAGE__
+
+my %ctlcharnames = (
+   0x00 => "NUL", 0x01 => "SOH", 0x02 => "STX", 0x03 => "ETX",
+   0x04 => "EOT", 0x05 => "ENQ", 0x06 => "ACK", 0x07 => "BEL",
+   0x08 => "BS" , 0x09 => "HT" , 0x0A => "LF" , 0x0B => "VT" ,
+   0x0C => "FF" , 0x0D => "CR" , 0x0E => "SO" , 0x0F => "SI" ,
+   0x10 => "DLE", 0x11 => "DC1", 0x12 => "DC2", 0x13 => "DC3",
+   0x14 => "DC4", 0x15 => "NAK", 0x16 => "SYN", 0x17 => "ETB",
+   0x18 => "CAN", 0x19 => "EM" , 0x1A => "SUB", 0x1B => "ESC",
+   0x1C => "FS" , 0x1D => "GS" , 0x1E => "RS" , 0x1F => "US" ,
+   0x7F => "DEL",
+);
+
+my %complaints;
+my $filename;
+
+sub complain(@){
+   my (@message) = @_;
+   print "$0: $filename: " . ($. ? "$.: " : "") . "@message\n";
+   ++$complaints{"$message[0] ... $filename"};
+}
+
+print $MANPAGE and exit unless @ARGV;
+
+while (@ARGV) {
+   $filename = shift @ARGV;
+   unless (open FILE, "<$filename") {
+      complain $!;
+      next;
+   }
+   while (defined (my $line = <FILE>)) {
+
+      # Check for missing newline
+      complain "missing newline at end of line" unless $line =~ s/\n$//;
+
+      # Expand initial tab in a Makefile.
+      $line =~ s/^\t/" " x 8/e if $filename =~ m:^(.*/)?Makefile$:;
+
+      # Check for line length.
+      complain "line length > 72 chars", "(@{[length($line)]} chars)"
+               if length($line) > 72;
+
+      # Form feed is OK on a line by itself.
+      $line =~ s/^\f$//;
+
+      # Check for improper chars in line.
+      for my $char ($line =~ m/[^\n\x20-\x7E\xA1-\xFF]/g) {
+         my $ordchar = ord $char;
+         my $message = sprintf "improper char \\x%02X", $ordchar;
+         $message .= sprintf " = ^%c = %s",
+                     $ordchar ^ 0x40, $ctlcharnames{$ordchar}
+               if $ctlcharnames{$ordchar};
+         $message .= " (horizontal tab)" if $char eq "\t";
+         $message .= " (carriage return)" if $char eq "\r";
+         complain $message;
+      }
+
+   }
+   close FILE;
+}
+
+my $total = 0;
+my $count;
+for my $complaint (sort keys %complaints) {
+   $total += $count = $complaints{$complaint};
+   printf "$0: %6d  %s\n", $count, $complaint;
+}
+
+if ($total) {
+   printf "$0: %6d  TOTAL COMPLAINTS\n", $total;
+   exit 1;
+}
+

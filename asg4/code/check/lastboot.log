@@ -1,0 +1,20 @@
+Fri Mar 19 16:15:40 PDT 2010
+boot-minix3.sh: Qemu hostname=unix3 hostaddr=128.114.30.236
+boot-minix3.sh: Qemu guestname=Qemu.unix3.128.114.30.236
+boot-minix3.sh: qemu
+boot-minix3.sh: -m 256
+boot-minix3.sh: -localtime
+boot-minix3.sh: -monitor stdio
+boot-minix3.sh: -net nic -net user
+boot-minix3.sh: -pidfile pidfile.pid
+boot-minix3.sh: -cdrom /afs/cats.ucsc.edu/courses/cmps111-wm/Minix-3.1.6/cdrom-minix-3.1.6/minix_R3.1.6-r6084.iso
+boot-minix3.sh: -redir tcp:10013::13 (daytime)
+boot-minix3.sh: -redir tcp:10021::21 (ftp)
+boot-minix3.sh: -redir tcp:10023::23 (telnet)
+boot-minix3.sh: -redir tcp:10079::79 (finger)
+boot-minix3.sh: -redir tcp:10080::80 (http)
+boot-minix3.sh: -redir tcp:10514::514 (shell)
+boot-minix3.sh: -redir tcp:10873::873 (rsync)
+boot-minix3.sh: % qemu -m 256 -localtime -monitor stdio -net nic -net user -pidfile pidfile.pid -cdrom /afs/cats.ucsc.edu/courses/cmps111-wm/Minix-3.1.6/cdrom-minix-3.1.6/minix_R3.1.6-r6084.iso -redir tcp:10013::13 -redir tcp:10021::21 -redir tcp:10023::23 -redir tcp:10079::79 -redir tcp:10080::80 -redir tcp:10514::514 -redir tcp:10873::873
+boot-minix3.sh: exit status = 0
+Fri Mar 19 16:15:53 PDT 2010

@@ -15,8 +15,9 @@ module Bigint = struct
     let strlen    = String.length
     let strsub    = String.sub
     let zero      = Bigint (Pos, [])
-    let listone = 1 :: []
     let listzero = []
+    let listone = 1 :: []
+    let listtwo = 2 :: []
     
     (*Compose*)
     let compose f g x = f (g x)
@@ -100,9 +101,12 @@ module Bigint = struct
         | list1, [], carry   -> sub' list1 [carry] 0
         | [], list2, carry   -> sub' [carry] list2 0
         | car1::cdr1, car2::cdr2, carry ->
-          let is_carry = (car1 - car2 - carry) < 0
-          in let sum = (if is_carry then (car1 + 10 - car2 - carry) else (car1 - car2 - carry))
-          in  trimzeros (sum :: sub' cdr1 cdr2 (if is_carry then 1 else 0))
+            let is_carry = (car1 - car2 - carry) < 0
+            in let sum = (
+                if is_carry then (car1 + 10 - car2 - carry) 
+                else (car1 - car2 - carry))
+            in  trimzeros 
+            (sum :: sub' cdr1 cdr2 (if is_carry then 1 else 0))
 
     (*Add two bigints*)
     let add (Bigint (neg1, value1)) (Bigint (neg2, value2)) =
@@ -134,19 +138,19 @@ module Bigint = struct
                     | Pos, Pos    -> zero
                     | Pos, Neg   -> Bigint (Pos, add' value1 value2 0)
                     | Neg, Pos   -> Bigint (Neg, add' value1 value2 0)
-                    | Neg, Neg  -> Bigint (Neg, add' value1 value2 0)
+                    | Neg, Neg  -> zero
             else if res = 1 then
                 match (neg1, neg2) with
                     | Pos, Pos    -> Bigint (Pos, sub' value1 value2 0)
                     | Pos, Neg   -> Bigint (Pos, add' value1 value2 0)
-                    | Neg, Pos   -> Bigint (Neg, sub' value1 value2 0)
-                    | Neg, Neg  -> Bigint (Neg, add' value1 value2 0)
+                    | Neg, Pos   -> Bigint (Neg, add' value1 value2 0)
+                    | Neg, Neg  -> Bigint (Neg, sub' value1 value2 0)
             else
                 match (neg1, neg2) with
-                    | Pos, Pos    -> Bigint (Neg, sub' value2 value1 0)
-                    | Pos, Neg   -> Bigint (Neg, add' value2 value1 0)
-                    | Neg, Pos   -> Bigint (Pos, add' value2 value1 0)
-                    | Neg, Neg  -> Bigint (Pos, add' value2 value1 0)
+                    | Pos, Pos   -> Bigint (Neg, sub' value2 value1 0)
+                    | Pos, Neg   -> Bigint (Pos, add' value2 value1 0)
+                    | Neg, Pos   -> Bigint (Neg, add' value2 value1 0)
+                    | Neg, Neg  -> Bigint (Pos, sub' value2 value1 0)
     
     (*Double the given value*)
     let double number = add' number number 0
@@ -156,17 +160,21 @@ module Bigint = struct
         if cmp' powerof2 multiplier = 1
         then multiplier, listzero
         else let remainder, product =
-                 mul' (multiplier,  double powerof2, double multiplicand')
-             in  if cmp' remainder powerof2 = -1
-                 then remainder, product
-                 else (sub' remainder powerof2 0), (add' product multiplicand' 0)
+                mul' (multiplier,  double powerof2, 
+                    double multiplicand')
+            in  if cmp' remainder powerof2 = -1
+                then remainder, product
+                else (sub' remainder powerof2 0), 
+                    (add' product multiplicand' 0)
+                    
     (*Multiply multiplier by multiplicand*)
-    let mul (Bigint (neg1, multiplier)) (Bigint (neg2, multiplicand)) =
+    let mul (Bigint (neg1, mPlier)) (Bigint (neg2, mPlicand)) =
         let neg = match (neg1, neg2) with
             | neg1, neg2 when neg1 = neg2 -> Pos
             | neg1, neg2 -> Neg
-        in let _, product = mul' (multiplier,  listone, multiplicand)
+        in let _, product = mul' (mPlier,  listone, mPlicand)
         in Bigint(neg, product)
+        
     (*divrem' is a help function for divrem*)
     let rec divrem' (dividend, powerof2, divisor') =
         if cmp' divisor' dividend = 1
@@ -175,9 +183,13 @@ module Bigint = struct
                  divrem' (dividend, double powerof2, double divisor')
              in  if cmp' remainder divisor' = -1
                  then quotient, remainder
-                 else (add' quotient powerof2 0), (sub' remainder divisor' 0)
+                 else (add' quotient powerof2 0), 
+                    (sub' remainder divisor' 0)
+                 
     (*divrem is a helper function for div and rem*)
-    let divrem (dividend, divisor') = divrem' (dividend, listone, divisor')
+    let divrem (dividend, divisor') = 
+        divrem' (dividend, listone, divisor')
+        
     (*Divide dividend by divisor*)
     let div (Bigint (neg1, dividend)) (Bigint (neg2, divisor)) =
         let neg = match (neg1, neg2) with
@@ -185,6 +197,7 @@ module Bigint = struct
             | neg1, neg2 -> Neg
         in let quotient, _ = divrem (dividend, divisor)
         in Bigint(neg, quotient)
+        
     (*The remainder after dividing dividend by divisor*)
     let rem (Bigint (neg1, dividend)) (Bigint (neg2, divisor)) =
         let neg = match (neg1, neg2) with
@@ -193,18 +206,44 @@ module Bigint = struct
         in let _, remainder = divrem (dividend, divisor)
         in Bigint(neg, remainder)
     
-    let pow = add
-    (*
-    let concat var = mul' base list1 base
+    (*let pow = add*)
     
-    let rec pow' (base, expt, result) = match expt with
-        | listzero                   -> result
-        | expt when even expt -> power' (concat base, divrem expt [2], result)
-        | expt                -> power' (base, expt - 1, base *. result)
+    (*Double*)
+    let double var = 
+        mul' (var, listone, var)
+    
+    (*helper div*)
+    let hDiv  (dividend, divisor') = 
+        let res, _ = divrem' (dividend, listone, divisor')
+        in res
+        
+   (*helper mul*)
+    let hMul (mPlier, mPlicand) =
+        let _, product = mul' (mPlier,  listone, mPlicand)
+        in product
+          
+          
+     let pow = add     
+    (*let rec pow' (base, expt, result) = match expt with
+        | listzero -> result
+        | expt when odd expt -> 
+            let n = listone(*sub' expt listone 0;*)
+            in pow' (base, n, hMul result base)
+        | expt -> 
+            pow' (double base, hDiv expt listtwo, result)
+            
+            
 
     let pow  (Bigint (neg1, base)) (Bigint (neg2, expt)) =
-        if expt < 0 then power' (1. /. base, - expt, 1.)
-        else power' (base, expt, 1.)*)
+        Bigint (neg1, pow' (base, expt, listone))
+    
+        if neg2 = Pos then 
+            let res = pow' (base, expt, listone)
+            in Bigint (neg1, res)
+        else 
+            let res = pow' (hDiv (listone, base), expt, listone)
+            in Bigint (neg1, res)*)
 
+            
 end
 

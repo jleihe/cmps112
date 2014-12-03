@@ -1,0 +1,46 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2014.03.28.01.56.39;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2014.03.28.01.56.21;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: catnv-rm,v 1.1 2014-03-27 18:56:21-07 - - $
+catnv "$@@"
+rm -v "$@@"
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+d4 1
+a4 1
+yes | rm -v "$@@"
+@

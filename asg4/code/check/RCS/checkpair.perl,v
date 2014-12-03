@@ -1,0 +1,181 @@
+head	1.7;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.7
+date	2009.04.04.02.51.51;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2009.04.04.02.51.28;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2009.04.04.02.50.47;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2009.04.04.02.49.00;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2009.04.04.02.48.14;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2009.04.04.02.42.51;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.04.04.02.42.12;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: checkpair.perl,v 1.6 2009-04-03 19:51:28-07 - - $
+#
+# Read a PARTNER file.  Check to see if it has a valid username.
+#
+
+$0 =~ s|.*/||;
+
+$filename = "PARTNER";
+
+open PARTNER, "<$filename" or die "$0: $filename: $!\n";
+$partner = join "", <PARTNER>;
+close PARTNER;
+$partner =~ s/\n$// or die "$0: $filename: invalid format\n";
+$partner =~ s/[\x00-\x20\x7F]/sprintf "^%c", (ord $&) ^ 0x40/ge;
+$partner =~ s/[\x80-\xFF]/sprintf "\\x%02X", ord $&/ge;
+
+($user, $_, $uid, $_, $_, $_, $gecos, $home, $shell, $_)
+            = getpwnam $partner;
+die "$0: $partner: no such user\n" unless $user;
+
+print "$filename file is valid:\n";
+print "\$USER  = $user\n";
+print "uid    = $uid\n";
+print "gecos  = $gecos\n";
+print "\$HOME  = $home\n";
+print "\$SHELL = $shell\n";
+
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: checkpair.perl,v 1.5 2009-04-03 19:50:47-07 - - $
+d22 1
+a22 1
+print "$filename is valid:\n";
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: checkpair.perl,v 1.4 2009-04-03 19:49:00-07 - - $
+d18 1
+a18 1
+($user, $_, $uid, $_, $_, $_, $gcos, $home, $shell, $_)
+d25 1
+a25 1
+print "gcos   = $gcos\n";
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: checkpair.perl,v 1.3 2009-04-03 19:48:14-07 - - $
+d18 1
+a18 1
+($name, $_, $uid, $_, $_, $_, $gcos, $dir, $shell, $_)
+d20 1
+a20 1
+die "$0: $partner: no such username\n" unless $name;
+d23 5
+a27 5
+print "name  = $name\n";
+print "uid   = $uid\n";
+print "gcos  = $gcos\n";
+print "dir   = $dir\n";
+print "shell = $shell\n";
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: checkpair.perl,v 1.2 2009-04-03 19:42:51-07 - - $
+d23 4
+a26 4
+print "name = $name\n";
+print "uid = $uid\n";
+print "gcos = $gcos\n";
+print "dir = $dir\n";
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: checkpair.perl,v 1.1 2009-04-03 19:42:12-07 - - $
+d15 2
+a16 1
+$partner =~ s/\W/sprintf "\\x%02X", ord $&/ge;
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+d15 1
+a15 1
+$partner =~ s/\W/sprintf "\\x%02X", $&/ge;
+@

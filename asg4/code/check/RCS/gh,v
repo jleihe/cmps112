@@ -1,0 +1,267 @@
+head	1.5;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.5
+date	2013.01.24.04.05.54;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2013.01.24.04.05.12;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2011.08.20.01.10.01;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2009.09.15.23.33.13;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@-
+@
+text
+@#!/usr/bin/perl -w
+# $Id: gh,v 1.4 2013-01-23 20:05:12-08 - - $
+#
+# NAME
+#    gh - run ghostview on multiple files
+#
+# SYNOPSIS
+#    gh [-] psfiles...
+#
+# DESCRIPTION
+#    Starts up ghostview in the background to display Postscript
+#    files.  Uses filename as X-windows label.  For pdf, use
+#    acroread.
+#
+# OPTIONS
+#    -   don't use gv for all files, whether .ps or .pdf
+#    +   use `-magstep +2' for ghostview
+#
+
+use IO::Handle;
+STDOUT->autoflush(1);
+STDERR->autoflush(1);
+
+$0 =~ s{.*/}{};
+$exitrc = 0;
+
+$usemag2 = shift @@ARGV if @@ARGV and $ARGV[0] eq '+';
+#$usegvonly = shift @@ARGV if @@ARGV and $ARGV[0] eq '-';
+$usegvonly = 1;
+push @@opts, shift @@ARGV while @@ARGV and $ARGV[0] =~ m/^-/;
+
+unless (@@ARGV) {
+   print STDERR "Usage: $0 [-] [-opts]... psfiles...\n";
+   exit 1;
+};
+
+if ($pid = fork) {
+   # Put self in background.
+   print STDOUT "$0: $pid: @@ARGV\n";
+   exit 0;
+};
+
+for $index (0 .. $#ARGV) {
+   $file = $ARGV[$index];
+   if ($usegvonly) {
+      @@command = ("gv", "-antialias", "-center", @@opts, $file);
+   }else{
+      if ($file =~ m/\.pdf(\.|$)/) {
+         @@command = ("acroread", "+useFrontEndProgram", @@opts, $file);
+      }else{
+         @@ghostview = ("ghostview");
+         push @@ghostview, qw (-magstep +2) if $usemag2;
+         @@command = (@@ghostview, "-name", "$0: $file", @@opts, $file);
+      };
+   };
+   $pid = fork;
+   if (! defined $pid) {
+      print STDERR "$0: fork failed: @@command: $!";
+      $exitrc |= 1;
+   }elsif ($pid != 0) {
+      $childprocs{$pid} = "[$index] $pid: @@command[0,$#command]";
+      print STDOUT "$0: $childprocs{$pid}\n";
+      sleep 5 if $index < $#ARGV and $command[0] =~ m/acroread/;
+   }else{
+      $SIG{'__WARN__'} = sub{ };
+      print "$0: @@command\n";
+      exec @@command or die "$0: exec failed: $command[0]: $!\n";
+   };
+};
+
+for(;;) {
+   $pid = wait;
+   last if $pid < 0;
+   $exit   = $? >> 8;
+   $signal = $? & 127;
+   $core   = $? & 128;
+   $message = delete $childprocs{$pid};
+   $message .= ": exit $exit";
+   $message .= ", signal $signal" if $signal;
+   $message .= ", core dumped" if $core;
+   print "\n";
+   map{ print STDOUT "$0: $_: running\n" } sort values %childprocs;
+   print "\n$0: $message\n";
+   $exitrc |= $exit;
+};
+
+for $pid (keys %childprocs) {
+   $exitrc |= 1;
+   $message = delete $childprocs{$pid};
+   print STDERR "$0: $message: Zombie?\n"
+};
+
+print STDOUT "\n$0: exiting with $exitrc\n";
+exit $exitrc;
+
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: gh,v 1.3 2011-08-19 18:10:01-07 - - $
+d32 1
+a32 1
+unless( @@ARGV){
+d37 1
+a37 1
+if( $pid = fork){
+d43 1
+a43 1
+for $index( 0 .. $#ARGV){
+d45 1
+a45 1
+   if( $usegvonly){
+d48 1
+a48 1
+      if( $file =~ m/\.pdf(\.|$)/){
+d52 1
+a52 1
+         push @@ghostview, qw( -magstep +2) if $usemag2;
+d57 1
+a57 1
+   if( ! defined $pid){
+d60 1
+a60 1
+   }elsif( $pid != 0){
+d71 1
+a71 1
+for(;;){
+d87 1
+a87 1
+for $pid( keys %childprocs){
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: gh,v 1.2 2009-09-15 16:33:13-07 - - $
+d16 2
+a17 2
+#    -   use gv for all files, whether .ps or .pdf
+#    +   use `-magstep +1' for ghostview
+d28 2
+a29 1
+$usegvonly = shift @@ARGV if @@ARGV and $ARGV[0] eq '-';
+d49 1
+a49 1
+         @@command = ("acroread4", "+useFrontEndProgram", @@opts, $file);
+d51 2
+a52 3
+         #@@ghostview = ("ghostview");
+         @@ghostview = ("gv");
+         push @@ghostview, qw( -magstep +1) if $usemag2;
+d66 1
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 2
+a2 2
+#!/usr/local/bin/perl -w
+# $Id: gh,v 1.1 2008-10-01 14:50:48-07 - - $
+d17 1
+a17 1
+#    +   use `-magstep +2' for ghostview
+d50 3
+a52 2
+         @@ghostview = ("ghostview");
+         push @@ghostview, qw( -magstep +2) if $usemag2;
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: gh,v 1.1 2008-09-24 17:55:12-07 - - $
+d31 1
+a31 1
+unless( @@ARGV ){
+d36 1
+a36 1
+if( $pid = fork ){
+d42 1
+a42 1
+for $index( 0 .. $#ARGV ){
+d44 2
+a45 2
+   if( $usegvonly ){
+      @@command = ( "gv", "-antialias", "-center", @@opts, $file );
+d47 2
+a48 2
+      if( $file =~ m/\.pdf(\.|$)/ ){
+         @@command = ( "acroread4", "+useFrontEndProgram", @@opts, $file );
+d50 3
+a52 3
+         @@ghostview = ( "ghostview" );
+         push @@ghostview, qw( -magstep +2 ) if $usemag2;
+         @@command = ( @@ghostview, "-name", "$0: $file", @@opts, $file );
+d56 1
+a56 1
+   if( ! defined $pid ){
+d59 1
+a59 1
+   }elsif( $pid != 0 ){
+d85 1
+a85 1
+for $pid( keys %childprocs ){
+@

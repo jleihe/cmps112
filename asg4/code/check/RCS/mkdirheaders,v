@@ -1,0 +1,37 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2014.03.25.03.04.33;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id$
+if [ $# -eq 0 ]
+then
+   for dir in $(find * -type d)
+   do
+      (cd $dir; mkheader)
+   done
+else
+   for dir in $@@
+   do
+      (cd $dir; mkheader)
+   done
+fi
+@

@@ -1,0 +1,67 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2009.09.23.23.47.36;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.09.23.23.40.36;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: groffify,v 1.1 2009-09-23 16:40:36-07 - - $
+#
+# NAME
+#    groffify - cat files replacing \ and $ with groff codes
+#
+# SYNOPSIS
+#    groffify [filename...]
+#
+# DESCRIPTION
+#    Cats files from input to output, changing all backslashes
+#    (\) to groff \[rs] code, and all dollar signs ($) to groff
+#    \[Do] codes.  Adds a \& to the front of each line to keep
+#    groff from seeing leading dots.
+#
+
+while (<>) {
+   s/\\/\\[rs]/g;
+   s/\$/\\[Do]/g;
+   s/^/\\\&/g;
+   print;
+}
+
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+d18 3
+a20 3
+   s/\\/\\[rs]/;
+   s/\$/\\[Do]/;
+   s/^/\\\&/;
+@

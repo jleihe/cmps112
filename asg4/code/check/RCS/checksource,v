@@ -1,0 +1,853 @@
+head	1.27;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.27
+date	2013.01.12.01.08.48;	author -;	state -;
+branches;
+next	1.26;
+
+1.26
+date	2012.10.26.21.28.47;	author -;	state -;
+branches;
+next	1.25;
+
+1.25
+date	2010.12.21.03.47.00;	author -;	state -;
+branches;
+next	1.24;
+
+1.24
+date	2009.09.15.23.27.31;	author -;	state -;
+branches;
+next	1.23;
+
+1.23
+date	2009.04.01.19.46.53;	author -;	state -;
+branches;
+next	1.22;
+
+1.22
+date	2009.04.01.19.41.58;	author -;	state -;
+branches;
+next	1.21;
+
+1.21
+date	2009.04.01.19.39.36;	author -;	state -;
+branches;
+next	1.20;
+
+1.20
+date	2009.03.26.00.31.45;	author -;	state -;
+branches;
+next	1.19;
+
+1.19
+date	2009.03.26.00.27.41;	author -;	state -;
+branches;
+next	1.18;
+
+1.18
+date	2008.12.19.23.35.01;	author -;	state -;
+branches;
+next	1.17;
+
+1.17
+date	2008.12.19.23.33.04;	author -;	state -;
+branches;
+next	1.16;
+
+1.16
+date	2008.12.19.23.32.20;	author -;	state -;
+branches;
+next	1.15;
+
+1.15
+date	2008.12.19.23.31.12;	author -;	state -;
+branches;
+next	1.14;
+
+1.14
+date	2008.12.19.23.30.03;	author -;	state -;
+branches;
+next	1.13;
+
+1.13
+date	2008.12.19.23.29.34;	author -;	state -;
+branches;
+next	1.12;
+
+1.12
+date	2008.12.19.23.28.37;	author -;	state -;
+branches;
+next	1.11;
+
+1.11
+date	2008.12.18.01.00.09;	author -;	state -;
+branches;
+next	1.10;
+
+1.10
+date	2008.12.18.00.57.34;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2008.12.18.00.56.34;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2008.12.18.00.48.00;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2008.12.17.00.48.21;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2008.11.08.02.59.11;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2008.11.08.02.58.12;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2008.11.08.02.57.37;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2008.10.23.23.20.12;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2008.10.10.02.02.53;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.27
+log
+@-
+@
+text
+@#!/usr/bin/perl
+my $RCSID = '$Id: checksource,v 1.26 2012-10-26 14:28:47-07 - - $';
+use strict;
+use warnings;
+
+$0 =~ s|^.*/||;
+
+my $MANPAGE = <<__END_MAN_PAGE__;
+
+NAME
+
+   checksource - check source code for basic reasonable formatting
+
+SYNOPSIS
+
+   checksource [filename...]
+
+DESCRIPTION
+
+   Checks the input files for basic formatting sanity.  Prints
+   complaints for strange looking files and a summary.  If no
+   filenames are specified, prints out this man page.
+
+OPERANDS
+
+   Files to check for reasonable formatting.
+
+COMPLAINTS
+
+   The only invisible characters may be spaces and newlines,
+   except for a Makefile, where some lines begin with a tab.
+   Form feed is acceptable on a line by itself if used for
+   formatting purposes.
+
+   Printable characters are any ISO-Latin-1 characters in the
+   range '!' to '~' and '¡' to 'ÿ' (\\u0021 to \\u007E and
+   \\u00A1 to \\u00FF).  See:  http://www.unicode.org/charts/.
+   ASCII files contain a subset of these characters.
+
+   Each line must end in a newline.  The last character of the
+   file must be a newline.  M*cr*\$*ft format files are not
+   acceptable.  If you use emacs, be sure that your .emacs file
+   has:  (setq require-final-newline t)
+
+   You may remove carriage returns from your file with one of
+   the following commands:
+
+   . Perl:    perl -pi -e 's/\\r//' filename
+   . vi:      :g/^V^M/s///
+   . shell:   dos2unix oldfilename >newfilename
+
+   No line may have more than 72 characters before the newline.
+   Or:  with ``cat -n | expand'', lines including line numbers
+   should not be longer than 80 characters.  Long lines should
+   be wrapped in a sensible place, such as after a comma, and
+   properly indented on the next line.
+
+   Indent with 3 spaces for each level, and do not use tabs.
+
+   In a Makefile, a tab is required as the first character on a
+   shell command, but should never be used after a non-TAB
+   character.
+
+$RCSID
+
+__END_MAN_PAGE__
+
+my $complaints = 0;
+my %messages;
+
+sub error($$$){
+   my ($filename, $linenr, $message) = @@_;
+   push @@{$messages{$message}{$filename}}, $linenr;
+   ++$complaints;
+}
+
+print $MANPAGE and exit unless @@ARGV;
+
+for my $filename (@@ARGV) {
+   open FILE, "<$filename" or do {error $filename, 0, $!; next};
+   while (defined (my $line = <FILE>)) {
+
+      # Check for missing newline
+      error $filename, $., "missing newline at end of line"
+            unless $line =~ s/\n$//;
+
+      # Expand initial tab in a Makefile.
+      $line =~ s/\t/" " x 8/ge if $filename =~ m|^(.*/)?Makefile$|;
+
+      # Check for line length.
+      my $maxlen = 72;
+      for (my $max = $maxlen; (length $line) > $max; $max += $maxlen) {
+         error $filename, $., "line length > $max characters";
+      };
+
+      # Form feed is OK on a line by itself.
+      $line =~ s/^\f$//;
+
+      # Check for improper chars in line.
+      for my $char ($line =~ m/[^\n\x20-\x7E\xA1-\xFF]/g) {
+         my $ord = ord $char;
+         my $message = sprintf "improper character \\x%02X", $ord;
+         $message .= sprintf " = ^%c", $ord ^ 0x40 if $ord < 0x40;
+         $message .= " (tab)" if $char eq "\t";
+         $message .= " (carriage return)" if $char eq "\r";
+         error $filename, $., $message;
+      }
+
+   }
+   close FILE;
+}
+
+if ($complaints) {
+   for my $message (sort keys %messages) {
+      print STDERR "$0: $message\n";
+      my $filehash = $messages{$message};
+      for my $filename (sort keys %$filehash) {
+         my @@rangenrs;
+         my @@linenrs = @@{$filehash->{$filename}};
+         my $errs = @@linenrs;
+         my $complaint = "   file \"$filename\": $errs errors: ";
+         $complaint .= @@linenrs == 1 ? "line " : "lines ";
+         while (@@linenrs) {
+            my $end = 1;
+            ++$end while $end < @@linenrs
+                   and ($linenrs[$end - 1] == $linenrs[$end]
+                     or $linenrs[$end - 1] + 1 == $linenrs[$end]);
+            if ($end == 1) {
+               push @@rangenrs, shift @@linenrs;
+            }else {
+               my @@splice = splice @@linenrs, 0, $end;
+               push @@rangenrs, "$splice[0]--$splice[-1]";
+            }
+         }
+         $complaint .= join ", ", @@rangenrs;
+         while (length ($complaint) > 72) {
+            $complaint =~ s/^.{9,72}\s+/" " x 8/e;
+            my $segment = $&;
+            print STDERR "$segment\n";
+         }
+         print STDERR "$complaint\n";
+      }
+   }
+   printf STDERR "$0: TOTAL COMPLAINTS: $complaints\n";
+   exit 1;
+}
+
+@
+
+
+1.26
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.25 2010-12-20 19:47:00-08 - - $';
+d121 2
+a122 1
+         my $complaint = "   file \"$filename\": $errs errors: lines ";
+@
+
+
+1.25
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.24 2009-09-15 16:27:31-07 - - $';
+d88 1
+a88 1
+      $line =~ s/^\t/" " x 8/e if $filename =~ m|^(.*/)?Makefile$|;
+@
+
+
+1.24
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.23 2009-04-01 12:46:53-07 - - $';
+d69 1
+d73 1
+a73 3
+   print STDERR "$0: $filename: ";
+   print STDERR "$linenr: " if $linenr;
+   print STDERR "$message\n";
+d93 1
+a93 3
+         error $filename, $.,
+               sprintf "line length > $max chars (%d chars)",
+                       length $line
+d102 1
+a102 1
+         my $message = sprintf "improper char \\x%02X", $ord;
+d104 2
+a105 2
+         $message .= " (Tab)" if $char eq "\t";
+         $message .= " (Ret)" if $char eq "\r";
+d114 29
+@
+
+
+1.23
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.20 2009/03/26 00:31:45 - - $';
+d95 2
+a96 1
+               sprintf "line length > $max chars (%d chars)", length $line
+@
+
+
+1.22
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.21 2009-04-01 12:39:36-07 - - $';
+d92 5
+a96 3
+      error $filename, $.,
+            sprintf "line length > 72 chars (%d chars)", length $line
+            for 1 .. int ((length ($line) - 1) / 72);
+@
+
+
+1.21
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.20 2009-03-25 17:31:45-07 - - $';
+d94 1
+a94 1
+            for 1 .. int (length ($line) / 72);
+@
+
+
+1.20
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.19 2009-03-25 17:27:41-07 - - $';
+d94 1
+a94 1
+            if length($line) > 72;
+@
+
+
+1.19
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.18 2008-12-19 15:35:01-08 - - $';
+d70 2
+a71 2
+sub error($$@@){
+   my ($filename, $linenr, @@message) = @@_;
+d74 1
+a74 1
+   print STDERR "@@message\n";
+d93 1
+a93 1
+            "line length > 72 chars", "(@@{[length($line)]} chars)"
+@
+
+
+1.18
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.17 2008-12-19 15:33:04-08 - - $';
+d68 8
+a75 19
+my %ctlcharnames = (
+   0x00 => "NUL", 0x01 => "SOH", 0x02 => "STX", 0x03 => "ETX",
+   0x04 => "EOT", 0x05 => "ENQ", 0x06 => "ACK", 0x07 => "BEL",
+   0x08 => "BS" , 0x09 => "HT" , 0x0A => "LF" , 0x0B => "VT" ,
+   0x0C => "FF" , 0x0D => "CR" , 0x0E => "SO" , 0x0F => "SI" ,
+   0x10 => "DLE", 0x11 => "DC1", 0x12 => "DC2", 0x13 => "DC3",
+   0x14 => "DC4", 0x15 => "NAK", 0x16 => "SYN", 0x17 => "ETB",
+   0x18 => "CAN", 0x19 => "EM" , 0x1A => "SUB", 0x1B => "ESC",
+   0x1C => "FS" , 0x1D => "GS" , 0x1E => "RS" , 0x1F => "US" ,
+   0x7F => "DEL",
+);
+
+my %complaints;
+my $filename;
+
+sub complain(@@){
+   my (@@message) = @@_;
+   print "$0: $filename: " . ($. ? "$.: " : "") . "@@message\n";
+   ++$complaints{"$message[0] ... $filename"};
+d80 2
+a81 6
+while (@@ARGV) {
+   $filename = shift @@ARGV;
+   unless (open FILE, "<$filename") {
+      complain $!;
+      next;
+   }
+d85 2
+a86 1
+      complain "missing newline at end of line" unless $line =~ s/\n$//;
+d89 1
+a89 2
+      $line =~ s/^\t/" " x 8/e
+            if $filename =~ m:^(.*/)?(Makefile|GNUmakefile)$:;
+d92 3
+a94 2
+      complain "line length > 72 chars", "(@@{[length($line)]} chars)"
+               if length($line) > 72;
+d101 6
+a106 8
+         my $ordchar = ord $char;
+         my $message = sprintf "improper char \\x%02X", $ordchar;
+         $message .= sprintf " = ^%c = %s",
+                     $ordchar ^ 0x40, $ctlcharnames{$ordchar}
+               if $ctlcharnames{$ordchar};
+         $message .= " (horizontal tab)" if $char eq "\t";
+         $message .= " (carriage return)" if $char eq "\r";
+         complain $message;
+d113 2
+a114 9
+my $total = 0;
+my $count;
+for my $complaint (sort keys %complaints) {
+   $total += $count = $complaints{$complaint};
+   printf "$0: %6d  %s\n", $count, $complaint;
+}
+
+if ($total) {
+   printf "$0: %6d  TOTAL COMPLAINTS\n", $total;
+@
+
+
+1.17
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.16 2008-12-19 15:32:20-08 - - $';
+d41 3
+a43 2
+   file must be a newline.  Macintosh and M*cr*\$*ft format
+   files are not acceptable.
+a51 3
+   If you use emacs, be sure that your .emacs file has:  (setq
+   require-final-newline t)
+
+d103 1
+a103 1
+      $line =~ s/^\t+/" " x (8 * length $&)/e
+@
+
+
+1.16
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.15 2008-12-19 15:31:12-08 - - $';
+d32 2
+a39 4
+   Do not use any invisible characters, except space and
+   newline.  Form feed is acceptable on a line by itself if used
+   for formatting purposes.
+
+@
+
+
+1.15
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.14 2008-12-19 15:30:03-08 - - $';
+d34 3
+a36 3
+   range '!' to '~' and '¡' to 'ÿ' (\u0021 to \u007E and \u00A1
+   to \u00FF).  See:  http://www.unicode.org/charts/.  ASCII
+   files contain a subset of these characters.
+@
+
+
+1.14
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.13 2008-12-19 15:29:34-08 - - $';
+d111 1
+a111 1
+      complain "line > 72 chars", "(@@{[length($line)]} chars)"
+@
+
+
+1.13
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.12 2008-12-19 15:28:37-08 - - $';
+d111 1
+a111 1
+      complain "line too long", "(@@{[length($line)]} chars)"
+@
+
+
+1.12
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.11 2008-12-17 17:00:09-08 - - $';
+d89 1
+a89 1
+   print "$filename: " . ($. ? "$.: " : "") . "@@message\n";
+@
+
+
+1.11
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.10 2008-12-17 16:57:34-08 - - $';
+d6 2
+d137 1
+a137 1
+   printf "%6d  %s\n", $count, $complaint;
+d141 1
+a141 1
+   printf "%6d  TOTAL COMPLAINTS\n", $total;
+@
+
+
+1.10
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.9 2008-12-17 16:56:34-08 - - $';
+d66 2
+d91 1
+a91 1
+print $MANPAGE, $RCSID, "\n" and exit 1 unless @@ARGV;
+@
+
+
+1.9
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.8 2008-12-17 16:48:00-08 - - $';
+d28 2
+a29 2
+The only invisible characters may be spaces and newlines, except
+for a Makefile, where some lines begin with a tab.
+d31 34
+a64 33
+Printable characters are any ISO-Latin-1 characters in the range
+'!' to '~' and '¡' to 'ÿ' (\u0021 to \u007E and \u00A1 to
+\u00FF).  See:  http://www.unicode.org/charts/.  ASCII files
+contain a subset of these characters.
+
+Do not use any invisible characters, except space and newline.
+Form feed is acceptable on a line by itself if used for
+formatting purposes.
+
+Each line must end in a newline.  The last character of the file
+must be a newline.  Macintosh and M*cr*\$*ft format files are
+not acceptable.
+
+You may remove carriage returns from your file with one of the
+following commands:
+
+. Perl:    perl -pi -e 's/\\r//' filename
+. vi:      :g/^V^M/s///
+. shell:   dos2unix oldfilename >newfilename
+
+If you use emacs, be sure that your .emacs file has:  (setq
+require-final-newline t)
+
+No line may have more than 72 characters before the newline.
+Or:  with ``cat -n | expand'', lines including line numbers
+should not be longer than 80 characters.  Long lines should be
+wrapped in a sensible place, such as after a comma, and properly
+indented on the next line.
+
+Indent with 3 spaces for each level, and do not use tabs.
+
+In a Makefile, a tab is required as the first character on a
+shell command, but should not otherwise be used.
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.7 2008-12-16 16:48:21-08 - - $';
+d14 1
+a14 1
+   checksource filename...
+d19 2
+a20 1
+   complaints for strange looking files and a summary.
+d28 2
+a29 2
+   1. The only invisible characters may be spaces and newlines,
+      except for a Makefile, where some lines begin with a tab.
+d31 4
+a34 12
+   2. Printable characters are any ISO-Latin-1 characters in the
+      range '!' to '~' and '¡' to 'ÿ' (\u0021 to \u007E and
+      \u00A1 to \u00FF).  See:  http://www.unicode.org/charts/.
+      ASCII files contain a subset of these characters.
+
+   3. Each line must end in a newline.  The last character of
+      the file must be a newline.  Macintosh and M*cr*\$*ft
+      format files are not acceptable.
+
+   4. No line may have more than 72 characters before the
+      newline.  Or:  with ``cat -n | expand'', lines including line
+      numbers should not be longer than 80 characters.
+d36 3
+a38 1
+__END_MAN_PAGE__
+d40 3
+a42 1
+my $advice = <<__END_ADVICE__;
+d44 2
+a45 6
+Keep all lines <= 72 characters.  Long statements should be
+wrapped in a sensible place, such as after a comma, and properly
+indented more then the first line of a sequence.
+
+Do not use any invisible characters, except space and newline.
+Use ASCII or ISO-Latin-1, but not Unicode.
+a46 2
+Your should not edit using M*cr*\$*ft.  But if you do, remove
+all carriage returns from your file before submitting it.
+d51 9
+d65 1
+a65 1
+__END_ADVICE__
+d88 1
+a88 1
+print $MANPAGE and exit 1 unless @@ARGV;
+a136 2
+   print $advice;
+   print "$0\n$RCSID\n";
+@
+
+
+1.7
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.6 2008-11-07 18:59:11-08 - - $';
+d106 1
+a106 1
+      complain "line too long", "(@@{[length($line)]} characters)"
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.5 2008-11-07 18:58:12-08 - - $';
+d109 3
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.4 2008-11-07 18:57:37-08 - - $';
+d103 1
+a103 1
+            if $filename =~ m|^(.*/)?(Makefile|GNUmakefile)$|;
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.3 2008-10-23 16:20:12-07 - - $';
+d103 1
+a103 1
+            if $filename =~ "^(.*/)?(Makefile|GNUmakefile)$";
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.2 2008-10-09 19:02:53-07 - - $';
+d103 1
+a103 1
+            if $filename eq "Makefile" or $filename eq "GNUmakefile";
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.1 2008-10-01 14:50:48-07 - - $';
+d102 2
+a103 1
+      $line =~ s/^\t+/" " x (8 * length $&)/e;
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+my $RCSID = '$Id: checksource,v 1.50 2007-08-23 14:59:32-07 - - $';
+d101 4
+a104 7
+      # Expand initial tab in a Makefile to avoid bad char messages.
+      $line =~ s/^\t+/" " x (8 * length $&)/e
+            if $filename =~ m/^(GNUm|M)akefile$/;
+
+      # Expand tabs then check for line length.
+      1 while $line =~ s{^(.*?)\t}
+                        {$1 . " " x (8 - (length $1) % 8)}e;
+@

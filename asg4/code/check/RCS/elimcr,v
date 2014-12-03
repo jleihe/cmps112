@@ -1,0 +1,173 @@
+head	1.5;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.5
+date	2013.04.03.20.24.25;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2013.04.03.20.12.48;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2013.03.29.20.20.48;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2013.03.29.20.18.49;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2013.01.11.03.51.00;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@-
+@
+text
+@#!/bin/bash
+# $Id: elimcr,v 1.4 2013-04-03 13:12:48-07 - - $
+#
+# NAME
+#    elimcr - fix basic formatting in a text file
+#
+# SYNOPSIS
+#    elimcr filename...
+#
+# DESCRIPTION
+#    Backs up the original file.
+#    Fixes basic formatting on a text file:
+#    Expands tabs using expand(1), except for Makefile.
+#    Deletes trailing carriage return characters.
+#    Adds a final newline if missing from the file.
+#
+# BUGS
+#    Does not fix lines longer than 72 characters.
+#
+
+exim='/usr/bin/vim -E'
+
+if [ $# -eq 0 ]
+then
+   grep '^#' $0
+   exit
+fi
+
+for file in $*
+do
+   if /bin/cp $file $file~~
+   then
+      { [[ $file != *Makefile ]] && echo '1,$!expand'
+        echo 'g/\r/s///'
+        echo w
+        echo q
+      } | $exim $file
+      echo $exim status: $?
+      ls -goa $file $file~~
+   fi
+done
+
+        
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: elimcr,v 1.3 2013-03-29 13:20:48-07 - - $
+d11 1
+a11 1
+#    Backs up the filename to filename~~.
+d21 2
+d33 8
+a40 5
+      [[ $file != *Makefile ]] && echo '1,$!expand'
+      echo 'g/\r/s///'
+      echo w
+      echo q
+   fi | /usr/bin/vim -E $file
+d43 1
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: elimcr,v 1.2 2013-03-29 13:18:49-07 - - $
+d11 1
+d13 1
+a13 1
+#    Expands tabs to 3 spaces using expand(1), except for Makefile.
+d21 1
+a21 1
+if (( $# == 0 ))
+d31 1
+a31 1
+      [[ $file != *Makefile ]] && echo '1,$!expand -3'
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: elimcr.sh,v 1.1 2013-03-29 13:14:55-07 - - $
+a17 1
+#    Ignore this message - stdin: is not a tty
+d30 1
+a30 4
+      if [[ $file != *Makefile ]]
+      then
+         echo '1,$!expand -3'
+      fi
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 2
+a2 2
+#!/bin/sh
+# $Id$
+d5 1
+a5 1
+#    elimcr - eliminate carriage returns (^M) from files.
+d11 15
+a25 2
+#    Uses ex to edit files and eliminates carriage returns from
+#    files.
+d29 10
+a38 3
+   echo `basename $0`: $file
+   echo -e '%s/\\r//\nw\nq' | /usr/bin/ex -u NONE $file
+   checksource $file
+@

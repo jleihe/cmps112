@@ -1,0 +1,35 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2013.01.09.21.42.30;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: weeks-to-log.perl,v 1.4 2011-03-23 16:10:51-07 - - $
+# Convert weeks output listing to lecture log.
+#
+@@lectures = sort <>;
+die "$0: should be 30 lines\n" unless @@lectures == 30;
+map {chomp; die "$_: bad date\n" unless s/^\d+-\d+-\d+\s+//} @@lectures;
+for $day (0..$#lectures) {
+   printf "\nweek %2d:\n", ++$week if $day % 3 == 0;
+   printf "%2d. %s -\n", $day + 1, $lectures[$day];
+}
+print "\n\$Id\$\n";
+@

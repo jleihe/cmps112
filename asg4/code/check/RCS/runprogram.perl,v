@@ -1,0 +1,727 @@
+head	1.7;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.7
+date	2011.02.04.01.17.10;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2010.11.24.00.37.04;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2010.11.24.00.32.40;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2009.11.03.23.34.13;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2009.10.28.01.58.58;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2008.10.10.00.18.08;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@-
+@
+text
+@#!/usr/bin/perl
+use strict;
+use warnings;
+use POSIX qw (strftime);
+my $RCSID =
+'$Id: runprogram.perl,v 1.6 2010-11-23 16:37:04-08 - - $';
+my @@LASTCHANGE = (split m/-/, (split m/\s+/, $RCSID)[3])[2,1,0];
+$LASTCHANGE[1] -= 1;
+$LASTCHANGE[2] -= 1900;
+my $LASTCHANGE = strftime "%e %B %Y", (0, 0, 0, @@LASTCHANGE, 0, 0, 0);
+my $VERSION = "Perl $]";
+my $scriptname = $0;
+$0 =~ s|/*$||;
+$0 =~ s|.*/||;
+
+my $exitstatus = 0;
+END {exit $exitstatus};
+sub printf_log (@@) {printf @@_; printf LOGFILE @@_}
+$SIG{'__WARN__'} = sub {print LOGFILE "$0: @@_"; print STDERR "$0: @@_"};
+$SIG{'__DIE__'} = sub {warn @@_; exit $exitstatus};
+sub abort (@@) {
+   $exitstatus = $?;
+   $SIG{"INT"} = $SIG{"QUIT"} = "DEFAULT";
+   die "$$: @@_: $!";
+}
+
+#
+# Constants for system calls.
+#
+use constant {
+#  SYS_SETRLIMIT    =>        128, # Solaris
+#  SYS_GETRLIMIT    =>        129, # Solaris
+#  SYS_GETTIMEOFDAY =>        156, # Solaris
+#  RLIMIT_NOFILE    =>          5, # file descriptors (Solaris)
+#  RLIMIT_VMEM      =>          6, # maximum mapped memory (Solaris)
+   SYS_SETRLIMIT    =>        160, # Linux
+   SYS_GETRLIMIT    =>         97, # Linux
+   SYS_GETTIMEOFDAY =>         96, # Linux
+   RLIM_INFINITY    => 0x7FFFFFFF,
+   RLIMIT_CPU       =>          0, # cpu time in milliseconds
+   RLIMIT_FSIZE     =>          1, # maximum file size
+   RLIMIT_DATA      =>          2, # data size
+   RLIMIT_STACK     =>          3, # stack size
+   RLIMIT_CORE      =>          4, # core file size
+   RLIMIT_NOFILE    =>          7, # file descriptors
+   RLIM_NLIMITS     =>         15, # number of resource limits
+};
+
+#
+# Gettimeofday(3c)
+# int gettimeofday (struct timeval *tp, void *);
+# long    tv_sec;    /* seconds since Jan. 1, 1970 */
+# long    tv_usec;   /* and microseconds */
+#
+sub gettimeofday () {
+   my $timeval = pack "LL", 0, 0;
+   my $retval = syscall (SYS_GETTIMEOFDAY, $timeval, 0);
+   abort "gettimeofday" unless $retval == 0;
+   my ($tv_sec, $tv_usec) = unpack "LL", $timeval;
+   return $tv_sec + $tv_usec / 1e6;
+}
+
+sub fmttime ($) {
+   my ($epoch_sec) = @@_;
+   my $int_sec = int $epoch_sec;
+   return sprintf "%s.%02.0f", (strftime "%T", localtime $int_sec),
+                             ($epoch_sec - $int_sec) * 100;
+}
+
+#
+# Redirect the three std files, given an array ref.
+#
+sub redirect_std_files (@@) {
+   my ($options) = @@_;
+   my @@files = ({MODE=> "<", GLOB=> *STDIN },
+                {MODE=> ">", GLOB=> *STDOUT},
+                {MODE=> ">", GLOB=> *STDERR});
+   for my $fileno (0..2) {
+      next if $options->{$fileno} eq "-";
+      open $files[$fileno]->{GLOB}, $files[$fileno]->{MODE},
+           $options->{$fileno}
+      or abort $options->{$fileno}
+   }
+}
+
+#
+# Fork a subprocess and wait for it to complete.
+# Return the exit or termination status of the child.
+# Suppress SIGINT and SIGQUIT during the execution of the child.
+#
+sub fork_exec_run_command ($$) {
+   my ($options, $command_argv) = @@_;
+   $SIG{"INT"} = $SIG{"QUIT"} = "IGNORE";
+   my $pid = fork;
+   abort "fork" unless defined $pid;
+   if ($pid) {
+      my (@@startingtimes) = (gettimeofday , times);
+      printf_log "starting: pid %d: %s\n",
+                 $pid, fmttime $startingtimes[0];
+      my $waitpid = waitpid $pid, 0;
+      my $status = $?;
+      my (@@finishedtimes) = (gettimeofday, times);
+      my @@deltas = map {$finishedtimes[$_] - $startingtimes[$_]} 0..4;
+      printf_log "finished: pid %d: %s",
+                 $pid, fmttime $finishedtimes[0];
+      printf_log ", real %.2f, user %.2f, sys %.2f\n", @@deltas[0,3,4];
+          
+      $SIG{"INT"} = $SIG{"QUIT"} = "DEFAULT";
+      abort "forked $pid, waited $waitpid" if $waitpid != $pid;
+      return $status;
+   }else {
+      $SIG{"INT"} = $SIG{"QUIT"} = "DEFAULT";
+      redirect_std_files $options;
+      my $command = $command_argv->[0];
+      exec {$command} @@$command_argv or abort "exec $command";
+   }
+}
+
+#
+# Function which set process resource limits.
+#
+
+my %limitshash = (
+   "c"=> {LIMIT=>RLIMIT_CORE  , LABEL=>"core file size (KB)"},
+   "d"=> {LIMIT=>RLIMIT_DATA  , LABEL=>"data & heap size (KB)"},
+   "f"=> {LIMIT=>RLIMIT_FSIZE , LABEL=>"output file size (KB)"},
+   "n"=> {LIMIT=>RLIMIT_NOFILE, LABEL=>"number of open files"},
+   "s"=> {LIMIT=>RLIMIT_STACK , LABEL=>"stack size (KB)"},
+   "t"=> {LIMIT=>RLIMIT_CPU   , LABEL=>"CPU time (sec)"},
+#  "v"=> {LIMIT=>RLIMIT_VMEM  , LABEL=>"virtual memory size (KB)"},
+);
+
+sub getrlimit ($) {
+   my ($resource) = @@_;
+   my $rlimit = pack "LL", 0, 0;
+   my $retval = syscall (SYS_GETRLIMIT, $resource, $rlimit);
+   abort "getrlimit ($resource)" unless $retval == 0;
+   return unpack "LL", $rlimit;
+}
+
+sub setrlimit ($$$) {
+   return; # This does not work in Linux.
+   my ($resource, $rlim_cur, $rlim_max) = @@_;
+   my $rlimit = pack "LL", $rlim_cur, $rlim_max;
+   my $retval = syscall (SYS_SETRLIMIT, $resource, $rlimit);
+   abort "setrlimit ($resource, $rlim_cur, $rlim_max)"
+         unless $retval == 0;
+}
+
+sub setsoftlimit ($$) {
+   return; # This does not work in Linux.
+   my ($resource, $limit) = @@_;
+   my ($rlim_cur, $rlim_max) = getrlimit ($resource);
+   $limit = $rlim_max if $limit > $rlim_max;
+   setrlimit ($resource, $limit, $rlim_max);
+}
+
+sub octdechex ($$) {
+   my ($lim, $number) = @@_;
+   return oct $number if $number =~ m/^0[0-7]*$/;
+   return hex $number if $number =~ s/^0x[0-9A-F]+$/\L$&/i;
+   return $number if $number =~ m/^\d+$/;
+   die "-$lim $number: invalid numeric operand\n";
+}
+
+sub set_softlimits ($) {
+   my ($options) = @@_;
+   $options->{"c"} = 128 unless defined $options->{"c"};
+   $options->{"f"} = 128 unless defined $options->{"f"};
+   $options->{"t"} =  60 unless defined $options->{"t"};
+   for my $lim (keys %limitshash) {
+      next unless defined $options->{$lim};
+      my $label = $limitshash{$lim}{LABEL};
+      $options->{$lim} = octdechex $lim, $options->{$lim};
+      $options->{$lim} <<= 10 if $label =~ m/(KB)/;
+      my $resource = $limitshash{$lim}{LIMIT};
+      setsoftlimit ($resource, $options->{$lim});
+   }
+}
+
+sub print_limits ($) {
+   my ($options) = @@_;
+   for my $lim (sort keys %limitshash) {
+      next unless defined $options->{$lim};
+      my $label = $limitshash{$lim}{LABEL};
+      my $resource = $limitshash{$lim}{LIMIT};
+      my ($rlim_cur, $rlim_max) = getrlimit ($resource);
+      $rlim_cur >>= 10 if $label =~ "(KB)";
+      printf_log "%-8s: %4d max %s\n",
+                 "limit $lim", $rlim_cur, $label;
+   }
+}
+
+my %filelabels = qw (
+   0 stdin
+   1 stdout
+   2 stderr
+   b bcheck
+   l log
+   o base
+   x listing
+);
+
+#
+# Embed all of the test files in a single listing file for more
+# compact printing.
+#
+sub cat_rm_testfiles ($) {
+   my ($options) = @@_;
+   my $sepline = ":" x 65 . "\n";
+   my $lis_fname = $options->{"x"};
+   return unless $lis_fname;
+   open LISTING, ">$lis_fname" or abort $lis_fname;
+   for my $opt (qw (l 0 1 2 b)) {
+      my $fname = $options->{$opt};
+      next unless $fname and -r $fname;
+      print "Copying $fname into $lis_fname\n";
+      print LISTING "\n$sepline$filelabels{$opt}: $fname\n$sepline\n";
+      print LISTING `cat -nv $fname`;
+      unlink $fname or abort $fname unless $fname eq $options->{0};
+   }
+   close LISTING;
+}
+
+sub run_program ($$) {
+   my ($options, $command_argv) = @@_;
+   my $std_fnames = [$options->{0,1,2}];
+   my $log_fname = $options->{"l"};
+   my $sepline = "_" x 72 . "\n";
+   print $sepline;
+   open LOGFILE, ">$log_fname" or abort $log_fname;
+   #printf_log "opts{$_}=$options->{$_}\n" for sort keys %$options;
+   #printf_log "argv[$_]=$command_argv->[$_]\n" for 0..$#$command_argv;
+   my $format = "%-8s: %s\n";
+   printf_log $format, "Script", $scriptname;
+   print_limits $options;
+   for my $fname (sort keys %filelabels) {
+      printf_log $format, $filelabels{$fname}, $options->{$fname}
+      if $options->{$fname};
+   }
+   printf_log $format, "Command", join " ", @@$command_argv;
+   my $status = fork_exec_run_command $options, $command_argv;
+   printf_log "%s", `pstatus $status`;
+   printf_log "%s", `ls -goa core; rm core` if -f "core";
+   cat_rm_testfiles $options if $options->{"x"};
+   close LOGFILE;
+   print $sepline;
+}
+
+sub scan_options (@@) {
+   @@ARGV = @@_;
+   my %options;
+   use Getopt::Std;
+   my $fileopts = join "", sort keys %filelabels;
+   my $rlimitopts = join "", sort keys %limitshash;
+   my $optstring = $fileopts . $rlimitopts;
+   $optstring =~ s/./$&:/g;
+   $optstring .= "BMX";
+   getopts ($optstring, \%options);
+   return \%options, \@@ARGV;
+}
+
+sub set_filenames ($$) {
+   my ($options, $command_argv) = @@_;
+   my $basename = $options->{"o"};
+   ($basename = $options->{"x"}) =~ s/\.lis$//
+                if $options->{"x"} and not $basename;
+   ($basename = $options->{"l"}) =~ s/\.log$//
+                if $options->{"l"} and not $basename;
+   $basename = $command_argv->[0] unless $basename;
+   $options->{"x"} = "$basename.lis"
+                     if $options->{"X"} and not $options->{"x"};
+   $options->{"b"} = "$basename.dbx"
+                     if $options->{"B"} and not $options->{"b"};
+   $options->{"l"} = "$basename.log" unless $options->{"l"};
+   $options->{0} = "$basename.in"  unless $options->{0};
+   $options->{1} = "$basename.out" unless $options->{1};
+   $options->{2} = "$basename.err" unless $options->{2};
+   if ($options->{"b"}) {
+      unshift @@$command_argv, "-o", $options->{"b"}
+              unless $options->{"b"} eq "-";
+      unshift @@$command_argv, qw (bcheck -leaks);
+   }
+   $options->{0} = "/dev/null"
+         unless $options->{0} eq "-" or -r $options->{0};
+}
+
+my $psfile = '/tmp/man.$<.$$.ps';
+my $defaultroff = "groff -rL1000i -P-cbou -Tlatin1 -man | perl -00pe0";
+my $psroff = "groff -rL10.75i -Tps -man >$psfile";
+my $ghroff = "ghostview $psfile &";
+sub subst (@@) {
+   my $string = eval "\"@@_\"";
+   $string =~ s/-/\\-/g;
+   $string =~ s/ /\\0/g;
+   return $string;
+}
+
+sub format_manpage ($) {
+   my ($formatter) = @@_;
+   $formatter =~ s/\$\$/$$/g;
+   $formatter =~ s/\$</$</g;
+   $formatter .= "\n";
+   print STDERR "$0: formatting with:\n$formatter";
+   open FORMATTER, "| $formatter" or abort $formatter;
+   while (<DATA>) {
+      s/[\$\@@]\{\w+(\[\w+\])?\}/subst $&/ge;
+      print FORMATTER;
+   };
+   close FORMATTER;
+}
+
+sub main (@@) {
+   my (@@argv) = @@_;
+   my ($options, $command_argv)  = scan_options (@@argv);
+   if ($options->{"M"}) {
+      format_manpage (@@$command_argv ? "@@$command_argv"
+                                     : "$psroff\n$ghroff");
+   }else {
+      set_softlimits $options;
+      set_filenames $options, $command_argv;
+      run_program $options, $command_argv;
+   }
+}
+
+if (@@ARGV) {
+   main @@ARGV;
+}else {
+   format_manpage $defaultroff;
+}
+
+__DATA__
+.TH ${0} 1 "${LASTCHANGE}" "${VERSION}" "User Commands"
+.if \nL .pl \nLu
+.de OP
+.   TP
+.   BI "\\$1 " "\\$2"
+..
+.de <>
+.   br
+.   in +\n(INu
+.   BR \\$@@
+.   in -\n(INu
+.   br
+..
+.SH "NAME"
+${0} \- run tests on a student's program
+.SH "SYNOPSIS"
+.BR ${0}
+.RB \|[ \-BX]
+.RB \|[ \-012blox
+.IR filename \|.\|.\|.]
+.RB \|[ \-cdfnstv
+.IR rlimit \|.\|.\|.]
+.IR program
+.RI \|[ args \|.\|.\|.]
+.br
+.BR ${0}
+.RB \|[ \-M
+.RI \|[ shellcmd ]]
+.SH "DESCRIPTION"
+Runs a student's program specified by the program and arguments using
+.BR exec (2).
+Options to runtests must appear first before the name of the program.
+Options and operands to the student's program appear after the name of
+the program and are not analyzed.
+A log file is created reporting some information about the program that
+was run.
+.SH "OPERANDS"
+The first operand is the name of the program to run and all args
+following that are passed directly into the student's program.
+.SH "OPTIONS"
+Options are scanned with Perl's
+.BR Getopt::Std::getopt .
+.SH "FILENAME OPTIONS"
+This program has some number of filename options,
+each of which has a default and which is used to create or read from a
+file.
+.BR STDIN
+is always an input redirect,
+whereas
+.BR STDOUT
+and
+.BR STDERR
+are always output redirects.
+.OP \-0 stdinfilename
+Redirect
+.BR STDIN
+from the file specified.
+If it does not exist or is not readable,
+.BR STDIN
+is redirected from
+.BR /dev/null .
+The default suffix is
+.BR \&.in .
+If the filename is a minus sign
+.RB ( \- ),
+i.e.,
+.BR \-0\- ,
+no redirection is performed.
+.OP \-1 stdoutfilename
+Redirect
+.BR STDOUT
+to the file specified.
+The default suffix is
+.BR \&.out .
+If the filename is a minus sign
+.RB ( \- ),
+i.e.,
+.BR \-1\- ,
+no redirection is performed.
+.OP \-2 stderrfilename
+Redirect
+.BR STDERR
+to the file specified.
+The default suffix is
+.BR \&.err .
+If the filename is a minus sign
+.RB ( \- ),
+i.e.,
+.BR \-2\- ,
+no redirection is performed.
+If the filename is specified as
+.BR &1
+or
+.BR &STDOUT ,
+it is redirected to
+.BR STDOUT .
+See
+.BR sh (1)
+usage of the redirection
+.BR 2>&1 .
+Note that the shell needs to have
+.BR &
+quoted.
+.OP \-b bcheckfilename
+Run the program under control of
+.BR "bcheck \-leaks" .
+The default suffix is
+.BR \&.dbx .
+If the filename is a minus sign
+.RB ( \- ),
+i.e.,
+.BR \-b\- ,
+no
+.BR \-o
+option is passed to
+.BR bcheck (1),
+and it uses its own default output filename.
+.OP \-B
+Runs bcheck with the default filename.
+Takes no argument.
+.OP \-l logfilename
+Name of the log file.
+The default suffix is
+.BR \&.log .
+All output written to the log is also written to this program's
+.BR STDOUT
+(not the subject program's
+.BR STDOUT ).
+The basename is taken from this option if
+.BR \-x
+is not specified.
+.OP \-o basename
+Explicitly set the basenmae for all created files.
+This is the same as
+.BR \-l
+but without the
+.BR \&.log
+suffix.
+If none of
+.BR \-l ,
+.BR \-o ,
+or
+.BR \-x
+is specified,
+the basename of
+.BR argv[0]
+of the child process is used.
+.OP \-x listingfilename
+Name of the listing file.
+The default suffix is
+.BR \&.lis .
+If a listing file is created,
+other files are copied into it in the style of
+.BR cat (1)
+or
+.BR more (1),
+the output files then being deleted.
+Used as the basename if specified.
+.OP \-X
+Turns on the listing option and uses a default filename.
+Takes no argument.
+.SH "RESOURCE LIMITING OPTIONS"
+Some options specify limits to resource usage by the student's program.
+Only the current (soft) limit, not the hard limit, is changed.
+Each limit is specified as an octal, decimal, or hexadecimal number,
+The names of the options are consistent with the ulimit of sh(1).
+The maxima are:
+.OP \-c
+maximum core file size (K-bytes)
+.OP \-d
+maximum data and heap size (K-bytes)
+.OP \-f
+maximum output file size (K-bytes)
+.OP \-n
+maximum number of open files
+.OP \-s
+maximum stack size (K-bytes)
+.OP \-t
+maximum CPU time (seconds)
+.OP \-v
+maximum virtual memory size (K-bytes)
+.SH "MAN PAGE PRINTING OPTIONS
+If the
+.BR \-M
+option is specified, no program is run.
+Instead a
+.BR man (1)
+page describing the program is printed.
+The source for the man page using the
+.BR man (5)
+macros is piped into a shell command.
+.OP \-M shellcmd
+Roff (formatter) command to used for formatting the man page.
+Generally, use one of
+.BR groff (1),
+.BR troff (1),
+.BR nroff (1),
+or
+.BR cat (1),
+etc.
+All of
+.BR @@ARGV
+is concatenated to be used for the command.
+Some characters may need to be quoted.
+.BR @@ARGV
+is passed directly to a shell
+.RB ( sh (1))
+pipe.
+The default command is:
+.<> "${defaultroff}"
+If
+.BR \-M
+is specified with no operands, the default commands are:
+.<> "${psroff}"
+.<> "${ghroff}"
+Here, the message printed to
+.BR stderr
+shows the actual values of the real uid
+.RB ( $< )
+and the pid
+.RB ( $$ ).
+.SH "RCSID"
+${RCSID}
+@
+
+
+1.6
+log
+@-
+@
+text
+@d6 1
+a6 1
+'$Id: runprogram.perl,v 1.4 2009-11-03 15:34:13-08 - - $';
+d79 1
+a82 1
+      unless $options->{$fileno} eq "-";
+d284 2
+a285 1
+   $options->{0} = "/dev/null" unless -r $options->{0};
+@
+
+
+1.5
+log
+@-
+@
+text
+@d31 8
+a38 3
+   SYS_SETRLIMIT    =>        128,
+   SYS_GETRLIMIT    =>        129,
+   SYS_GETTIMEOFDAY =>        156,
+d45 2
+a46 3
+   RLIMIT_NOFILE    =>          5, # file descriptors
+   RLIMIT_VMEM      =>          6, # maximum mapped memory
+   RLIM_NLIMITS     =>          7, # number of resource limits
+d130 1
+a130 1
+   "v"=> {LIMIT=>RLIMIT_VMEM  , LABEL=>"virtual memory size (KB)"},
+d142 1
+d151 1
+a151 1
+   return;
+a181 1
+   return;
+@
+
+
+1.4
+log
+@-
+@
+text
+@d6 1
+a6 1
+'$Id: runprogram.perl,v 1.3 2009-10-27 18:58:58-07 - - $';
+d146 1
+d177 1
+@
+
+
+1.3
+log
+@-
+@
+text
+@d6 1
+a6 1
+'$Id: runprogram.perl,v 1.2 2008-10-09 17:18:08-07 - - $';
+d276 1
+a276 1
+      unshift @@$command_argv, qw (bcheck -all);
+d431 1
+a431 1
+.BR "bcheck \-all" .
+@
+
+
+1.2
+log
+@-
+@
+text
+@d6 1
+a6 1
+'$Id: runprogram.perl,v 1.1 2008-10-01 14:50:48-07 - - $';
+a115 19
+# Redirect the three std files temporarily while system is used to
+# run a child process.  This function is not used.
+#
+sub redir_system_run_command ($$) {
+   my ($options, $command_argv) = @@_;
+   open my $old_stdin,  "<&STDIN"  or abort "dup STDIN";
+   open my $old_stdout, ">&STDOUT" or abort "dup STDOUT";
+   open my $old_stderr, ">&STDERR" or abort "dup STDERR";
+   redirect_std_files $options;
+   my $status = system @@$command_argv;
+   $status = - $! if $status == -1;
+   print "status = $status, reason = $!\n";
+   open STDIN,  "<&", $old_stdin  or abort $old_stdin;
+   open STDOUT, ">&", $old_stdout or abort $old_stdout;
+   open STDERR, ">&", $old_stderr or abort $old_stderr;
+   return $status;
+}
+
+#
+@
+
+
+1.1
+log
+@-
+@
+text
+@d6 1
+a6 1
+'$Id: runprogram.perl,v 7.81 2008-02-07 16:09:00-08 - - $';
+d301 1
+a301 1
+my $defaultroff = "groff -rL1000i -P-bou -Tlatin1 -man | perl -00pe0";
+@

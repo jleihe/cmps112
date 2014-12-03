@@ -1,0 +1,67 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2011.04.05.22.58.09;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2011.04.05.22.37.57;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: cat2html,v 1.1 2011-04-05 15:37:57-07 - - $
+#
+# NAME
+#    cat2html - convert input text to html, editing http: strings
+#
+# SYNOPSIS
+#    cat2html [filename...]
+#
+# DESCRIPTION
+#    Reads input files using <> and edits all strings of the form
+#    http:\S+ replacing them with HREF links.  Write the generated
+#    html to STDOUT.
+#
+
+my %htchars = qw (& &amp; < &lt; > &gt;);
+print "<PRE>\n";
+
+while (<>) {
+   s/[&<>]/$htchars{$&}/g;
+   s/(^|\b)(https?:\S+)/$1<A HREF=$2>$2<\/A>/g;
+   print;
+};
+
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+d20 2
+a21 2
+   s![&<>]!$htchars{$&}!g;
+   s!(^|\b)(https?:\S+)!$1<A HREF=$2>$2</A>!g;
+@

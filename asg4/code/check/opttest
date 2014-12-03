@@ -1,0 +1,5 @@
+#!/bin/sh
+# $Id: opttest,v 1.1 2009-03-31 14:59:39-07 - - $
+
+set -- `getopt c $*`
+echo $*

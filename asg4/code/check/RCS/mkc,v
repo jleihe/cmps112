@@ -1,0 +1,2338 @@
+head	1.82;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.82
+date	2014.06.12.02.52.47;	author -;	state -;
+branches;
+next	1.81;
+
+1.81
+date	2014.05.23.04.32.03;	author -;	state -;
+branches;
+next	1.80;
+
+1.80
+date	2014.05.13.21.00.02;	author -;	state -;
+branches;
+next	1.79;
+
+1.79
+date	2014.05.13.00.25.48;	author -;	state -;
+branches;
+next	1.78;
+
+1.78
+date	2014.05.13.00.09.58;	author -;	state -;
+branches;
+next	1.77;
+
+1.77
+date	2014.05.08.22.16.38;	author -;	state -;
+branches;
+next	1.76;
+
+1.76
+date	2014.05.08.22.14.49;	author -;	state -;
+branches;
+next	1.75;
+
+1.75
+date	2014.05.08.22.11.15;	author -;	state -;
+branches;
+next	1.74;
+
+1.74
+date	2014.05.03.00.24.52;	author -;	state -;
+branches;
+next	1.73;
+
+1.73
+date	2014.05.01.22.15.58;	author -;	state -;
+branches;
+next	1.72;
+
+1.72
+date	2014.05.01.00.15.38;	author -;	state -;
+branches;
+next	1.71;
+
+1.71
+date	2014.04.26.00.13.10;	author -;	state -;
+branches;
+next	1.70;
+
+1.70
+date	2014.04.26.00.12.12;	author -;	state -;
+branches;
+next	1.69;
+
+1.69
+date	2014.04.25.20.23.15;	author -;	state -;
+branches;
+next	1.68;
+
+1.68
+date	2014.04.25.20.21.50;	author -;	state -;
+branches;
+next	1.67;
+
+1.67
+date	2014.04.25.00.33.48;	author -;	state -;
+branches;
+next	1.66;
+
+1.66
+date	2014.04.25.00.29.56;	author -;	state -;
+branches;
+next	1.65;
+
+1.65
+date	2014.04.25.00.29.06;	author -;	state -;
+branches;
+next	1.64;
+
+1.64
+date	2014.04.25.00.24.53;	author -;	state -;
+branches;
+next	1.63;
+
+1.63
+date	2014.04.25.00.22.45;	author -;	state -;
+branches;
+next	1.62;
+
+1.62
+date	2014.04.17.22.45.09;	author -;	state -;
+branches;
+next	1.61;
+
+1.61
+date	2014.04.15.01.03.06;	author -;	state -;
+branches;
+next	1.60;
+
+1.60
+date	2014.04.15.01.02.36;	author -;	state -;
+branches;
+next	1.59;
+
+1.59
+date	2014.04.15.01.00.40;	author -;	state -;
+branches;
+next	1.58;
+
+1.58
+date	2013.10.03.02.15.55;	author -;	state -;
+branches;
+next	1.57;
+
+1.57
+date	2013.07.11.00.23.58;	author -;	state -;
+branches;
+next	1.56;
+
+1.56
+date	2013.07.03.00.59.02;	author -;	state -;
+branches;
+next	1.55;
+
+1.55
+date	2013.02.02.03.39.39;	author -;	state -;
+branches;
+next	1.54;
+
+1.54
+date	2012.03.27.02.33.19;	author -;	state -;
+branches;
+next	1.53;
+
+1.53
+date	2011.11.10.05.28.40;	author -;	state -;
+branches;
+next	1.52;
+
+1.52
+date	2011.11.10.05.16.17;	author -;	state -;
+branches;
+next	1.51;
+
+1.51
+date	2011.11.10.05.04.57;	author -;	state -;
+branches;
+next	1.50;
+
+1.50
+date	2011.11.10.04.49.26;	author -;	state -;
+branches;
+next	1.49;
+
+1.49
+date	2011.11.10.04.46.49;	author -;	state -;
+branches;
+next	1.48;
+
+1.48
+date	2011.11.10.04.45.20;	author -;	state -;
+branches;
+next	1.47;
+
+1.47
+date	2011.11.10.04.33.54;	author -;	state -;
+branches;
+next	1.46;
+
+1.46
+date	2011.11.10.04.33.23;	author -;	state -;
+branches;
+next	1.45;
+
+1.45
+date	2011.11.10.04.33.01;	author -;	state -;
+branches;
+next	1.44;
+
+1.44
+date	2011.02.01.22.06.35;	author -;	state -;
+branches;
+next	1.43;
+
+1.43
+date	2011.02.01.03.51.00;	author -;	state -;
+branches;
+next	1.42;
+
+1.42
+date	2011.02.01.03.50.20;	author -;	state -;
+branches;
+next	1.41;
+
+1.41
+date	2011.02.01.03.49.57;	author -;	state -;
+branches;
+next	1.40;
+
+1.40
+date	2011.01.15.01.50.23;	author -;	state -;
+branches;
+next	1.39;
+
+1.39
+date	2011.01.08.03.42.15;	author -;	state -;
+branches;
+next	1.38;
+
+1.38
+date	2011.01.08.03.39.39;	author -;	state -;
+branches;
+next	1.37;
+
+1.37
+date	2011.01.08.03.35.58;	author -;	state -;
+branches;
+next	1.36;
+
+1.36
+date	2011.01.08.01.50.17;	author -;	state -;
+branches;
+next	1.35;
+
+1.35
+date	2011.01.08.01.49.50;	author -;	state -;
+branches;
+next	1.34;
+
+1.34
+date	2011.01.05.04.23.04;	author -;	state -;
+branches;
+next	1.33;
+
+1.33
+date	2010.12.21.02.23.20;	author -;	state -;
+branches;
+next	1.32;
+
+1.32
+date	2010.12.21.02.19.45;	author -;	state -;
+branches;
+next	1.31;
+
+1.31
+date	2010.10.15.01.38.53;	author -;	state -;
+branches;
+next	1.30;
+
+1.30
+date	2010.03.12.05.17.43;	author -;	state -;
+branches;
+next	1.29;
+
+1.29
+date	2010.03.12.02.37.29;	author -;	state -;
+branches;
+next	1.28;
+
+1.28
+date	2010.03.12.02.30.27;	author -;	state -;
+branches;
+next	1.27;
+
+1.27
+date	2010.02.27.03.24.07;	author -;	state -;
+branches;
+next	1.26;
+
+1.26
+date	2009.04.17.03.16.33;	author -;	state -;
+branches;
+next	1.25;
+
+1.25
+date	2009.04.17.03.16.24;	author -;	state -;
+branches;
+next	1.24;
+
+1.24
+date	2009.04.17.03.04.35;	author -;	state -;
+branches;
+next	1.23;
+
+1.23
+date	2009.04.17.03.03.53;	author -;	state -;
+branches;
+next	1.22;
+
+1.22
+date	2009.04.17.02.56.05;	author -;	state -;
+branches;
+next	1.21;
+
+1.21
+date	2009.04.17.02.53.48;	author -;	state -;
+branches;
+next	1.20;
+
+1.20
+date	2009.04.17.02.41.12;	author -;	state -;
+branches;
+next	1.19;
+
+1.19
+date	2009.04.17.02.31.12;	author -;	state -;
+branches;
+next	1.18;
+
+1.18
+date	2009.04.17.02.28.59;	author -;	state -;
+branches;
+next	1.17;
+
+1.17
+date	2009.04.17.02.28.03;	author -;	state -;
+branches;
+next	1.16;
+
+1.16
+date	2009.04.16.21.50.41;	author -;	state -;
+branches;
+next	1.15;
+
+1.15
+date	2009.04.16.21.47.31;	author -;	state -;
+branches;
+next	1.14;
+
+1.14
+date	2009.04.16.21.45.53;	author -;	state -;
+branches;
+next	1.13;
+
+1.13
+date	2009.04.16.21.42.46;	author -;	state -;
+branches;
+next	1.12;
+
+1.12
+date	2009.04.16.21.39.35;	author -;	state -;
+branches;
+next	1.11;
+
+1.11
+date	2009.03.26.22.29.02;	author -;	state -;
+branches;
+next	1.10;
+
+1.10
+date	2009.02.27.00.47.57;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2009.02.03.21.38.20;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2009.02.03.21.32.11;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2009.01.27.21.48.48;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2008.12.16.22.59.15;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2008.12.16.22.49.37;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2008.12.16.22.48.59;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2008.12.06.03.00.53;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2008.12.06.03.00.29;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.82
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: mkc,v 1.81 2014-05-22 21:32:03-07 - - $
+SCRIPT=`basename $0`
+MANPAGE="#
+# NAME
+#    $SCRIPT - compile a C, C++, or Java program
+#
+# SYNOPSIS
+#    $SCRIPT [-cdhgx] [-l lib]... prog.{c,cc,java}...
+#
+# DESCRIPTION
+#    Check (ci) each source file into an RCS subdirectory and run
+#    checksource to verify basic formatting.  This script only works
+#    for simple programs entirely contained in one source file.
+#    The object or class file(s) are then removed.
+#
+#    .c       - compile C.
+#    .cc,.cpp - compile C++.
+#    .m       - compiler Objective C.
+#    .java    - compile Java, put in jar, including inner classes.
+#
+# OPTIONS
+#    -c       Do not link C code, stop at -c, do not delete object file
+#    -d       Do not delete the object or class files
+#    -h       Print out man page information
+#    -l lib   Add -llib to C/C++ compilation
+#    -q       Quiet mode, no @@@@@@@@ chatter.
+#    -x       Do not execute cid or checksource commands
+#"
+
+########################################################################
+# Compilation options and shell variables.
+#
+GCC="gcc -g -O0 -Wall -Wextra -rdynamic -std=gnu11"
+GPP="g++ -g -O0 -Wall -Wextra -rdynamic -std=gnu++11"
+LIBS="-lglut -lGLU -lGL -lX11 -lrt -lm"
+
+########################################################################
+# Print a command then run it.  Exit failure if it fails.
+#
+runcmd() {
+   echo $*
+   $* 2>&1
+   [ $? -eq 0 ] || exit 1
+}
+
+########################################################################
+# Print the manpage and exit.
+#
+manpage() {
+   echo "$MANPAGE" | sed -e 's/^# //' -e 's/^#//'
+   exit 0
+}
+
+########################################################################
+# Print a usage message and exit.
+#
+usage() {
+   echo "Usage: $SCRIPT [-cdhlqx] prog.{c,cc,cpp,java}..." 1>&2
+   exit 2
+}
+
+########################################################################
+# Snip a suffix from a program name.
+#
+snip() {
+   echo $1 | sed 's/\.[^.]*$//'
+}
+
+linkc() {
+   if [ "$no_link_c" ] ; then echo -c ; else echo $* ; fi
+}
+
+########################################################################
+# Compile a C program.
+#
+compile_c() {
+   exec=`snip $source .c`
+   runcmd $GCC $source `linkc -o $exec $LIBS`
+   deletions="$exec.o"
+}
+
+########################################################################
+# Compile an Objective-C program.
+#
+compile_objc() {
+   exec=`snip $source .c`
+   runcmd $GCC $source `linkc -o $exec -lobjc $LIBS`
+   deletions="$exec.o"
+}
+
+########################################################################
+# Compile a C++ program.
+#
+compile_gpp() {
+   exec=`snip $source`
+   runcmd $GPP $source `linkc -o $exec $LIBS`
+   deletions="$exec.o"
+}
+
+########################################################################
+# Compile a Java program and put the classes in a jar.
+#
+compile_java() {
+   exec=`snip $source`
+   runcmd javac -Xlint $source
+   echo Main-class: $exec >Manifest
+   runcmd jar cfm $exec Manifest $exec*.class
+   rm Manifest
+   runcmd chmod +x $exec
+   deletions="$exec*.class"
+}
+
+########################################################################
+# Notify brackets around compilations.
+#
+notify() {
+   [ $quiet ] || echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $SCRIPT: $*
+}
+
+########################################################################
+# Check for options.
+#
+while getopts cdhl:qx opt ; do
+   case $opt in
+      c) no_link_c=1; no_delete_obj=1;;
+      d) no_delete_obj=1;;
+      h) manpage;;
+      l) LIBS="$LIBS -l$OPTARG";;
+      q) quiet=1;;
+      x) no_exec_cid=1;;
+      ?) usage;;
+   esac
+done
+shift $(($OPTIND-1))
+[ $# -ne 0 ] || usage
+
+########################################################################
+# Compile each of the programs.
+#
+for source in $*
+do
+   notify starting $source
+   if [ "$no_exec_cid" = "" ] ; then
+      checksource $source
+      cid + $source
+      ident $source
+   fi
+   case $source in
+      *.c)        compile_c;;
+      *.m)        compile_objc;;
+      *.cc)       compile_gpp;;
+      *.cpp)      compile_gpp;;
+      *.java)     compile_java;;
+      *)          echo $SCRIPT: $source is not a known program type;;
+   esac
+   [ $no_delete_obj ] || runcmd rm -f $deletions
+   notify finished $source
+done
+
+@
+
+
+1.81
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.80 2014-05-13 14:00:02-07 - - $
+d34 3
+a36 3
+GCC="gcc -g -O0 -Wall -Wextra -std=gnu11"
+GPP="g++ -g -O0 -Wall -Wextra -std=gnu++11"
+LIBS="-lglut -lGLU -lGL -lX11 -lm -lrt"
+@
+
+
+1.80
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.79 2014-05-12 17:25:48-07 - - $
+d36 1
+a36 1
+LIBS="-lglut -lGLU -lGL -lX11 -lm"
+@
+
+
+1.79
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.78 2014-05-12 17:09:58-07 - - $
+d59 1
+a59 1
+   echo "Usage: $SCRIPT [-cdglmx] prog.{c,cc,cpp,java}..." 1>&2
+@
+
+
+1.78
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.77 2014-05-08 15:16:38-07 - - $
+d27 1
+d41 1
+a41 1
+runcmd () {
+d50 1
+a50 1
+manpage () {
+d58 1
+a58 1
+usage () {
+d66 1
+a66 1
+snip () {
+d70 1
+a70 1
+linkc () {
+d77 1
+a77 1
+compile_c () {
+d86 1
+a86 1
+compile_objc () {
+d95 1
+a95 1
+compile_gpp () {
+d104 1
+a104 1
+compile_java () {
+d115 7
+d124 1
+a124 1
+while getopts cdhl:x opt ; do
+d130 1
+d143 6
+a148 3
+   echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $SCRIPT: starting $source
+   [ $no_exec_cid ] || { checksource $source; cid + $source; }
+   ident $source
+d158 1
+a158 1
+   echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $SCRIPT: finished $source
+@
+
+
+1.77
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.76 2014-05-08 15:14:49-07 - - $
+d33 1
+a33 1
+GCC="gcc -g -O0 -Wall -Wextra -std=gnu99"
+@
+
+
+1.76
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.75 2014-05-08 15:11:15-07 - - $
+d35 1
+a35 1
+LIBS="-lGL -lGLU -lglut -lX11 -lm"
+@
+
+
+1.75
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.74 2014-05-02 17:24:52-07 - - $
+d35 1
+a35 1
+LIBS="-lm -lGL -lGLU -lglut"
+@
+
+
+1.74
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.73 2014-05-01 15:15:58-07 - - $
+a25 1
+#    -g       Include -lGL -lGLU -lglut to C/C++ compilation
+d35 1
+d78 1
+a78 1
+   runcmd $GCC $source `linkc -o $exec -lm $LIBS`
+d87 1
+a87 1
+   runcmd $GCC $source `linkc -o $exec -lobjc -lm $LIBS`
+d96 1
+a96 1
+   runcmd $GPP $source `linkc -o $exec -lm $LIBS`
+d116 1
+a116 1
+while getopts cdhgl:x opt ; do
+a120 1
+      g) LIBS="$LIBS -lGL -lGLU -lglut";;
+@
+
+
+1.73
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.72 2014-04-30 17:15:38-07 - - $
+d28 1
+a28 1
+#    -x       Do not execute cid command
+d136 2
+a137 2
+   [ $no_exec_cid ] || { cid + $source; ident $source; }
+   checksource $source
+@
+
+
+1.72
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.71 2014-04-25 17:13:10-07 - - $
+d26 1
+a26 1
+#    -g       Include -lGLU -lGL -lglut to C/C++ compilation
+d121 1
+a121 1
+      g) LIBS="$LIBS -lGLU -lGL -lglut";;
+@
+
+
+1.71
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.70 2014-04-25 17:12:12-07 - - $
+d9 1
+a9 1
+#    $SCRIPT [-cms] prog.{c,cc,java}...
+d25 1
+a26 1
+#    -h       Print out man page information
+d120 1
+a121 1
+      h) manpage;;
+@
+
+
+1.70
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.69 2014-04-25 13:23:15-07 - - $
+d23 1
+a23 1
+#    -c       Do not link C code, stop at -c
+d118 1
+a118 1
+      c) no_link_c=1;;
+@
+
+
+1.69
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.68 2014-04-25 13:21:50-07 - - $
+d26 1
+a27 1
+#    -m       Print out man page information
+d116 1
+a116 1
+while getopts cdgl:mx opt ; do
+d121 1
+a122 1
+      m) manpage;;
+@
+
+
+1.68
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.67 2014-04-24 17:33:48-07 - - $
+d58 1
+a58 1
+   echo "Usage: $SCRIPT [-cdlmsu] prog.{c,cc,cpp,java}..." 1>&2
+d120 1
+a120 1
+      d) LIBS="$LIBS -lGLU -lGL -lglut";;
+@
+
+
+1.67
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.66 2014-04-24 17:29:56-07 - - $
+d25 1
+d116 1
+a116 1
+while getopts cdml:x opt ; do
+d120 1
+@
+
+
+1.66
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.65 2014-04-24 17:29:06-07 - - $
+d134 1
+a134 2
+   [ $no_exec_cid ] || cid + $source
+   echo `ident $source`
+@
+
+
+1.65
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.64 2014-04-24 17:24:53-07 - - $
+d134 1
+a134 1
+   [ $no_exec_cid] || cid + $source
+@
+
+
+1.64
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.63 2014-04-24 17:22:45-07 - - $
+d145 1
+a145 1
+   [ $no_delete_obj ] || then runcmd rm -f $deletions
+@
+
+
+1.63
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.62 2014-04-17 15:45:09-07 - - $
+d42 1
+a42 1
+   if [ $? -ne 0 ] ; then exit 1 ; fi
+d126 1
+a126 1
+if [ $# -eq 0 ] ; then usage ; fi
+d145 1
+a145 1
+   if [ ! "$no_delete_obj" ] ; then runcmd rm -f $deletions ; fi
+@
+
+
+1.62
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.61 2014-04-14 18:03:06-07 - - $
+d27 1
+d69 1
+a69 1
+   if [ "$opt_c" ] ; then echo -c ; else echo $* ; fi
+d115 1
+a115 1
+while getopts cdml: opt ; do
+d117 3
+a119 3
+      c) opt_c=1;;
+      d) opt_d=1;;
+      l) LIBS="$LIBS -l$OPTARG"
+d121 1
+d134 1
+a134 1
+   cid + $source
+d145 1
+a145 1
+   if [ ! "$opt_d" ] ; then runcmd rm -f $deletions ; fi
+@
+
+
+1.61
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.60 2014-04-14 18:02:36-07 - - $
+d23 4
+a26 3
+#    -c   Do not link C code, stop at -c
+#    -d   Do not delete the object or class files
+#    -m   Print out man page information
+d76 1
+a76 1
+   runcmd $GCC $source `linkc -o $exec -lm`
+d85 1
+a85 1
+   runcmd $GCC $source `linkc -o $exec -lm -lobjc`
+d94 1
+a94 1
+   runcmd $GPP $source `linkc -o $exec -lm`
+d114 1
+a114 1
+while getopts cdm opt ; do
+d118 1
+@
+
+
+1.60
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.59 2014-04-14 18:00:40-07 - - $
+d23 3
+a25 3
+#    -c     Do not link C code, stop at -c
+#    -d     Do not delete the object or class files
+#    -m     Print out man page information
+@
+
+
+1.59
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.58 2013-10-02 19:15:55-07 - - $
+a25 2
+#    -Idir  C/C++ add extra #include roots.
+#    -ldir  C/C++ add extra -l library directories.
+d75 1
+a75 1
+   runcmd $GCC $INCLUDES $source `linkc -o $exec -lm` $LIBS
+d84 1
+a84 1
+   runcmd $GCC $INCLUDES $source `linkc -o $exec -lm -lobjc` $LIBS
+d93 1
+a93 1
+   runcmd $GPP $INCLUDES $source `linkc -o $exec -lm` $LIBS
+d113 1
+a113 1
+while getopts I:l:cdm opt ; do
+a117 2
+      I) INCLUDES="$INCLUDES -I$OPTARG";;
+      l) LIBS="$LIBS -l$OPTARG";;
+@
+
+
+1.58
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.57 2013-07-10 17:23:58-07 - - $
+d23 5
+a27 3
+#    -c   Do not link C code, stop at -c
+#    -d   Do not delete the object or class files
+#    -m   Print out man page information
+d34 1
+a34 1
+GPP="g++ -g -O0 -Wall -Wextra -std=gnu++0x"
+d77 1
+a77 1
+   runcmd $GCC $source `linkc -o $exec -lm`
+d86 1
+a86 1
+   runcmd $GCC $source `linkc -o $exec -lm -lobjc`
+d95 1
+a95 1
+   runcmd $GPP $source `linkc -o $exec -lm`
+d115 1
+a115 1
+while getopts I:cdm opt ; do
+d120 2
+@
+
+
+1.57
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.56 2013-07-02 17:59:02-07 - - $
+a22 1
+#    -I   Pass -Idirectory option to gcc and g++
+d39 1
+a39 1
+   $*
+a114 1
+      I) opt_I=$OPTARG;;
+@
+
+
+1.56
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.55 2013-02-01 19:39:39-08 - - $
+d23 1
+d25 2
+a26 3
+#    -d   Do not delete the object or class files.
+#    -m   Print out man page information.
+#    -u   For gcc use -funsigned-char option.
+d114 1
+a114 1
+while getopts :cdlmsu opt ; do
+d116 1
+a118 1
+      l) opt_l=1;;
+a119 1
+      u) GCC="$GCC -funsigned-char";;
+@
+
+
+1.55
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.54 2012-03-26 19:33:19-07 - - $
+d17 4
+a20 3
+#    .c    - lint and compile it.
+#    .cc   - compile it.
+#    .java - compile it, put it in a jar, including inner classes.
+a24 1
+#    -l   Also run lint (C only).
+a25 1
+#    -s   Use sunstudio instead of gcc for .c
+a31 3
+LINT="lint -Xa -fd -m -u -x -errchk=%all"
+SUNCC="cc -g -Xa -v -xO0"
+SUNCCC="CC -g -xO0 -features=extensions"
+d72 1
+a72 1
+# Lint and compile a C program.
+a76 1
+   if [ "$opt_l" ] ; then runcmd $LINT $source ; fi
+a119 1
+      s) GCC=$SUNCC; GPP=$SUNCCC;;
+@
+
+
+1.54
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.53 2011-11-09 21:28:40-08 - - $
+d24 1
+a24 1
+#    -l   Do not run lint.
+d37 1
+a37 1
+GPP="g++ -g -O0 -Wall -Wextra"
+d81 1
+a81 1
+   if [ ! "$opt_l" ] ; then runcmd $LINT $source ; fi
+@
+
+
+1.53
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.52 2011-11-09 21:16:17-08 - - $
+d71 4
+d80 1
+a80 2
+   if [ "$opt_c" ] ; then LINK="-c" ; else LINK="-o $exec -lm" ; fi
+   runcmd $GCC $source $LINK
+d90 1
+a90 2
+   if [ "$opt_c" ] ; then LINK="-c" ; else LINK="-o $exec -lm -lobjc" ; fi
+   runcmd $GCC $source $LINK
+a96 10
+compile_cc () {
+   exec=`snip $source`
+   if [ "$opt_c" ] ; then LINK="-c" ; else LINK="-o $exec -lm" ; fi
+   runcmd $SUNCCC $source $LINK
+   deletions="$exec.o"
+}
+
+########################################################################
+# Compile a g++ program.
+#
+d99 1
+a99 2
+   if [ "$opt_c" ] ; then LINK="-c" ; else LINK="-o $exec -lm" ; fi
+   runcmd $GPP $source $LINK
+d125 1
+a125 1
+      s) GCC=$SUNCC;;
+@
+
+
+1.52
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.51 2011-11-09 21:04:57-08 - - $
+a37 1
+LIB="-lm -lobjc"
+d76 2
+a77 1
+   runcmd $GCC $source -o $exec $LIB
+d87 2
+a88 1
+   runcmd $GCC $source -o $exec $LIB
+d97 2
+a98 1
+   runcmd $SUNCCC $source -o $exec $LIB
+d107 2
+a108 1
+   runcmd $GPP $source -o $exec $LIB
+d130 1
+a130 1
+      c) GCC="$GCC -c"; LIB="";;
+@
+
+
+1.51
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.50 2011-11-09 20:49:26-08 - - $
+d38 1
+d77 1
+a77 1
+   runcmd $GCC $source -o $exec -lm
+d87 1
+a87 1
+   runcmd $GCC $source -o $exec -lm -lobjc
+d96 1
+a96 1
+   runcmd $SUNCCC $source -o $exec -lm
+d105 1
+a105 1
+   runcmd $GPP $source -o $exec -lm
+d127 1
+a127 1
+      c) GCC="$GCC -c";;
+@
+
+
+1.50
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.49 2011-11-09 20:46:49-08 - - $
+d60 1
+a60 1
+   echo "Usage: $SCRIPT [-cdmsu] prog.{c,cc,cpp,java}..." 1>&2
+d126 3
+a128 3
+      c) GCC="$GCC -c"; shift;;
+      d) opt_d=1; shift;;
+      l) opt_l=1; shift;;
+d130 2
+a131 2
+      s) GCC=$SUNCC; shift;;
+      u) GCC="$GCC -funsigned-char"; shift;;
+d135 1
+@
+
+
+1.49
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.48 2011-11-09 20:45:20-08 - - $
+d24 1
+d77 1
+a77 1
+   runcmd $LINT $source
+d124 1
+a124 1
+while getopts :cdmsu opt ; do
+d128 1
+@
+
+
+1.48
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.47 2011-11-09 20:33:54-08 - - $
+d22 1
+d125 1
+a125 1
+      c) opt_c=1; shift;;
+@
+
+
+1.47
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.46 2011-11-09 20:33:23-08 - - $
+d22 1
+a22 1
+#    -c   Do not delete the object or class files.
+d58 1
+a58 1
+   echo "Usage: $SCRIPT [-cmsu] prog.{c,cc,cpp,java}..." 1>&2
+d122 1
+a122 1
+while getopts :cmsu opt ; do
+d125 1
+d151 1
+a151 1
+   if [ ! "$opt_c" ] ; then runcmd rm -f $deletions ; fi
+@
+
+
+1.46
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.45 2011-11-09 20:33:01-08 - - $
+d58 1
+a58 1
+   echo "Usage: $SCRIPT [-cms] prog.{c,cc,cpp,java}..." 1>&2
+d122 1
+a122 1
+while getopts :cms opt ; do
+@
+
+
+1.45
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.44 2011-02-01 14:06:35-08 - - $
+d127 1
+a127 1
+      u) GCC="$GCC -funsigned-char"
+@
+
+
+1.44
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.43 2011-01-31 19:51:00-08 - - $
+d25 1
+d74 1
+a75 1
+   runcmd $GCC $source -o $exec -lm
+d123 6
+a128 4
+   case $opt in c) opt_c=1; shift;;
+                m) manpage;;
+                s) GCC=$SUNCC; shift;;
+                ?) usage;;
+@
+
+
+1.43
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.42 2011-01-31 19:50:20-08 - - $
+d30 5
+a34 5
+LINT=lint ; LINTOPT="-Xa -fd -m -u -x -errchk=%all"
+CC=cc     ; CCOPT="-Xa -v -g -xO0"
+CCC=CC    ; CCCOPT="-g -xO0 -features=extensions"
+GCC=gcc   ; GCCOPT="-g -O0 -Wall -Wextra -std=gnu99"
+GPP=g++   ; GPPOPT="-g -O0 -Wall -Wextra"
+d73 2
+a74 2
+   runcmd $LINT $LINTOPT $source
+   runcmd $GCC $GCCOPT $source -o $exec -lm
+d92 1
+a92 1
+   runcmd $CCC $CCCOPT $source -o $exec -lm
+d101 1
+a101 1
+   runcmd $GPP $GPPOPT $source -o $exec -lm
+d124 1
+a124 1
+                s) GCC=$CC; GCCOPT=$CCOPT; shift;;
+d142 1
+a142 1
+      *.cc)       compile_cc;;
+@
+
+
+1.42
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.41 2011-01-31 19:49:57-08 - - $
+d83 1
+a83 1
+   runcmd $GCC $source -o $exec -lm
+@
+
+
+1.41
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.40 2011-01-14 17:50:23-08 - - $
+d81 1
+a81 1
+compile_c () {
+@
+
+
+1.40
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.39 2011-01-07 19:42:15-08 - - $
+d79 9
+d141 1
+@
+
+
+1.39
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.38 2011-01-07 19:39:39-08 - - $
+d33 2
+a34 2
+GCC=gcc   ; GCCOPT="-g -O0 -Wall -Wextra -Werror"
+GPP=g++   ; GPPOPT="-g -O0 -Wall -Wextra -Werror"
+@
+
+
+1.38
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.37 2011-01-07 19:35:58-08 - - $
+d9 1
+a9 1
+#    $SCRIPT [-c] prog.{c,cc,java}...
+d112 1
+a112 1
+while getopts cms opt ; do
+@
+
+
+1.37
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.36 2011-01-07 17:50:17-08 - - $
+d57 1
+a57 1
+   echo "Usage: $SCRIPT [-c] prog.{c,cc,cpp,java}..." 1>&2
+d115 1
+a115 1
+                s) GCC=$CC; GCCOPT=$CCOPT;;
+@
+
+
+1.36
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.35 2011-01-07 17:49:50-08 - - $
+a22 1
+#    -g   Use gcc instead of cc for .c programs.
+d24 1
+d74 1
+a74 1
+   runcmd $CC $CCOPT $source -o $exec -lm
+d112 5
+a116 5
+while getopts cgm opt ; do
+   case $opt in c) opt_c=1; shift ;;
+                g) CC=$GCC; CCOPT=$GCCOPT; shift ;;
+                m) manpage ;;
+                ?) usage ;;
+d131 5
+a135 5
+      *.c)        compile_c ;;
+      *.cc)       compile_cc ;;
+      *.cpp)      compile_gpp ;;
+      *.java)     compile_java ;;
+      *)          echo $SCRIPT: $source is not a known program type ;;
+@
+
+
+1.35
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.34 2011-01-04 20:23:04-08 - - $
+d112 1
+a112 1
+while getopts cm opt ; do
+@
+
+
+1.34
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.33 2010-12-20 18:23:20-08 - - $
+d23 1
+d30 5
+a34 4
+LINTOPT="-Xa -fd -m -u -x -errchk=%all"
+CCOPT="-Xa -v -g -xO0"
+CCCOPT="-g -xO0 -features=extensions"
+GPPOPT="-g -O0 -Wall -Wextra -Werror"
+d57 1
+a57 1
+   echo "Usage: $SCRIPT [-c] prog.{c,cc,java}..." 1>&2
+d73 2
+a74 2
+   runcmd lint $LINTOPT $source
+   runcmd cc $CCOPT $source -o $exec -lm
+d83 1
+a83 1
+   runcmd CC $CCCOPT $source -o $exec -lm
+d92 1
+a92 1
+   runcmd g++ -g -Wall -Wextra -Werror $source -o $exec -lm
+d114 1
+@
+
+
+1.33
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.32 2010-12-20 18:19:45-08 - - $
+d129 1
+a129 1
+      *.cc)       compile_gpp ;;
+@
+
+
+1.32
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.31 2010-10-14 18:38:53-07 - - $
+d63 1
+a63 1
+   echo $1 | sed "s/$2$//"
+d80 1
+a80 1
+   exec=`snip $source .cc`
+d89 1
+a89 1
+   exec=`snip $source .g++`
+d98 1
+a98 1
+   exec=`snip $source .java`
+@
+
+
+1.31
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.30 2010-03-11 21:17:43-08 - - $
+d31 2
+a32 1
+CCCOPT="-features=extensions -g -xO0"
+d88 1
+a88 1
+compile_gxx () {
+d90 1
+a90 1
+   runcmd g++ -x c++ $source -o $exec -lm
+d129 2
+a130 2
+      *.cc)       compile_cc ;;
+      *.g++)      compile_gxx ;;
+@
+
+
+1.30
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.29 2010-03-11 18:37:29-08 - - $
+d29 2
+a30 2
+LINTOPT="-D__EXTENSIONS__ -fd -m -u -x -errchk=%all,no%longptr64"
+CCOPT="-D__EXTENSIONS__ -v -g -xO0"
+@
+
+
+1.29
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.28 2010-03-11 18:30:27-08 - - $
+d89 1
+a89 1
+   runcmd g++ $source -o $exec -lm
+d128 1
+a128 1
+      *.cc|*.cpp) compile_cc ;;
+@
+
+
+1.28
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.27 2010-02-26 19:24:07-08 - - $
+d85 9
+d129 1
+@
+
+
+1.27
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.26 2009-04-16 20:16:33-07 - - $
+d89 1
+a89 1
+   runcmd javac $source
+d118 4
+a121 4
+      *.c)    compile_c ;;
+      *.cc)   compile_cc ;;
+      *.java) compile_java ;;
+      *)      echo $SCRIPT: $source is not a known program type ;;
+@
+
+
+1.26
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.25 2009-04-16 20:16:24-07 - - $
+d29 2
+a30 2
+LINTOPT="-D__EXTENSIONS__ -Xa -fd -m -u -x -errchk=%all,no%longptr64"
+CCOPT="-D__EXTENSIONS__ -Xc -v -g -xO0"
+@
+
+
+1.25
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.24 2009-04-16 20:04:35-07 - - $
+d45 1
+a45 1
+sub manpage () {
+@
+
+
+1.24
+log
+@-
+@
+text
+@d2 3
+a4 2
+# $Id: mkc,v 1.23 2009-04-16 20:03:53-07 - - $
+#
+d6 1
+a6 1
+#    mkc - compile a C, C++, or Java program
+d9 1
+a9 1
+#    mkc [-c] prog.{c,cc,java}...
+d23 2
+a24 1
+#
+a31 1
+SCRIPT=`basename $0`
+d43 8
+d100 1
+a100 1
+while getopts c opt ; do
+d102 1
+@
+
+
+1.23
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.22 2009-04-16 19:56:05-07 - - $
+d63 1
+a63 1
+   delete="$exec.o"
+d72 1
+a72 1
+   delete="$exec.o"
+d85 1
+a85 1
+   delete="$exec*.class"
+d113 1
+a113 1
+   if [ ! "$opt_c" ] ; then runcmd rm -f $delete ; fi
+@
+
+
+1.22
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.21 2009-04-16 19:53:48-07 - - $
+d24 1
+a24 1
+#
+d32 1
+a32 1
+#
+d41 1
+a41 1
+#
+d49 1
+a49 1
+#
+d56 1
+a56 1
+#
+d66 1
+a66 1
+#
+d75 1
+a75 1
+#
+d82 1
+a82 1
+   runcmd jar cvfm $exec Manifest $exec*.class
+d88 1
+a88 1
+#
+d98 1
+a98 1
+#
+d113 1
+a113 1
+   if [ "$opt_c" != "-c" ] ; then runcmd rm -f $delete ; fi
+@
+
+
+1.21
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.20 2009-04-16 19:41:12-07 - - $
+d70 1
+a70 1
+   exec=`snip $source .c`
+d79 1
+a79 1
+   exec=`snip $source .c`
+d113 1
+a113 1
+   if [ "$opt_c" = "-c" ] ; then runcmd rm -f $delete ; fi
+@
+
+
+1.20
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.19 2009-04-16 19:31:12-07 - - $
+d24 3
+d30 1
+d32 4
+a35 1
+run () {
+d38 1
+d41 3
+a43 1
+script=`basename $0`
+d45 1
+a45 1
+   echo "Usage: $script [-c] prog.{c,cc,java}..." 1>&2
+d49 42
+d92 2
+a93 2
+   case $opt in c) opt_c=1; shift;;
+                ?) usage;;
+d98 3
+d103 1
+a103 1
+   echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $script: starting $source
+a106 1
+   exec=`echo $source | sed 's/\.[a-z]*$//'`
+d108 4
+a111 20
+      *.c)
+         run lint $LINTOPT $source
+         run cc $CCOPT $source -o $exec -lm
+         delete="$exec.o"
+         ;;
+      *.cc)
+         run CC $CCCOPT $source -o $exec -lm
+         delete="$exec.o"
+         ;;
+      *.java)
+         run javac $source
+         echo Main-class: $exec >Manifest
+         run jar cvfm $exec Manifest $exec*.class
+         rm Manifest
+         run chmod +x $exec
+         delete="$exec*.class"
+         ;;
+      *)
+         echo $script: $source is not a known program type
+         ;;
+d113 2
+a114 2
+   if [ "$opt_c" = "-c" ] ; then run rm -f $delete ; fi
+   echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $script: finished $source
+@
+
+
+1.19
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.18 2009-04-16 19:28:59-07 - - $
+d8 1
+a8 1
+#    mkc [-c] prog.{c,cc,java}
+a27 8
+script=`basename $0`
+set -- `getopt c $*`
+for opt in $* ; do
+   case $opt in -c) opt_c=$opt; shift;;
+                --) shift; break;;
+   esac
+done
+
+d33 13
+@
+
+
+1.18
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.17 2009-04-16 19:28:03-07 - - $
+d8 1
+a8 3
+#    mkc [-c] prog.c
+#    mkc [-c] prog.cc
+#    mkc [-c] prog.java
+d14 1
+d16 3
+a18 6
+#    For C, lint and compile it, then remove the object file.
+#
+#    For C++, compile it, then remove the object file.
+#
+#    For Java, compile it, put it in a jar, then remove the class
+#    files.  Inner classes are included in the jar.
+@
+
+
+1.17
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.16 2009-04-16 14:50:41-07 - - $
+d66 1
+a67 1
+         rm Manifest
+d74 1
+a74 1
+   if [ "$opt_c" = "-c" ] ; then rm -f $delete ; fi
+@
+
+
+1.16
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.15 2009-04-16 14:47:31-07 - - $
+d8 3
+a10 3
+#    mkc prog.c
+#    mkc prog.cc
+#    mkc prog.java
+d24 3
+d33 6
+d56 1
+a56 1
+         if [ -f $exec.o ] ; then run rm $exec.o ; fi
+d60 1
+a60 1
+         if [ -f $exec.o ] ; then run rm $exec.o ; fi
+a65 1
+         rm Manifest $exec*.class
+d67 2
+d74 1
+@
+
+
+1.15
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.14 2009-04-16 14:45:53-07 - - $
+d28 1
+@
+
+
+1.14
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.13 2009-04-16 14:42:46-07 - - $
+d37 1
+a37 1
+   echo $script: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ starting $source
+d63 1
+a63 1
+   $script: echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ finished $source
+@
+
+
+1.13
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.12 2009-04-16 14:39:35-07 - - $
+d14 3
+a16 1
+#    checksource to verify basic formatting.
+d18 1
+d20 3
+a22 1
+#    For Java, compile it, then remove the class files.
+d28 1
+a28 1
+SCRIPT=`basename $0`
+@
+
+
+1.12
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.11 2009-03-26 15:29:02-07 - - $
+d36 1
+a36 1
+   exec=`echo $source | sed 's/\.[a-z]*$//'
+d60 1
+@
+
+
+1.11
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.10 2009/02/27 00:47:57 - - $
+d5 1
+a5 1
+#    mkc - lint and compile a C or C++ program
+d9 9
+d21 1
+a21 1
+CCOPT="-D__EXTENSIONS__ -g -xO0 -Xc"
+d23 1
+a23 5
+
+script=`basename $0`
+announce () {
+   echo @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ $script: $1 $2
+}
+d32 1
+a32 1
+   announce starting $source
+d35 2
+a36 1
+   checksource $source | grep -v '^ *0 *TOTAL *COMPLAINTS$'
+a38 1
+         exec=`echo $source | sed 's/\.c$//'`
+d41 1
+a43 1
+         exec=`echo $source | sed 's/\.cc$//'`
+d45 8
+a52 2
+         obj=$exec.o
+         if [ -f $obj ] ; then run rm $obj ; fi
+d58 1
+a58 1
+   announce finished $source
+@
+
+
+1.10
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.9 2009-02-03 13:38:20-08 - - $
+d5 1
+a5 1
+#    mkc - lint and compile a C, C++, or Java  program
+a42 8
+      *.java)
+         exec=`echo $source | sed 's/\.java$//'`
+         run javac $source
+         echo Main-class: $exec >Manifest
+         run jar cvfm $exec Manifest $exec*.class
+         run rm Manifest $exec*.class
+         run chmod +x $exec
+         ;;
+@
+
+
+1.9
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.8 2009-02-03 13:32:11-08 - - $
+d46 3
+a48 3
+         echo Main-class: $source >Manifest
+         run jar cvfm $exec Manifest $exec.class
+         run rm Manifest $exec.class
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.7 2009-01-27 13:48:48-08 - - $
+d40 2
+@
+
+
+1.7
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.6 2008-12-16 14:59:15-08 - - $
+d13 1
+a13 1
+CCCOPT="-D__EXTENSIONS__ -g"
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.5 2008-12-16 14:49:37-08 - - $
+d29 1
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.4 2008-12-16 14:48:59-08 - - $
+d13 1
+a13 1
+CCCOPT="-D__EXTENSIONS__ -g -xO0"
+d20 5
+d33 2
+a34 2
+         lint $LINTOPT $source
+         cc $CCOPT $source -o $exec -lm
+d38 1
+a38 1
+         CC $CCCOPT $source -o $exec -lm
+d42 1
+a42 1
+         javac $source
+d44 3
+a46 3
+         jar cvfm $exec Manifest $exec.class
+         rm Manifest $exec.class
+         chmod +x $exec
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.3 2008-12-05 19:00:53-08 - - $
+d25 1
+a25 1
+   case $source ; in
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.2 2008-12-05 19:00:29-08 - - $
+d5 1
+a5 1
+#    mkc - lint and compile a C program
+d13 1
+d20 1
+a20 1
+for cprog in $*
+d22 26
+a47 11
+   execbin=`echo $cprog | sed 's/\.c$//'`
+   if [ "$execbin" = "$cprog" ] ; then
+      echo $script: $cprog is not a C program
+   else
+      announce starting $cprog
+      cid + $cprog
+      checksource $cprog | grep -v '^ *0 *TOTAL *COMPLAINTS$'
+      lint $LINTOPT $cprog
+      cc $CCOPT $cprog -o $execbin -lm
+      announce finished $cprog
+   fi
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 1.1 2008-10-01 14:50:48-07 - - $
+a18 5
+run () {
+   echo $1
+   $*
+}
+
+d28 2
+a29 3
+      echo "`ident $cprog`"
+      run lint $LINTOPT $cprog
+      run cc $CCOPT $cprog -o $execbin -lm
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkc,v 7.3 2007-07-26 17:23:24-07 - - $
+d5 1
+a5 1
+#    mk - lint and compile a C program
+d8 1
+a8 1
+#    mk prog.c
+d10 1
+a10 3
+PATH=/opt/SUNWspro/bin:$PATH
+export PATH
+LINT=/opt/SUNWspro/bin/lint
+a11 1
+CC=/opt/SUNWspro/bin/cc
+d20 1
+a20 1
+   echo $*
+d33 3
+a35 3
+      ident $cprog
+      run $LINT $LINTOPT $cprog
+      run $CC $CCOPT $cprog -o $execbin -lm
+@

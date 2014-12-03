@@ -1,0 +1,102 @@
+#!/bin/sh
+FILE=/tmp/`basename $0`.`/bin/date +%m%d%H%M%S`.$$
+/bin/cat >$FILE
+/bin/echo "set indentprefix='> '\nreplysender\n~r $0\n~M 1\n.\n" \
+   | /bin/mailx -n -~ -f $FILE
+exit 0
+
+_________________________________________________________________
+_________________________________________________________________
+
+Questions about the lectures, assignments, or other course
+related material are generally of interest to the whole class
+and should therefore be posted to the class newsgroup rather
+than sent via private email.  In this way, everyone in the class
+can benefit from the answer, rather than just one person.
+
+Followups may then also come from many people, thus producing a
+wider variety of suggestions, tips, etc.  This may also generate
+a productive on-going discussion.
+
+It is also a good idea to read the newsgroup regularly to check
+to see if your question has already been answered there, in
+which case not even a post is needed.  Read the old articles in
+the newsgroup before posting a new question to see if your
+question has already been answered.
+
+News articles are archived in the News subdirectory of the
+course directory.  /afs/cats.ucsc.edu/courses/cmps012b-wm/News/
+is the directory for cmps012b.  For other courses, the names are
+similar.  The command `grep' can be used to easily search
+through the various articles in order to find out which ones are
+likely most relevant.
+
+Please post your question to the newsgroup and I will reply to
+it there.  Also please note that the class newsgroup is required
+reading for the course.
+
+News can be read with trn, tin, pine, etc., or even with
+Netscape if you like pointyclicky.  Thumbnail tutorial for trn:
+
+.  % trn -q ucsc.class.cmps012b
+
+gets you into the cmps012b newsgroup.  Other newsgroups have
+similar names based on the course number.  After that:
+
+.  `=' lists all of the subject lines of unread news.
+.  A number, such as `7000' will read article #7000.
+.  Repeatedly pressing the space bar will read successive items.
+.  `F' will followup on an old article
+.  `f' will start a new thread.
+
+When posting, never use html, mime, quoted-printable, etc., or
+other strange formats.  The proper attributes for posts are:
+
+.  Content-Type: text/plain
+.  Content-Transfer-Encoding: 8bit
+
+Postings should be neatly formatted into lines of approximately
+65 characters, with paragraphs separated by empty lines.  Unix
+users can easily accomplish this by piping your news, or
+portions thereof, though
+
+.  /bin/fmt -65
+
+before sending it.  Other operating environments may have
+similar functionality by using another utility.  To do this,
+bring up your editor from inside of your newsreader, and then
+use the keystroke sequence that pipes a range of lines into a
+filter and the output back into the file.  Send the news only
+when it has been verified as having good format.
+
+With /bin/vi, for example, to pipe lines 33 to 41 through
+/bin/fmt, you would type
+
+.  :33,41!/bin/fmt -65
+
+to pipe the current paragraph, you could type:
+
+.  {!}/bin/fmt -65
+
+In order to prevent certain lines from being formatted by fmt,
+put a dot in the first column, as is done here.
+
+Also, do not post news with attachments or in mime format.  If
+you have a question about your programming assignment and need
+to include some code, neatly include the appropriate statements
+into the body of the message inline using your editor's file
+read capability.  In /bin/vi, this is the command:
+
+.  :r filename
+
+If you are unsure of what your post will look like when sent,
+save the entire message into a text file and look at it with
+/bin/more or /bin/cat.  Once the file is in a neat format, it
+can then be sent posted.  Make sure to include a subject line
+that properly summarizes the message.
+
+_________________________________________________________________
+_________________________________________________________________
+
+$Id: pleasepost,v 1.2 2009-09-15 16:36:27-07 - - $
+

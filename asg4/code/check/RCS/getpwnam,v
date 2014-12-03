@@ -1,0 +1,224 @@
+head	1.6;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.6
+date	2014.10.10.00.28.20;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2014.10.10.00.27.36;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2013.04.05.18.59.21;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2013.04.05.18.55.27;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2012.10.24.21.24.53;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2010.10.14.21.41.16;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: getpwnam,v 1.5 2014-10-09 17:27:36-07 - - $
+#
+# NAME
+#    getpwnam - get password file entries
+#
+# SYNOPSIS
+#    getpwnam [-p] [username...]
+#
+# OPTIONS
+#    -p Print entries in the same format as /etc/passwd isntead of
+#       the default more verbose output.
+#
+# DESCRIPTION
+#    Uses getpwnam to obtain password file entries and prints the
+#    information.  Uses the current user of none are specified.
+#
+
+use strict;
+use warnings;
+$0 =~ s|.*/||;
+
+use Getopt::Std;
+my %opts;
+getopts "p", \%opts;
+
+push @@ARGV, scalar getpwuid $< unless @@ARGV;
+for my $argvname (@@ARGV) {
+   my ($username, $passwd, $uid, $gid, $quota, $comment, $gcos,
+       $homedir, $shell, $expire) = getpwnam $argvname;
+   warn "$0: $argvname: No such username\n" and next unless $username;
+   if ($opts{"p"}) {
+      print "$username:$passwd:$uid:$gid:$gcos:$homedir:$shell\n";
+   }else {
+      print "$argvname:\n";
+      print "   username = $username\n";
+      print "   passwd   = $passwd\n";
+      print "   uid      = $uid\n";
+      print "   gid      = $gid\n";
+      print "   quota    = $quota\n" if defined $quota;
+      print "   comment  = $comment\n" if defined $comment;
+      print "   gcos     = $gcos\n";
+      print "   homedir  = $homedir\n";
+      print "   shell    = $shell\n";
+      print "   expire   = $expire\n" if defined $expire;
+   }
+}
+
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: getpwnam,v 1.4 2013-04-05 11:59:21-07 - - $
+d8 1
+a8 1
+#    getpwnam [-e] [username...]
+d11 2
+a12 2
+#    Print entries in the same format as /etc/passwd isntead of
+#    the default more verbose output.
+d25 1
+a25 1
+getopts "e", \%opts;
+d32 1
+a32 1
+   if ($opts{"e"}) {
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: getpwnam,v 1.3 2013-04-05 11:55:27-07 - - $
+d8 5
+a12 1
+#    getpwnam [username...]
+d23 4
+d32 15
+a46 11
+   print "$argvname:\n";
+   print "   username = $username\n";
+   print "   passwd   = $passwd\n";
+   print "   uid      = $uid\n";
+   print "   gid      = $gid\n";
+   print "   quota    = $quota\n";
+   print "   comment  = $comment\n";
+   print "   gcos     = $gcos\n";
+   print "   homedir  = $homedir\n";
+   print "   shell    = $shell\n";
+   print "   expire   = $expire\n" if defined $expire;
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: getpwnam,v 1.2 2012-10-24 14:24:53-07 - - $
+d20 15
+a34 15
+for my $username (@@ARGV) {
+   my ($name, $passwd, $uid, $gid, $quota, $comment, $gcos, $homedir,
+       $shell, $expire) = getpwnam $username;
+   warn "$0: $username: No such username\n" and next unless $name;
+   print "$username:\n";
+   print "   name    = $name\n";
+   print "   passwd  = $passwd\n";
+   print "   uid     = $uid\n";
+   print "   gid     = $gid\n";
+   print "   quota   = $quota\n";
+   print "   comment = $comment\n";
+   print "   gcos    = $gcos\n";
+   print "   homedir = $homedir\n";
+   print "   shell   = $shell\n";
+   print "   expire  = $expire\n" if defined $expire;
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: getpwnam,v 1.1 2010-10-14 14:41:16-07 - - $
+d21 1
+a21 1
+   my ($name, $passwd, $uid, $gid, $quota, $comment, $gcos, $dir,
+d32 1
+a32 1
+   print "   dir     = $dir\n";
+d34 1
+a34 1
+   print "   expire  = $expire\n";
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: userinfo,v 1.1 2009-09-28 14:23:47-07 - - $
+d15 2
+d20 15
+a34 14
+for $username (@@ARGV) {
+   ($name, $passwd, $uid, $gid, $quota, $comment, $gcos, $dir, $shell,
+    $expire) = getpwnam $username;
+   warn "$0: $name: no such user\n" and next unless $name;
+   print "\$name    = $name\n";
+   print "\$passwd  = $passwd\n";
+   print "\$uid     = $uid\n";
+   print "\$gid     = $gid\n";
+   print "\$quota   = $quota\n";
+   print "\$comment = $comment\n";
+   print "\$gcos    = $gcos\n";
+   print "\$dir     = $dir\n";
+   print "\$shell   = $shell\n";
+   print "\$expire  = $expire\n";
+@

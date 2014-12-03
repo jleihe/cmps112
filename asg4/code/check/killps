@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+# $Id: killps,v 1.2 2009-11-04 13:23:07-08 - - $
+#
+# NAME
+#    killps - kill ghostview, xpdf, etc., processes
+#
+# SYNOPSIS
+#    killps [programname...]
+#
+# DESCRIPTION
+#    Uses ps to identify processes specified as operands.
+#    Kills processes owned by that user and which match
+#    any of the programs listed.  Tries default programs
+#    if none.  See default @ARGV below.
+# 
+
+use strict;
+use warnings;
+$0 =~ s|^.*/||;
+
+@ARGV = qw (acroread acroread4 gs ghostview xpdf xv) unless @ARGV;
+map {s[.*][(^|/)$&\$]} @ARGV;
+my $killpat = join "|", @ARGV;
+
+for my $psline (`ps -u$ENV{USER} -opid,uid,args`) {
+   my ($pid, $uid, $prog, @args) = split " ", $psline;
+   my $args = " @args" || "";
+   next unless $prog =~ m/$killpat/ && $uid == $<;
+   printf "%5d %5d %s%s\n", $pid, $uid, $prog, $args;
+   kill 9, $pid or warn "$0: kill $pid: $!\n";
+}
+

@@ -1,0 +1,53 @@
+#!/usr/bin/perl
+# $Id: split.mm.perl,v 1.1 2008-10-01 14:50:48-07 - - $
+#
+# NAME
+#    split.mm - split program into multiple keeps
+#
+# SYNOPSIS
+#    split.mm [filename...]
+#
+# DESCRIPTION
+#    Reads over <> (stdin or files) and prints out all lines of code
+#    as .DS/.DE pairs for groff -mm.  Splits therefore on a page
+#    boundary only at empty lines.
+#
+
+$0 =~ s|^(.*/)?([^/]+)/*$|$2|;
+use locale;
+
+sub visible ($) {
+   my ($line) = @_;
+   1 while $line =~ s/^([^\t]*)\t/$1 . ' ' x (8 - (length $1) % 8)/e;
+   $line =~ s/[^[:ascii:][:graph:]]/sprintf "\\x%02X", ord $&/ge;
+   $line =~ s/[^[:print:]]/sprintf "^%c", (ord $&) ^ 0x40/ge;
+   return $line;
+}
+
+$save_Ds = <<'__END__';
+.nr save.split.Ds \n[Ds]
+.nr Ds 0
+__END__
+$restore_Ds = <<'__END__';
+.nr Ds \n[save.split.Ds]
+__END__
+$DS = <<'__END__';
+.DS
+.ft CR
+.nf
+.eo
+__END__
+$DE = <<'__END__';
+.ec
+.fi
+.ft R
+.DE
+__END__
+
+print $save_Ds, $DS;
+while ($line = <>) {
+   chomp $line;
+   printf "%6d  %s\n", $., visible $line;
+   print $DE, $DS if $line =~ m/^$/;
+}
+print $DE, $restore_Ds;

@@ -1,0 +1,82 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2009.09.15.23.28.57;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $RCSfile: xtlabel,v $$Revision: 1.1 $
+Prefix=`awk 'END{printf"%c]0;",27;}' /dev/null`
+Suffix=`awk 'END{printf"%c",7;}' /dev/null`
+Hostname=`hostname|sed 's/\..*//'`
+Whoami="$Hostname!`id | sed -e 's/).*$//' -e 's/^.*(//'`"
+Tty="`tty | sed -e 's/\/dev\/tty//'`"
+
+if [ $# -le 0 ] ; then
+   if [ x"$XTERMLABEL" != x"" ] ; then
+      echo "${Prefix}${XTERMLABEL}${Suffix}"
+   else
+      echo "${Prefix}${Whoami}${Suffix}"
+   fi
+elif [ "$1" = "-" ] ; then
+   shift
+   if [ $# -eq 0 ] ; then
+      echo "${Prefix}${Whoami}:${Tty}${Suffix}"
+   else
+      echo "${Prefix}${Whoami}:$*${Suffix}"
+   fi
+else
+   echo "${Prefix}$*${Suffix}"
+fi
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $RCSfile: xtlabel,v $$Revision: 357.1 $
+d8 1
+d10 5
+a14 5
+	if [ x"$XTERMLABEL" != x"" ] ; then
+		echo "${Prefix}${XTERMLABEL}${Suffix}"
+	else
+		echo "${Prefix}${Whoami}${Suffix}"
+	fi
+d16 6
+a21 6
+	shift
+	if [ $# -eq 0 ] ; then
+		echo "${Prefix}${Whoami}:${Tty}${Suffix}"
+	else
+		echo "${Prefix}${Whoami}:$*${Suffix}"
+	fi
+d23 1
+a23 1
+	echo "${Prefix}$*${Suffix}"
+@

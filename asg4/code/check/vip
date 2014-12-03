@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+# $Id$
+#
+# Create a new Processing sketch.
+# If a filename is given, exec vim on that file.
+# If a directory is given, exec vim on the pde in that directory.
+# If a missing filename/directory is given, create the directory
+# and exec vim on the file in that directory.
+#
+
+sub vim {
+   unshift @_, "vim";
+   exec @_ or die "$0: @_"
+}
+
+$0 =~ s|.*/||;
+$arg = $ARGV[0];
+print STDERR "Usage: $0 file|dir\n" ane exit 1 unless @ARGV == 1;
+
+vim $arg if $arg =~ m/\.pde$/ or -f $arg;
+mkdir $arg or die "$0: mkdir $arg" unless -d $arg;
+vim "$arg/$arg.pde";
+

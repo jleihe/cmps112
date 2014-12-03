@@ -1,0 +1,7 @@
+#!/bin/bash
+# $Id: crlf2lf,v 1.1 2013-01-09 20:46:54-08 - - $
+for file in $*
+do
+   echo `basename $0`: editing $file
+   echo -e 'g/\026\r$/s///\nw\nq\n' >oo
+done

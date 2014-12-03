@@ -1,0 +1,87 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2013.09.25.21.02.53;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2013.09.25.21.01.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: runlistcat,v 1.1 2013-09-25 14:01:48-07 - - $
+#
+# NAME
+#    runlistcat - run a program and concatenate stdout stderr
+#
+# SYNOPSIS
+#    runlistcat listfile program [args...]
+#
+# DESCRIPTION
+#    Runs a program and captures stdout and stderr into files,
+#    along with the exit status.  Then concatenates the three
+#    files into a single list file.  Then deletes the temporary
+#    files.
+#
+
+BASENAME=$1
+shift
+STDOUT=$BASENAME.stdout
+STDERR=$BASENAME.stderr
+STATUS=$BASENAME.status
+LISTFILE=$BASENAME.listing
+
+"$@@" 1>$STDOUT 2>$STDERR
+pstatus >$STATUS
+
+for file in $STDOUT $STDERR $STATUS
+do
+   echo ::::::::::::::::
+   echo $file
+   echo ::::::::::::::::
+   cat -nv $file
+done >$LISTFILE
+
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: listcat,v 1.1 2013-09-25 13:57:25-07 - - $
+d5 1
+a5 1
+#    listcat - run a program and concatenate stdout stderr
+d8 1
+a8 1
+#    listcat listfile program [args...]
+d22 1
+d27 1
+a27 2
+
+for file in $*
+d33 2
+a34 1
+done
+@

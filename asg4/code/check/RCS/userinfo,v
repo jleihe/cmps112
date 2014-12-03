@@ -1,0 +1,48 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2009.09.28.21.23.47;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: userinfo.perl,v 1.6 2009-09-28 14:12:53-07 - - $
+#
+# Print user info for all users in @@ARGV.
+#
+
+$0 =~ s|.*/||;
+
+push @@ARGV, scalar getpwuid $< unless @@ARGV;
+for $username (@@ARGV) {
+   ($name, $passwd, $uid, $gid, $quota, $comment, $gcos, $dir, $shell,
+    $expire) = getpwnam $username;
+   warn "$0: $name: no such user\n" and next unless $name;
+   print "\$name    = $name\n";
+   print "\$passwd  = $passwd\n";
+   print "\$uid     = $uid\n";
+   print "\$gid     = $gid\n";
+   print "\$quota   = $quota\n";
+   print "\$comment = $comment\n";
+   print "\$gcos    = $gcos\n";
+   print "\$dir     = $dir\n";
+   print "\$shell   = $shell\n";
+   print "\$expire  = $expire\n";
+}
+
+@

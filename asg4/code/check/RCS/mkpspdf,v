@@ -1,0 +1,628 @@
+head	1.24;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.24
+date	2014.06.06.00.57.07;	author -;	state -;
+branches;
+next	1.23;
+
+1.23
+date	2014.02.08.02.28.38;	author -;	state -;
+branches;
+next	1.22;
+
+1.22
+date	2014.02.08.02.22.20;	author -;	state -;
+branches;
+next	1.21;
+
+1.21
+date	2013.10.12.01.43.04;	author -;	state -;
+branches;
+next	1.20;
+
+1.20
+date	2013.10.11.01.18.53;	author -;	state -;
+branches;
+next	1.19;
+
+1.19
+date	2013.10.11.01.18.21;	author -;	state -;
+branches;
+next	1.18;
+
+1.18
+date	2013.10.10.19.17.24;	author -;	state -;
+branches;
+next	1.17;
+
+1.17
+date	2013.08.09.00.45.40;	author -;	state -;
+branches;
+next	1.16;
+
+1.16
+date	2013.07.18.03.16.42;	author -;	state -;
+branches;
+next	1.15;
+
+1.15
+date	2013.05.01.01.36.37;	author -;	state -;
+branches;
+next	1.14;
+
+1.14
+date	2013.04.27.00.52.34;	author -;	state -;
+branches;
+next	1.13;
+
+1.13
+date	2013.04.23.21.36.12;	author -;	state -;
+branches;
+next	1.12;
+
+1.12
+date	2013.02.02.03.39.39;	author -;	state -;
+branches;
+next	1.11;
+
+1.11
+date	2012.04.13.20.18.41;	author -;	state -;
+branches;
+next	1.10;
+
+1.10
+date	2012.01.25.04.59.20;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2011.05.16.20.17.58;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2011.05.16.20.17.14;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2009.09.15.23.36.10;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2009.01.06.04.28.49;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2009.01.03.04.38.14;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2009.01.03.04.37.52;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2009.01.03.04.32.04;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2009.01.03.01.36.47;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.24
+log
+@-
+@
+text
+@#!/bin/bash
+# $Id: mkpspdf,v 1.23 2014-02-07 18:28:38-08 - - $
+#
+# NAME
+#    mkpspdf - create ps and pdf files from source code
+#
+# SYNOPSIS
+#    mkpspdf [-cg] [dirname/]psfilename sources
+#
+# DESCRIPTION
+#    From the [dirname/]psfilename specification, create a Postscript
+#    file of the sources and bring it up in ghostview.  Also create
+#    a pdf.
+#
+# OPTIONS
+#    -c  Suppress the use of --line-numbers (-C).
+#    -h  Suppress --header
+#    -g  Suppress calling gv to display the Postscript file.
+#    -s  Font size in points.
+#
+
+function usage {
+   echo 1>&2 \
+   Usage: $(basename $0) [-cgs] [dirname/]psfilename filename... 1>&2
+   exit 1
+}
+
+LINE_NUMBERS=--line-numbers
+HEADER=--header="$(pwd | sed 's|^/afs/cats.ucsc.edu/courses/|$$|')/"
+FONT_SIZE=11
+while getopts chgs: opt; do
+echo w $# $OPTIND $@@
+   case $opt in
+      c) LINE_NUMBERS=;;
+      g) SUPPRESS_GV=1;;
+      h) HEADER=;;
+      s) FONT_SIZE=$OPTARG;;
+      *) usage;;
+   esac
+done
+shift $(($OPTIND-1))
+
+dirname=$(dirname $1)
+psfilename=$(basename $1)
+shift
+
+font=Courier-Bold$FONT_SIZE
+
+enscript \
+   --media=Letter \
+   --borders \
+   $LINE_NUMBERS \
+   --font=$font \
+   --fancy-header \
+   --output $dirname/$psfilename \
+   $HEADER \
+   $@@
+
+enscript-title $dirname/$psfilename $psfilename
+
+if [ "$SUPPRESS_GV" = "" ]; then
+   gv --scale=1.1 $dirname/$psfilename &
+fi
+
+cd $dirname
+mkpdf $psfilename
+@
+
+
+1.23
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.22 2014-02-07 18:22:20-08 - - $
+d17 1
+d29 1
+d31 1
+a31 1
+while getopts cgs: opt; do
+d36 1
+d56 1
+a56 1
+   --header="$(pwd | sed 's|^/afs/cats.ucsc.edu/courses/|$$|')/" \
+@
+
+
+1.22
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.21 2013-10-11 18:43:04-07 - - $
+d56 1
+a56 4
+(echo "/%%Title: Enscript Output/s//%%Title: $psfilename/"
+ echo w
+ echo q) | ed $dirname/$psfilename
+
+@
+
+
+1.21
+log
+@-
+@
+text
+@d1 2
+a2 2
+#!/bin/sh
+# $Id: mkpspdf,v 1.20 2013-10-10 18:18:53-07 - - $
+d16 2
+a17 4
+#    -c  Use option -Gj instead of -GjC, suppressing line numbers
+#        on the enscript command.
+#    -g  Suppress calling gv to display the resulting Postscript
+#        file.
+d21 7
+a27 1
+GJC_OPT=-GjC
+d30 1
+d32 4
+a35 3
+      c) GJC_OPT=-Gj;;
+      g) GV_OPT=1;;
+      s) FONT_SIZE=$OPTARG
+d40 2
+a41 3
+dirname=`dirname $1`
+psfilename=`basename $1`
+font="-f Courier-Bold$FONT_SIZE"
+a42 2
+enscript -MLetter $GJC_OPT $font -p $dirname/$psfilename \
+         -b "`pwd | sed 's|^/afs/cats.ucsc.edu/courses/|$$|'`/" $@@
+d44 18
+a61 1
+if [ "$GV_OPT" = "" ]; then
+@
+
+
+1.20
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.19 2013-10-10 18:18:21-07 - - $
+d20 1
+d23 3
+a25 2
+GJCOPT=-GjC
+while getopts cg opt; do
+d27 3
+a29 2
+      c) GJCOPT=-Gj;;
+      g) GVOPT=1;;
+d32 1
+d36 1
+a36 1
+font='-f Courier-Bold11'
+d38 1
+a38 1
+enscript -MLetter $GJCOPT $font -p $dirname/$psfilename \
+d41 1
+a41 1
+if [ "$GVOPT" = "" ]; then
+@
+
+
+1.19
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.18 2013-10-10 12:17:24-07 - - $
+d37 1
+a37 1
+if [ "$GVOPT" = "" ]; do
+d39 1
+a39 1
+done
+@
+
+
+1.18
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.17 2013-08-08 17:45:40-07 - - $
+d25 2
+a26 2
+      c) GJCOPT=-Gj
+      g) GVOPT=1
+@
+
+
+1.17
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.16 2013-07-17 20:16:42-07 - - $
+d8 1
+a8 1
+#    mkpspdf [+] [dirname/]psfilename sources
+d13 7
+a19 1
+#    a pdf. If an operand of + is given, -Gj instead of -GjC.
+d22 7
+a28 6
+if [ "$1" = "+" ] ; then
+   GjC=Gj
+   shift
+else
+   GjC=GjC
+fi
+d32 1
+a32 1
+font='-f Courier-Bold10.5'
+d34 1
+a34 1
+enscript -MLetter -$GjC $font -p $dirname/$psfilename \
+d37 3
+a39 1
+gv --scale=1.1 $dirname/$psfilename &
+@
+
+
+1.16
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.15 2013-04-30 18:36:37-07 - - $
+d13 1
+a13 1
+#    a pdf. If an operand of + is given, ghostview is not used.
+a16 1
+   noghostview=1
+d25 1
+a25 1
+font='-f Courier-Bold11'
+d30 1
+a30 3
+if [ "$noghostview" != "1" ] ; then
+   gv --scale=1.1 $dirname/$psfilename &
+fi
+@
+
+
+1.15
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.14 2013-04-26 17:52:34-07 - - $
+d26 1
+a26 1
+#font=Courier-Bold10.5
+d28 1
+a28 1
+enscript -MLetter -$GjC -f $font -p $dirname/$psfilename \
+@
+
+
+1.14
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.13 2013-04-23 14:36:12-07 - - $
+d26 1
+a26 1
+font=Courier-Bold10.5
+@
+
+
+1.13
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.12 2013-02-01 19:39:39-08 - - $
+d26 1
+a26 1
+font=CourierBold11
+@
+
+
+1.12
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.10 2012/01/25 04:59:20 - - $
+d26 1
+d28 1
+a28 1
+enscript -MLetter -$GjC -p $dirname/$psfilename \
+@
+
+
+1.11
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.10 2012-01-24 20:59:20-08 - - $
+a19 4
+elsif [ "$1" = "-" ] ; then
+   killghostview=1
+   GjC=Gj
+   shift
+a30 3
+   if [ "killghostview" = 1 ] ; then
+      killps ghostview gs gv
+   fi
+@
+
+
+1.10
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.9 2011-05-16 13:17:58-07 - - $
+d20 4
+d35 3
+@
+
+
+1.9
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.8 2011-05-16 13:17:14-07 - - $
+d31 1
+a31 1
+   ghostview $dirname/$psfilename &
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.7 2009-09-15 16:36:10-07 - - $
+d31 1
+a31 1
+   gv $dirname/$psfilename &
+@
+
+
+1.7
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.6 2009-01-05 20:28:49-08 - - $
+d31 1
+a31 1
+   ghostview -magstep +1 $dirname/$psfilename &
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.5 2009-01-02 20:38:14-08 - - $
+d28 1
+a28 1
+	-b "`pwd | sed 's|^/afs/cats.ucsc.edu/courses/|$$|'`/" $@@
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.4 2009-01-02 20:37:52-08 - - $
+d18 1
+d20 2
+d27 1
+a27 1
+enscript -MLetter -GjC -p $dirname/$psfilename \
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.3 2009-01-02 20:32:04-08 - - $
+d17 1
+a17 1
+   noghostview = 1
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 1.2 2009-01-02 17:36:47-08 - - $
+d8 1
+a8 1
+#    mkpspdf [dirname/]psfilename sources
+d13 1
+a13 1
+#    a pdf.
+d15 6
+d26 5
+a30 1
+ghostview -magstep +1 $dirname/$psfilename &
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 2
+a2 2
+#!/bin/sh -x
+# $Id: mkpspdf,v 1.1 2008-10-01 14:50:48-07 - - $
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkpspdf,v 7.7 2008-09-26 20:07:37-07 - - $
+d5 1
+a5 1
+#    mk.lis - create ps and pdf files from source code
+d8 1
+a8 1
+#    mk.lis [dirname/]psfilename sources
+@

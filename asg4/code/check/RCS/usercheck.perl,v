@@ -1,0 +1,177 @@
+head	1.5;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.5
+date	2009.09.24.00.22.03;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2009.04.30.02.16.49;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2009.04.30.02.16.00;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2009.04.30.02.15.23;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.04.11.01.44.15;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: usercheck.perl,v 1.4 2009-04-29 19:16:49-07 - - $
+#
+# Read a PARTNER file.  Check to see if it has a valid username.
+#
+
+$0 =~ s|.*/||;
+
+$filename = "PARTNER";
+
+open PARTNER, "<$filename" or die "$0: $filename: $!\n";
+$partner = join "", <PARTNER>;
+close PARTNER;
+$partner =~ s/\n$// or die "$0: $filename: invalid format\n";
+$partner =~ s/[\x00-\x20\x7F]/sprintf "^%c", (ord $&) ^ 0x40/ge;
+$partner =~ s/[\x80-\xFF]/sprintf "\\x%02X", ord $&/ge;
+
+($user, $_, $uid, $_, $_, $_, $gecos, $home, $shell, $_)
+            = getpwnam $partner;
+die "$0: $partner: no such user\n" unless $user;
+
+print "$filename file is valid:\n";
+print "\$USER  = $user\n";
+print "UID    = $uid\n";
+print "GECOS  = $gecos\n";
+print "\$HOME  = $home\n";
+print "\$SHELL = $shell\n";
+
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: usercheck.perl,v 1.1 2009/04/11 01:44:15 - - $
+d24 2
+a25 2
+print "uid    = $uid\n";
+print "gecos  = $gecos\n";
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: usercheck.perl,v 1.2 2009-04-29 19:15:23-07 - - $
+a4 2
+# If @@ARGV is given, report on each username in it and ignore
+# the PARTNER file.
+d9 1
+a9 25
+sub usercheck ($) {
+   my ($username) = @@_;
+   ($user, $_, $uid, $_, $_, $_, $gecos, $home, $shell, $_)
+               = getpwnam $username;
+   warn "$0: $username: no such user\n" unless $user;
+   print "$filename file is valid:\n";
+   print "\$USER  = $user\n";
+   print "uid    = $uid\n";
+   print "gecos  = $gecos\n";
+   print "\$HOME  = $home\n";
+   print "\$SHELL = $shell\n";
+}
+
+if (@@ARGV) {
+   usercheck $_ for @@ARGV;
+}else {
+   $filename = "PARTNER";
+   open PARTNER, "<$filename" or die "$0: $filename: $!\n";
+   $partner = join "", <PARTNER>;
+   close PARTNER;
+   $partner =~ s/\n$// or die "$0: $filename: invalid format\n";
+   $partner =~ s/[\x00-\x20\x7F]/sprintf "^%c", (ord $&) ^ 0x40/ge;
+   $partner =~ s/[\x80-\xFF]/sprintf "\\x%02X", ord $&/ge;
+   usercheck $partner;
+}
+d11 17
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: usercheck.perl,v 1.1 2009-04-10 18:44:15-07 - - $
+d12 1
+d14 2
+a15 2
+               = getpwnam $partner;
+   die "$0: $partner: no such user\n" unless $user;
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: checkpair.perl,v 1.7 2009-04-03 19:51:51-07 - - $
+d5 2
+d11 24
+a34 1
+$filename = "PARTNER";
+a35 17
+open PARTNER, "<$filename" or die "$0: $filename: $!\n";
+$partner = join "", <PARTNER>;
+close PARTNER;
+$partner =~ s/\n$// or die "$0: $filename: invalid format\n";
+$partner =~ s/[\x00-\x20\x7F]/sprintf "^%c", (ord $&) ^ 0x40/ge;
+$partner =~ s/[\x80-\xFF]/sprintf "\\x%02X", ord $&/ge;
+
+($user, $_, $uid, $_, $_, $_, $gecos, $home, $shell, $_)
+            = getpwnam $partner;
+die "$0: $partner: no such user\n" unless $user;
+
+print "$filename file is valid:\n";
+print "\$USER  = $user\n";
+print "uid    = $uid\n";
+print "gecos  = $gecos\n";
+print "\$HOME  = $home\n";
+print "\$SHELL = $shell\n";
+@

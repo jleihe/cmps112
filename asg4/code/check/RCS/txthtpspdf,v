@@ -1,0 +1,96 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2009.01.03.02.14.31;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: txt2html,v 1.2 2009-01-02 18:13:48-08 - - $
+#
+# NAME
+#    txt2html - convert text file to html, editing http: strings
+#
+# SYNOPSIS
+#    txt2html textfile
+#
+# DESCRIPTION
+#    Edits textfile in place to replace strings of the form
+#    http:\S+* with the directory name that it matches, if the
+#    directory exists.  Creates an html file from the textfile
+#    by editing all http: strings into an html link.  The file
+#    created has the suffix .txt or .text replaced by .html
+#    It also converts the text file into Postscript and PDF.
+#
+
+use strict;
+use warnings;
+
+$0 =~ s|^(.*/)?([^/]+)/*$|$2|;
+my $exit_status = 0;
+END {exit $exit_status}
+sub note(@@) { print STDERR "$0: @@_"; };
+$SIG{'__WARN__'} = sub { note @@_; $exit_status = 1; };
+$SIG{'__DIE__'} = sub { warn @@_; exit; };
+
+do {print STDERR "Usage: $0 textfile\n"; $exit_status = 1; exit}
+unless @@ARGV == 1;
+
+my $textname = shift;
+open TEXTIN, "<$textname" or die "$textname: $!\n";
+my @@text = <TEXTIN>;
+close TEXTIN;
+
+system "cid + $textname";
+
+for my $line (@@text) {
+   next unless $line =~ m/((^|\b)https?:)(\S+)\*/;
+   my ($prefix, $dirpat) = ($1, $3);
+   my $dir = glob "$dirpat*";
+   next unless defined $dir and -d $dir;
+   $line =~ s|$prefix$dirpat\*|$prefix$dir/|;
+}
+
+open TEXTOUT, ">$textname" or die "$textname: $!\n";
+print TEXTOUT @@text;
+close TEXTOUT;
+print "$0: updated $textname: OK\n";
+
+system "cid + $textname";
+system "ident $textname";
+
+my %htchars = qw (& &amp; < &lt; > &gt;);
+map {
+   s|[&<>]|$htchars{$&}|g;
+   s{(^|\b)https?:\S+}{<A HREF=$&>$&</A>}g;
+} @@text;
+
+my $htmlname = $textname;
+$htmlname =~ s/\.(txt|text)$//;
+$htmlname .= ".html";
+
+open HTMLOUT, ">$htmlname" or die "$htmlname: $!\n";
+print HTMLOUT @@text;
+print "$0: created $textname: OK\n";
+close HTMLOUT;
+
+my $psname = $htmlname;
+$psname =~ s/\.html$/.ps/;
+system "mkpspdf $psname $textname";
+
+@

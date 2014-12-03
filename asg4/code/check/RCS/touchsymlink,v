@@ -1,0 +1,53 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2008.10.01.21.50.48;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: touchsymlink,v 1.1 2008-04-15 18:53:41-07 - - $
+#
+# NAME
+#    touchsym - touch a symbolic link
+#
+# SYNOPSIS
+#    touchsym symlinks...
+#
+# DESCRIPTION
+#    For each file specified in @@ARGV, removes and recreates it if
+#    it is a symlink.  Errors if not.
+#
+
+use strict;
+use warnings;
+$0 =~ s|/+$||;
+$0 =~ s|^.*/||;
+my $status = 0;
+END {exit $status}
+$SIG{__WARN__} = sub {print "$0: @@_"; $status = 1};
+$SIG{__DIE__} = sub {warn @@_; exit};
+
+for my $symlink (@@ARGV) {
+   my $link = readlink $symlink;
+   warn "$symlink: $! (not symlink)\n" and next unless defined $link;
+   die "unlink $symlink: $!\n" unless unlink $symlink;
+   die "symlink $link, $symlink: $!\n" unless symlink $link, $symlink;
+   print `ls -laog $symlink`;
+}
+@

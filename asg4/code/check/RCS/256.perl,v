@@ -1,0 +1,29 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2010.11.16.03.13.58;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/perl
+# $Id$
+for $char (0..255) {
+   printf "%c", $char;
+   print "\n" if $char % 16 == 15;
+}
+@

@@ -1,0 +1,93 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2008.12.23.03.56.17;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id: testsubmit,v 1.3 2008-12-22 19:54:49-08 - - $
+#
+# NAME
+#    testsubmit - copy files to a private directory to verify function
+#
+# SYNOPSIS
+#    testsubmit class project filename...
+#
+# DESCRIPTION
+#    Since submitted files are no longer visible to the student,
+#    and have been renamed with digit prefixes, this script will
+#    copy files into a privaate directory so that the student can
+#    run gmake and test the build.
+#
+#    class - name of the class, e.g., cmps999-xx.w09
+#    project - name of the project, e.g., asg1
+#    filename... - names of the files to be submitted
+#
+#    This script creates a directory named with the date and time
+#    $HOME/private/Verify/$CLASS/$PROJECT/$DATETIME
+#    This wastes a lot of disk space, so deletion of the junk
+#    directories after verification is recommended.
+#
+
+die () {
+   echo $SCRIPT: $* >&2
+   exit 1
+}
+
+usage () {
+   grep '^#' $0 >&2
+   exit 1
+}
+SCRIPT=`basename $0`
+
+CLASS=$1
+PROJECT=$2
+SUBROOT=/afs/cats.ucsc.edu/class/
+SUBDIR=$SUBROOT/$CLASS/$PROJECT
+shift 2
+
+if [ ! -d $SUBDIR ] ; then
+   die $SUBDIR: no such directory
+fi
+
+for file in $* ; do
+   if [ ! -f $file ] ; then
+      die $file: no such file
+   fi
+done
+checksource $*
+
+DATETIME=`LC_TIME=C date  +%y%m%d.%H%M%S`
+VERIFYDIR=$HOME/private/Verify/$CLASS/$PROJECT/$DATETIME
+mkdir -p $VERIFYDIR || die "$VERIFYDIR: could not make"
+fs sa $VERIFYDIR $USER all -clear
+cp $* $VERIFYDIR
+ls -lao $VERIFYDIR
+fs la $VERIFYDIR
+
+echo =================================================================
+echo VERIFY YOUR SUBMIT!
+echo cd $VERIFYDIR
+echo then run gmake and test the results.
+echo After you actually do the submit,
+echo cd $SUBDIR/$USER
+echo then check ane filenames and sizes of the newest of each.
+echo =================================================================
+
+@

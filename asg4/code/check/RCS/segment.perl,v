@@ -1,0 +1,43 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2011.12.20.03.47.33;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: segment,v 1.2 2011-03-24 18:43:12-07 - - $
+#
+# NAME
+#    segment - print out a segment of a file
+#
+# SYNOPSIS
+#    segment size number
+#
+# DESCRIPTION
+#    Prints out a segment of a file of size `size'.  The number
+#    gives the number of segments to ignore before printing.
+#
+
+$size = shift;
+$number = shift;
+while (defined ($line = <>)) {
+   print $line if $. > $size * $number
+              and $. <= $size * ($number + 1);
+}
+@

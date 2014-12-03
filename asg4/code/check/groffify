@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+# $Id: groffify,v 1.2 2009-09-23 16:47:36-07 - - $
+#
+# NAME
+#    groffify - cat files replacing \ and $ with groff codes
+#
+# SYNOPSIS
+#    groffify [filename...]
+#
+# DESCRIPTION
+#    Cats files from input to output, changing all backslashes
+#    (\) to groff \[rs] code, and all dollar signs ($) to groff
+#    \[Do] codes.  Adds a \& to the front of each line to keep
+#    groff from seeing leading dots.
+#
+
+while (<>) {
+   s/\\/\\[rs]/g;
+   s/\$/\\[Do]/g;
+   s/^/\\\&/g;
+   print;
+}
+

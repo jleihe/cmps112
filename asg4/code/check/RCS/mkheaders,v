@@ -1,0 +1,163 @@
+head	1.6;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.6
+date	2009.01.09.05.02.16;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2009.01.09.04.44.44;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2009.01.09.04.41.28;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2009.01.09.04.39.54;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2009.01.09.04.32.05;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2009.01.09.04.24.13;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: mkheaders,v 1.5 2009-01-08 20:44:44-08 - - $
+#
+# NAME
+#    mkheaders - make HEADER.html files for course directories.
+#
+
+$0 =~ s|.*/||;
+$status = 0;
+$SIG{__WARN__} = sub {print STDERR "$0: @@_"; $status = 1};
+END{exit $status}
+
+@@roots = glob "/afs/cats.ucsc.edu/courses/*-wm";
+for $root (sort glob "/afs/cats.ucsc.edu/courses/*-wm") {
+   print "$0: $root\n";
+   for $subdir (sort `find $root -type d`) {
+      chomp $subdir;
+      $title = $subdir;
+      $title =~ s|^/afs/cats.ucsc.edu/courses/|~|;
+      $headername = "$subdir/HEADER.html";
+      open HEADER, ">$headername" or do {warn "$headername: $!"; next};
+      print HEADER "<TITLE>$title</TITLE>\n",
+                   "<H1>Index of $subdir</H1>\n";
+      close HEADER;
+   }
+}
+
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheaders,v 1.4 2009-01-08 20:41:28-08 - - $
+d19 1
+a19 2
+      $title =~ s{/afs/cats.ucsc.edu/courses/([a-z]*)([^/]*)(.*)}
+                 {(uc "$1-$2") . $3}eix;
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheaders,v 1.3 2009-01-08 20:39:54-08 - - $
+d13 14
+a26 12
+@@dirs = `find /afs/cats.ucsc.edu/courses/*-wm -type d`;
+for $dir (sort @@dirs) {
+   print $dir if $dir =~ m/-wm$/;
+   chomp $dir;
+   $title = $dir;
+   $title =~ s{/afs/cats.ucsc.edu/courses/([a-z]*)([^/]*)(.*)}
+              {(uc "$1-$2") . $3}eix;
+   $headername = "$dir/HEADER.html";
+   open HEADER, ">$headername" or do {warn "$headername: $!"; next};
+   print HEADER "<TITLE>$title</TITLE>\n",
+                "<H1>Index of $dir</H1>\n";
+   close HEADER;
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkheaders,v 1.1 2009-01-08 20:24:13-08 - - $
+d14 2
+a15 1
+for $dir (@@dirs) {
+@
+
+
+1.2
+log
+@-
+@
+text
+@d8 6
+a13 1
+@@dirs = system "find /afs/cats.ucsc.edu/courses/cmps109-wm -type d";
+d15 9
+a23 3
+   ($title = $dir) =~ s{/afs/cats.ucsc.edu/courses/([^-]*)(.*)}
+                       {(uc $1) . $2}xe;
+   print "$title\n$dir\n";
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 2
+a2 2
+#!/bin/sh
+# $Id$
+d8 7
+a14 4
+for dir in `find /afs/cats.ucsc.edu/courses/*-wm/ -type d`
+do
+   echo $dir
+done
+@

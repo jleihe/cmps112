@@ -1,0 +1,377 @@
+head	1.13;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.13
+date	2013.10.10.19.17.00;	author -;	state -;
+branches;
+next	1.12;
+
+1.12
+date	2013.10.03.02.15.55;	author -;	state -;
+branches;
+next	1.11;
+
+1.11
+date	2013.08.09.01.58.51;	author -;	state -;
+branches;
+next	1.10;
+
+1.10
+date	2013.08.09.01.49.25;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2013.08.09.01.47.36;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2013.08.09.01.45.12;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2013.08.09.01.15.06;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2013.08.09.01.14.23;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2013.08.09.01.05.19;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2013.08.09.00.47.14;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2013.08.09.00.45.50;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2013.08.09.00.42.40;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2013.08.09.00.42.12;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.13
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: mkx,v 1.12 2013-10-02 19:15:55-07 - - $
+#
+# NAME
+#    mkx - make simple experiment and cat prog and output
+#
+# SYNOPSIS
+#    mkx prog...
+#
+# DESCRIPTION
+#    Compile a simple program using mkc and then run it,
+#    redirecting output into a file substituting the prog
+#    suffix with lis.  Then make a pspdf of it.
+#
+# PURPOSE
+#    Providing a printout of trivial small programs.
+#
+
+$0 =~ s|.*/||;
+use strict;
+use warnings;
+use IPC::Open2;
+
+print STDERR "Usage: $0 prog..." and exit 1 unless @@ARGV;
+
+my $mark = ":" x 80 . "\n";
+sub display($@@) {
+   my ($file, @@msg) = @@_;
+   print $file $mark, @@msg, $mark;
+}
+
+for my $prog (@@ARGV) {
+   (my $base = $prog) =~ s/\.[^.]*$//;
+   system "mkc $prog";
+   exit if $?;
+   my $lisfile = "$base.lis";
+   open my $file, ">$lisfile" or warn "$0: $lisfile: $!" and next;
+   display $file, "Source: $prog\n";
+   print $file `cat -nv $prog`;
+   display $file, "Output: ./$base 2>&1\n";
+   my $output = `./$base 2>&1`;
+   my $status = $?;
+   if (my $pid = open2 (my $child_out, my $child_in, "cat -nv 2>&1")) {
+      print $child_in $output;
+      close $child_in;
+      my @@cat_nv = <$child_out>;
+      print $file @@cat_nv;
+      print $file $mark;
+      print $file `pstatus $status`;
+   }else {
+      warn "$0: open2: $!";
+   }
+   close $file;
+   system "cat $lisfile";
+   system "mkpspdf -c $base.ps $lisfile";
+}
+
+@
+
+
+1.12
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkx,v 1.11 2013-08-08 18:58:51-07 - - $
+d55 1
+a55 1
+   system "mkpspdf + $base.ps $lisfile";
+@
+
+
+1.11
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkx,v 1.10 2013-08-08 18:49:25-07 - - $
+d26 1
+a26 1
+my $mark = ":" x 64 . "\n";
+d54 2
+a55 1
+   system "mkpspdf $base.ps $lisfile";
+@
+
+
+1.10
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkx,v 1.9 2013-08-08 18:47:36-07 - - $
+d43 10
+a52 8
+   my $pid = open2 (my $child_out, my $child_in, "cat -nv 2>&1")
+             or die "$0: open2: $!";
+   print $child_in $output;
+   close $child_in;
+   my @@cat_nv = <$child_out>;
+   print $file @@cat_nv;
+   print $file $mark;
+   print $file `pstatus $status`;
+@
+
+
+1.9
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkx,v 1.8 2013-08-08 18:45:12-07 - - $
+d26 1
+a26 1
+my $mark = ":" x 32 . "\n";
+d46 1
+d49 1
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkx,v 1.6 2013-08-08 18:14:23-07 - - $
+d36 2
+a37 1
+   open my $file, ">$base.lis" or warn "$0: $base.lis: $!" and next;
+d43 1
+a43 2
+   my ($child_out, $child_in);
+   my $pid = open2 ($child_out, $child_in, "cat -nv 2>&1")
+d46 2
+a47 2
+   my $cat_nv = <$child_out>;
+   print $file $cat_nv;
+d50 1
+a50 1
+   system "mkpspdf $base.ps $base.lis";
+@
+
+
+1.7
+log
+@-
+@
+text
+@d22 1
+d26 1
+a28 1
+   my $mark = ":" x 32 . "\n";
+d32 1
+a32 1
+for $prog (@@ARGV) {
+d38 1
+a38 1
+   print $file, `cat -nv $prog`;
+d40 9
+a48 2
+   print $file, `./$base 2>&1 | cat -nv`;
+   echo $?;
+d50 1
+@
+
+
+1.6
+log
+@-
+@
+text
+@d1 2
+a2 2
+#!/bin/sh
+# $Id: mkx,v 1.5 2013-08-08 18:05:19-07 - - $
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkx,v 1.4 2013-08-08 17:47:14-07 - - $
+d19 10
+a28 2
+prefix() {
+   echo $1 | sed 's/\.[^.]*$//'
+d31 11
+a41 4
+display() {
+     echo ::::::::::::::::::::::::::::::::
+     echo "$@@"
+     echo ::::::::::::::::::::::::::::::::
+a43 17
+if [ $# == 0 ]; then
+   echo Usage: $0 prog... 1>&2
+   exit 1
+fi
+
+for prog in $*
+do
+   base=$(prefix $prog)
+   mkc $prog
+   if [ $? != 0 ]; then exit $?; fi
+   { display Source: $prog
+     cat -nv $prog
+     display Output: $base '2>&1'
+     $base 2>&1 | cat -nv
+   } >$base.lis
+   mkpspdf + $base.ps $base.lis
+done
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkx,v 1.3 2013-08-08 17:45:50-07 - - $
+d23 6
+d39 1
+a39 3
+   { echo ::::::::::::::
+     echo Source: $prog
+     echo ::::::::::::::
+d41 1
+a41 3
+     echo ::::::::::::::
+     echo Output: $base '2>&1'
+     echo ::::::::::::::
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkx,v 1.2 2013-08-08 17:42:40-07 - - $
+d34 1
+a34 1
+     echo $prog
+d38 1
+a38 1
+     echo $base
+d40 1
+a40 1
+     $base | cat -nv
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: mkx,v 1.1 2013-08-08 17:42:12-07 - - $
+d42 1
+a42 1
+   mkpspdf $base.ps $base.lis
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+d37 1
+a37 1
+   { echo ::::::::::::::
+@

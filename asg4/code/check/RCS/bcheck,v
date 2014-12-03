@@ -1,0 +1,28 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2013.03.01.21.36.36;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/bin/sh
+# $Id$
+bcheck is a SUNWspro debugging tool no longer avaiable.
+Instead, use:
+valgrind --leak-check=full
+@

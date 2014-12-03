@@ -1,0 +1,44 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2012.06.06.21.56.11;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2012.06.06.21.51.06;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@#!/bin/bash
+# $Id: bashscript,v 1.1 2012-06-06 14:51:06-07 - - $
+SHELL=/bin/bash script $@@
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 3
+a3 3
+#!/bin/sh
+# $Id$
+SHELL=bash script $@@
+@

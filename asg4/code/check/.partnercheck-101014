@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+# $Id: partnercheck,v 1.1 2009-12-17 18:41:26-08 - - $
+#
+# Read a PARTNER file.  Check to see if it has a valid username.
+#
+
+$0 =~ s|.*/||;
+
+$filename = "PARTNER";
+
+open PARTNER, "<$filename" or die "$0: $filename: $!\n";
+$partner = join "", <PARTNER>;
+close PARTNER;
+$partner =~ s/\n$// or die "$0: $filename: invalid format\n";
+$partner =~ s/[\x00-\x20\x7F]/sprintf "^%c", (ord $&) ^ 0x40/ge;
+$partner =~ s/[\x80-\xFF]/sprintf "\\x%02X", ord $&/ge;
+
+($user, $_, $uid, $_, $_, $_, $gecos, $home, $shell, $_)
+            = getpwnam $partner;
+die "$0: $partner: no such user\n" unless $user;
+
+print "$filename file is valid:\n";
+print "\$USER  = $user\n";
+print "UID    = $uid\n";
+print "GECOS  = $gecos\n";
+print "\$HOME  = $home\n";
+print "\$SHELL = $shell\n";
+

@@ -1,0 +1,39 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2010.05.07.01.10.29;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@#!/usr/bin/perl
+#
+# NAME
+#    extractmail - extract mail files form mailbox into separate files
+#
+# SYNOPSIS
+#    exractmail mailbox
+#
+# DESCRIPTION
+#    Reads an individual mailbox using mailx and saves each mail as
+#    a separate file, saving it into a file named with date and time
+#    in the form mmddHHMMSS.m.  Uses extractmail.mailrc as the
+#    control file.
+#
+# FILES
+#    extractmail.mailrc
+@

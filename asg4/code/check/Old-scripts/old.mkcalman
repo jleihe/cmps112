@@ -1,0 +1,12 @@
+#!/bin/sh -x
+# $Id: old.mkcalman,v 1.1 2009-12-17 18:20:05-08 - - $
+#
+# Use man(1) to format the cal(1) man page and generate output
+# in Postscript, PDF, and plain text.
+#
+psman -s 1 cal >cal.1.ps
+pstopdf cal.1.ps
+man -s 1 cal | perl -00pe '
+	s/(.)[\b]\1/$1/g;
+	s/_[\b]|[\b]_//g;
+	s/o[\b]\+|\+[\b]o/\+/g' >cal.1.tt
