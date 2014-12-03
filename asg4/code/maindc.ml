@@ -15,6 +15,24 @@ let pop = Stack.pop
 
 let hash = Hashtbl.create 256
 
+let store (thestack: stack_t) (reg: int) = 
+    try let stack = Hashtbl.find hash reg
+        in try let top = pop thestack
+            in push top stack
+        with Stack.Empty -> print_stackempty ()
+    with Not_found ->
+        try let top = pop thestack
+            in let stack = Stack.create()
+            in  Hashtbl.add hash reg stack
+        with Stack.Empty -> print_stackempty ()
+
+let load  (thestack: stack_t) (reg: int) =
+    try let stack = Hashtbl.find hash reg
+        in try let top = pop stack
+            in push top thestack
+        with Stack.Empty -> print_stackempty ();
+    with Not_found ->  print_stackempty ();
+
 let ord thechar = int_of_char thechar
 type binop_t = bigint -> bigint -> bigint
 
@@ -43,28 +61,10 @@ let print_number number =
     
 let print_stackempty () = eprintf "dc: stack empty\n%!"
 
-(*let load  (thestack: stack_t) (reg: int) =
-    try let stack = Hashtbl.find hash reg
-        in try let top = pop stack
-            in push top thestack
-        with Stack.Empty -> print_stackempty ();
-    with Not_found ->  print_stackempty ();
-
 (*let makeStack item = 
    Stack.create()
     in push item stack
     in stack*)
-
-let store (thestack: stack_t) (reg: int) = 
-    try let stack = Hashtbl.find hash reg
-        in try let top = pop thestack
-            in push top stack
-        with Stack.Empty -> print_stackempty ()
-    with Not_found ->
-        try let top = pop thestack
-            in let stack = Stack.create()
-            in  Hashtbl.add hash reg stack
-        with Stack.Empty -> print_stackempty ()*)
     
 
 let executereg (thestack: stack_t) (oper: char) (reg: int) =
