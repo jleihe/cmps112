@@ -1,26 +1,31 @@
-Joshua Leihe - jleihe@ucsc.edu - CMPS112 - ASG2 - README
+Joshua Leihe - jleihe@ucsc.edu - CMPS112 - ASG5 - README
 
 NOTE
-Some functionality is still missing.  I hope to be able to finish before the 
-assignment is closed.
+This is a resubmission of asg2 as described in the asg5 specifications
 
 NAME
-hzip.st — file compression and decompression utility
+hzip.st - file compression and decompression utility
 
 SYNOPSIS
 hzip.st -dtcu inputfile [outputfile]
 
 DESCRIPTION
-A file is either compressed (with the -c option), uncompressed (with the -u
-option), one of which is required. The input filename is required. If the output
-filename is not specified, output is written to the standard output.
+A file is either compressed (with the -c option), uncompressed 
+(with the -u option), one of which is required. The input filename
+is required. If the output filename is not specified, output is 
+written to the standard output.
 
 
 OPTIONS
--d Debug information is printed for the benefit of the application author.
--t The compression algorithm is activated, and the decoding tree is printed
-	to the standard output. The output filename may not be specified.
--c The input file is compressed and written to the output file, if specified, or
-	to the standard output, if not.
--u The input file is assumed to be compressed, and is uncompressed, written
-	to the output file, if specified, or to the standard output, if not.
+-d Debug information is printed for the 
+    benefit of the application author.
+-t The compression algorithm is activated, 
+    and the decoding tree is printed
+    to the standard output. The output
+     filename may not be specified.
+-c The input file is compressed and written 
+    to the output file, if specified, or
+    to the standard output, if not.
+-u The input file is assumed to be compressed, 
+    and is uncompressed, written to the output 
+    file, if specified, or to the standard output, if not.

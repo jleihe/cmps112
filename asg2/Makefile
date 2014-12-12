@@ -1,2 +1,2 @@
 hzip-s:
-	gst hzip.st -c sample
+	./hzip.st -c test0.zero.in 
